@@ -3,9 +3,178 @@ title: "R packages: What, Why and How?"
 subtitle: "HTA Hackathon Belfast 2024"
 date: 2024-08-06
 author: "Milan Malfait"
-format: revealjs
+format:
+  revealjs:
+    footer: "*{{< meta title >}}*"
 ---
 
-## Quarto
+## What
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+- R packages are the fundamental units of reproducible R code^[1]^
+- They bundle together code, data, documentation, and tests, and are easy to share with others
+
+. . .
+
+![](figures/r-package-structure.png){width=60% fig-align="center" fig-alt="R package structure"}
+
+[1]: https://r-pkgs.org/introduction.html
+
+
+## But Why?
+
+* Code sharing / reproducibility
+* Convenience
+* Conventions, good practices
+* It makes you look really cool
+
+
+## How
+
+::: {style="margin-top: 200px; font-size: 1.2em;"}
+
+What if I told you you can create an R package
+
+::: {.fragment}
+::: {.fragment .highlight-red}
+*in just 10 minutes* 
+:::
+:::
+
+::: {.fragment style="text-align: center; font-size: 2em;"}
+🤯
+:::
+
+:::
+
+## [{devtools}](https://devtools.r-lib.org) to the rescue
+
+```{.r}
+library(devtools)
+create_package("~/htahackathon2024/stringsplitter")
+use_git()
+use_r("split-string.R")
+```
+
+1. Set up package structure
+2. Set up version control
+3. Add our first function
+
+## Add our first function
+
+```{.r filename="R/split-string.R"}
+splitstring <- function(x, sep = ",") {
+  strsplit(x, split = sep)[[1]]
+}
+```
+
+## 🏎️ Test drive
+
+```{.r}
+load_all()
+splitstring("a,b,c")
+#> [1] "a" "b" "c"
+```
+
+. . .
+
+<br>
+
+```{.r}
+check()
+#> ... (output truncated) ...
+#> ── R CMD check ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ✔  checking DESCRIPTION meta-information ...
+#> ✔  checking R files for syntax errors ...
+#> ✔  checking whether the package can be loaded ...
+#> ✔  checking R code for possible problems (1.3s)
+#> ✔  checking examples ...
+#> 
+#> 
+#> ── R CMD check results ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stringsplitter 0.0.1 ────
+#> 
+#> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+```
+
+## 🏎️ Test drive
+
+::: {.callout-note .nonincremental}
+## RStudio keyboard shortcuts
+
+- `Shift + Ctrl/Cmd + L` to load all
+- `Shift + Ctrl/Cmd + E` to run checks
+:::
+
+## 📝 Add documentation
+
+Write some documentation in [roxygen format][roxygen] for your new function
+
+. . . 
+
+::: {.callout-tip}
+In RStudio, go to `Code -> Insert Roxygen skeleton` to  make your life easier
+:::
+
+[roxygen]: https://roxygen2.r-lib.org/articles/rd.html
+
+## 📝 Document your function {auto-animate=true}
+
+```{.r filename="R/split-string.R"}
+splitstring <- function(x, sep = ",") {
+  strsplit(x, split = sep)[[1]]
+}
+```
+
+## 📝 Document your function {auto-animate=true}
+
+```{.r filename="R/split-string.R"}
+#' Split a string into a vector of strings
+#'
+#' @param x a character string to be split
+#' @param sep the separator on which to split
+#'
+#' @return a vector of strings
+#' @export
+#'
+#' @examples
+#' splitstring("alfa,bravo,charlie")
+#' splitstring("alfa,bravo charlie", sep = " ")
+splitstring <- function(x, sep = ",") {
+  strsplit(x, split = sep)[[1]]
+}
+```
+
+. . .
+
+Generate the help pages by running `document()`
+
+or `Ctrl/Cmd + Shift + D` in RStudio
+
+## 📦 Build and install
+
+```{.r}
+install()
+#> ── R CMD build ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ✔  checking for file ‘/Users/milan/htahackathon2024/stringsplitter/DESCRIPTION’ ...
+#> ─  preparing ‘stringsplitter’:
+#> ✔  checking DESCRIPTION meta-information ...
+#> ─  checking for LF line-endings in source and make files and shell scripts
+#> ─  checking for empty or unneeded directories
+#> ─  building ‘stringsplitter_0.0.1.tar.gz’
+#> 
+#> ... output truncated ...
+#>
+#> ** testing if installed package can be loaded from temporary location
+#> ** testing if installed package can be loaded from final location
+#> ** testing if installed package keeps a record of temporary installation path
+#> * DONE (stringsplitter)
+```
+
+. . .
+
+🎉 Success!
+
+``` {.r}
+library(stringsplitter)
+splitstring("a,b,c")
+#> [1] "a" "b" "c"
+```
