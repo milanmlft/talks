@@ -1,0 +1,27 @@
+project:
+  type: website
+
+format:
+  html:
+    theme: cyborg
+    css: styles.css
+  revealjs:
+    footer: "{{< meta title >}}: <https://milanmlft.com/talks>"
+    hash-type: number
+    history: false
+    incremental: true
+    link-external-icon: true
+    link-external-newwindow: true
+    slide-number: true
+    theme: dark
+
+website:
+  navbar:
+    tools:
+      - icon: house
+        href: https://milanmlft.com
+        target: _blank
+      - icon: github
+        href: https://github.com/milanmlft/talks
+        target: _blank
+  title: ""
