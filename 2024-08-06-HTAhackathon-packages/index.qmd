@@ -1,0 +1,344 @@
+---
+title: "R packages: What, Why and How?"
+subtitle: "[HTA Hackathon Belfast 2024](https://n8thangreen.github.io/htahack2024/)"
+date: 2024-08-06
+author: "Milan Malfait"
+format:
+  revealjs:
+    footer: "*{{< meta title >}}*"
+---
+
+## What
+
+- R packages are the fundamental units of reproducible R code^[1]^
+- They bundle together code, data, documentation, and tests, and are easy to share with others
+
+. . .
+
+![](figures/r-package-structure.png){width=60% fig-align="center" fig-alt="R package structure"}
+
+[1]: https://r-pkgs.org/introduction.html
+
+
+## But Why?
+
+* Code sharing / reproducibility
+* Convenience
+* Conventions, good practices
+* It makes you look really cool
+
+
+## How
+
+::: {style="margin-top: 200px; font-size: 1.2em;"}
+
+What if I told you you can create an R package
+
+::: {.fragment}
+::: {.fragment .highlight-red}
+*in just 10 minutes* 
+:::
+:::
+
+::: {.fragment style="text-align: center; font-size: 2em;"}
+🤯
+:::
+
+:::
+
+## [{devtools}](https://devtools.r-lib.org) to the rescue
+
+```{.r}
+library(devtools)
+create_package("~/htahackathon2024/stringsplitter")
+use_git()
+use_r("split-string.R")
+```
+
+1. Set up package structure
+2. Set up version control
+3. Add our first function
+
+## Add our first function
+
+```{.r filename="R/split-string.R"}
+splitstring <- function(x, sep = ",") {
+  strsplit(x, split = sep)[[1]]
+}
+```
+
+## 🏎️ Test drive
+
+```{.r}
+load_all()
+splitstring("a,b,c")
+#> [1] "a" "b" "c"
+```
+
+. . .
+
+<br>
+
+```{.r}
+check()
+#> ... (output truncated) ...
+#> ── R CMD check ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ✔  checking DESCRIPTION meta-information ...
+#> ✔  checking R files for syntax errors ...
+#> ✔  checking whether the package can be loaded ...
+#> ✔  checking R code for possible problems (1.3s)
+#> ✔  checking examples ...
+#> 
+#> 
+#> ── R CMD check results ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stringsplitter 0.0.1 ────
+#> 
+#> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+```
+
+## 🏎️ Test drive
+
+::: {.callout-note .nonincremental}
+## RStudio keyboard shortcuts
+
+- `Shift + Ctrl/Cmd + L` to load all
+- `Shift + Ctrl/Cmd + E` to run checks
+:::
+
+## 📝 Add documentation
+
+Write some documentation in [roxygen format][roxygen] for your new function
+
+. . . 
+
+::: {.callout-tip}
+In RStudio, go to `Code -> Insert Roxygen skeleton` to  make your life easier
+:::
+
+[roxygen]: https://roxygen2.r-lib.org/articles/rd.html
+
+## 📝 Document your function {auto-animate=true}
+
+```{.r filename="R/split-string.R"}
+splitstring <- function(x, sep = ",") {
+  strsplit(x, split = sep)[[1]]
+}
+```
+
+## 📝 Document your function {auto-animate=true}
+
+```{.r filename="R/split-string.R"}
+#' Split a string into a vector of strings
+#'
+#' @param x a character string to be split
+#' @param sep the separator on which to split
+#'
+#' @return a vector of strings
+#' @export
+#'
+#' @examples
+#' splitstring("alfa,bravo,charlie")
+#' splitstring("alfa,bravo charlie", sep = " ")
+splitstring <- function(x, sep = ",") {
+  strsplit(x, split = sep)[[1]]
+}
+```
+
+. . .
+
+Generate the help pages by running `document()`
+
+or `Ctrl/Cmd + Shift + D` in RStudio
+
+## 📝 Make `splitstring()` available
+
+```{.r filename="R/split-string.R" code-line-numbers="7"}
+#' Split a string into a vector of strings
+#'
+#' @param x a character string to be split
+#' @param sep the separator on which to split
+#'
+#' @return a vector of strings
+#' @export
+#'
+#' @examples
+#' splitstring("alfa,bravo,charlie")
+#' splitstring("alfa,bravo charlie", sep = " ")
+splitstring <- function(x, sep = ",") {
+  strsplit(x, split = sep)[[1]]
+}
+```
+
+. . .
+
+`document()` will update the [`NAMESPACE` file][namespace] for us
+
+[namespace]: https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-namespace
+
+## 📦 Build and install
+
+```{.r}
+install()
+#> ── R CMD build ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ✔  checking for file ‘/Users/milan/htahackathon2024/stringsplitter/DESCRIPTION’ ...
+#> ─  preparing ‘stringsplitter’:
+#> ✔  checking DESCRIPTION meta-information ...
+#> ─  checking for LF line-endings in source and make files and shell scripts
+#> ─  checking for empty or unneeded directories
+#> ─  building ‘stringsplitter_0.0.1.tar.gz’
+#> 
+#> ... output truncated ...
+#>
+#> ** testing if installed package can be loaded from temporary location
+#> ** testing if installed package can be loaded from final location
+#> ** testing if installed package keeps a record of temporary installation path
+#> * DONE (stringsplitter)
+```
+
+. . .
+
+🎉 Success!
+
+``` {.r}
+library(stringsplitter)
+splitstring("a,b,c")
+#> [1] "a" "b" "c"
+```
+
+## Some Good Practices {.center .smaller}
+
+> *One of the things research programmers struggle with is the transition from exploration to infrastructure, i.e., from “coding to figure out what the problem is” to “I’m building a reusable tool”. Habits from the first are often carried over to the second.*
+
+-- Tweet from [Greg Wilson 2018][wilson]
+
+[wilson]: https://twitter.com/gvwilson/status/1028964474135429122
+
+## Don't trust `rm(list = ls())`
+
+::: {.callout-important}
+If the first line of your R script is
+
+```{.r code-line-numbers="false" style="font-size: 200%;"}
+rm(list = ls())
+```
+
+I will come into your office and SET YOUR COMPUTER ON FIRE 🔥
+:::
+
+::: {style="font-size: 60%;"}
+-- [Zen And The aRt Of Workflow Maintenance - Jenny Bryan][bryan-zen-37]
+:::
+
+. . .
+
+<br>
+
+Instead [start R with a clean slate and restart often][wtfr-restart]
+
+[bryan-zen-37]: https://speakerdeck.com/jennybc/zen-and-the-art-of-workflow-maintenance?slide=37
+[wtfr-restart]: https://rstats.wtf/source-and-blank-slates#always-start-r-with-a-blank-slate
+
+## Restart your R session regularly
+
+:::: {.columns}
+
+::: {.column}
+![Change these settings in RStudio](figures/rstudio-settings.png){fig-align="center" fig-alt="Recommended RStudio settings"}
+:::
+
+::: {.column}
+![](figures/rstudio-restart.png){width=80% fig-align="center" fig-alt="Restart RStudio"}
+:::
+
+::::
+
+## 
+
+![](figures/if-you-liked-it-you-should-have-saved-the-source-for-it.jpg)
+
+::: {style="font-size: 60%;"}
+-- [Saving Source and blank slates | What They Forgot to Teach You About R][wtfr-saving-source]
+:::
+
+[wtfr-saving-source]: https://rstats.wtf/source-and-blank-slates
+
+
+## Don't do `setwd()`
+
+::: {.callout-important}
+If the first line of your R script is
+
+```{.r code-line-numbers="false" style="font-size: 200%;"}
+setwd("C:\Users\myself\path\that\only\I\have")
+```
+
+I will come into your office and SET YOUR COMPUTER ON FIRE 🔥
+:::
+
+::: {style="font-size: 60%;"}
+-- [Zen And The aRt Of Workflow Maintenance - Jenny Bryan][bryan-zen-47]
+:::
+
+. . . 
+
+<br>
+
+Use a [project-oriented workflow][wtfr-projects] instead
+
+[bryan-zen-47]: https://speakerdeck.com/jennybc/zen-and-the-art-of-workflow-maintenance?slide=47
+[wtfr-projects]: https://rstats.wtf/projects
+
+## Advanced topics {.center}
+
+## Debugging
+
+![](figures/debugging.jpg){fig-align="center" fig-alt="What debugging feels like"}
+
+## Code formatting
+
+![](figures/code-formatting-meme.png){width=50% fig-align="center" fig-alt="Code formatting meme"}
+
+::: {style="text-align: center;"}
+_Because readability **is** important_
+:::
+
+## Do's and don'ts
+
+```{.r}
+# Don’t do this
+if(x<100){
+  y<-200} 
+
+# Do this instead
+if (x < 100) {
+  y <- 200
+}
+
+
+# NEVER use the shorthand versions of TRUE and FALSE
+# Why? This is why:
+T <- FALSE # this is valid R code # <1>
+```
+
+1. If you really want to mess with someone's R code, see [evil.R][evil-R]
+
+[evil-R]: https://github.com/romainfrancois/evil.R/blob/397639f0ba6ddd8b6ff28d455016dacf4d444e73/R/evil.R#L49-L50
+
+## Resources
+
+::: {.nonincremental}
+* [*R Packages*][r-pkgs] by Hadley Wickham and Jenny Bryan – *The Golden Standard*
+* [*What They Forgot to Teach You About R*][wtf-r] by Jenny Bryan
+
+
+<br>
+
+* [*Tidyverse style guide*][tidyverse-style]
+* [*“Better packages”*][better-packages] presentation by Maëlle Salmon
+* [*Advanced R*][adv-r] by Hadley Wickham
+:::
+
+[r-pkgs]: https://r-pkgs.org
+[wtf-r]: https://rstats.wtf
+[tidyverse-style]: https://style.tidyverse.org
+[better-packages]: https://rpkgdev-rocket-2024.netlify.app/taste-abilities/slides/#/
+[adv-r]: https://adv-r.hadley.nz
