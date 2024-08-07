@@ -149,6 +149,31 @@ Generate the help pages by running `document()`
 
 or `Ctrl/Cmd + Shift + D` in RStudio
 
+## 📝 Make `splitstring()` available
+
+```{.r filename="R/split-string.R" code-line-numbers="7"}
+#' Split a string into a vector of strings
+#'
+#' @param x a character string to be split
+#' @param sep the separator on which to split
+#'
+#' @return a vector of strings
+#' @export
+#'
+#' @examples
+#' splitstring("alfa,bravo,charlie")
+#' splitstring("alfa,bravo charlie", sep = " ")
+splitstring <- function(x, sep = ",") {
+  strsplit(x, split = sep)[[1]]
+}
+```
+
+. . .
+
+`document()` will update the [`NAMESPACE` file][namespace] for us
+
+[namespace]: https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-namespace
+
 ## 📦 Build and install
 
 ```{.r}
