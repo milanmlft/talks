@@ -1,6 +1,6 @@
 ---
 title: "R packages: What, Why and How?"
-subtitle: "HTA Hackathon Belfast 2024"
+subtitle: "[HTA Hackathon Belfast 2024](https://n8thangreen.github.io/htahack2024/)"
 date: 2024-08-06
 author: "Milan Malfait"
 format:
