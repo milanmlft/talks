@@ -1,0 +1,142 @@
+---
+title: "Introduction to `renv`"
+subtitle: SAFEHR Learning session
+date: 2025-02-24
+author: "Milan Malfait"
+format: 
+  revealjs:
+    slide-number: true
+    toc: false
+execute:
+  echo: true
+  eval: false
+---
+
+## **Overview of `renv`**
+
+::: {layout-ncol=2}
+#### What is `renv`?
+
+- A package for managing project-specific R environments.
+- Similar to virtual environments in Python (e.g., `venv` or `conda`).
+
+#### Key Features
+
+- Isolated library paths for each project.
+- Snapshotting and restoring package versions.
+- Integration with RStudio and command-line workflows.
+:::
+
+![`renv` Workflow](path/to/image2.png)  
+*Example: Diagram showing how `renv` isolates project environments.*
+
+---
+
+## **Why use `renv`?**
+- Challenges of dependency management in collaborative projects.
+- Ensuring reproducibility across different systems and over time.
+- Avoiding conflicts between package versions.
+
+![Dependency Management Challenges](path/to/image1.png)  
+*Example: Diagram showing package conflicts across projects.*
+
+---
+
+## **Setting Up `renv` in a Project**
+
+```{r}
+#| echo: true
+# Install renv
+install.packages("renv")
+
+# Initialize renv in a project
+renv::init()
+```
+
+- Files created:
+
+    - `renv.lock`: Tracks package versions.
+    - `renv/`: Contains the isolated library.
+
+![Project Structure with renv](/path/to/image3.png)
+Example: Screenshot of a project folder showing renv.lock and renv/.
+
+---
+
+## **Managing Dependencies with `renv`**
+
+---
+
+### **Snapshotting the Environment**
+```{r}
+#| echo: true
+# Capture the current state of the environment
+renv::snapshot()
+```
+
+---
+
+### **Restoring the Environment**
+```{r}
+#| echo: true
+# Recreate the environment from renv.lock
+renv::restore()
+```
+
+---
+
+### **Updating Packages**
+```{r}
+#| echo: true
+# Update packages while maintaining version control
+renv::update()
+```
+
+![Snapshot and Restore Workflow](path/to/image4.png)  
+*Example: Diagram showing the snapshot and restore process.*
+
+---
+
+## **Collaboration and Reproducibility**
+
+---
+
+### **Sharing Projects with `renv`**
+- Share the project folder, including `renv.lock` and `renv/`.
+- Collaborators can use `renv::restore()` to replicate the environment.
+
+---
+
+### **Handling External Dependencies**
+```{r}
+#| echo: true
+# Speed up environment setup by reusing global packages
+renv::hydrate()
+```
+
+![Collaboration Workflow](path/to/image5.png)  
+*Example: Diagram showing how collaborators use `renv` to replicate environments.*
+
+---
+
+## **Advanced Features and Best Practices**
+
+- Use `.renvignore` to exclude files from `renv` management.
+- Modify `renv/settings.json` for project-specific configurations.
+- Using `renv` in automated workflows for consistent environments.
+
+![CI/CD Integration](path/to/image6.png)  
+*Example: Diagram showing `renv` in a CI/CD pipeline.*
+
+---
+
+## Pitfalls
+
+- Conflicts with global packages.
+- Handling missing or incompatible packages.
+
+---
+
+## Resources
+- [Official `renv` documentation](https://rstudio.github.io/renv/).
+

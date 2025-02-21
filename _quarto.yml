@@ -4,6 +4,7 @@ project:
 format:
   html:
     theme: cyborg
+    fontsize: 0.8em
   revealjs:
     footer: "{{< meta title >}} <https://milanmlft.com/talks>"
     hash-type: number
