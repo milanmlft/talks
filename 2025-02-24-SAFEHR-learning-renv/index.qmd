@@ -7,42 +7,52 @@ format:
   revealjs:
     slide-number: true
     toc: false
+    footer: "{{< meta title >}}"
 execute:
   echo: true
   eval: false
 ---
 
-## **Overview of `renv`**
+## Overview of `renv`
 
 ::: {layout-ncol=2}
 #### What is `renv`?
 
-- A package for managing project-specific R environments.
-- Similar to virtual environments in Python (e.g., `venv` or `conda`).
+- A package for managing project-specific R environments
+- Similar to virtual environments in Python (e.g., `venv` or `conda`)
 
 #### Key Features
 
-- Isolated library paths for each project.
-- Snapshotting and restoring package versions.
-- Integration with RStudio and command-line workflows.
+- **Isolated** library paths for each project
+- **Portable**: cross-platform sharing of environments
+- **Reproducible**: ensures consistent package versions
 :::
-
-![`renv` Workflow](path/to/image2.png)  
-*Example: Diagram showing how `renv` isolates project environments.*
 
 ---
 
-## **Why use `renv`?**
+## Why use `renv`?
+
+::: {layout-ncol=2}
 - Challenges of dependency management in collaborative projects.
 - Ensuring reproducibility across different systems and over time.
 - Avoiding conflicts between package versions.
 
-![Dependency Management Challenges](path/to/image1.png)  
-*Example: Diagram showing package conflicts across projects.*
+![](./figures/it-works-on-my-machine.png){fig-align="center" fig-alt="It works on my machine meme"}
+:::
 
 ---
 
-## **Setting Up `renv` in a Project**
+## The `renv` workflow {.center}
+
+---
+
+### The `renv` workflow
+
+![](figures/renv-workflow.png){fig-align="center" fig-alt="The renv workflow"}
+
+---
+
+### Setting Up `renv` in a Project
 
 ```{r}
 #| echo: true
@@ -52,91 +62,338 @@ install.packages("renv")
 # Initialize renv in a project
 renv::init()
 ```
+</br>
 
-- Files created:
-
-    - `renv.lock`: Tracks package versions.
-    - `renv/`: Contains the isolated library.
-
-![Project Structure with renv](/path/to/image3.png)
-Example: Screenshot of a project folder showing renv.lock and renv/.
+![](./figures/renv-folder-structure.png){fig-align="center" fig-alt="Project Structure with renv"}
 
 ---
 
-## **Managing Dependencies with `renv`**
+### Recording the Environment
 
----
 
-### **Snapshotting the Environment**
+```{r filename="my-cool-script.R"}
+library(dplyr)
+# ... Doing something cool with dplyr
+```
+
+</br>
+
 ```{r}
-#| echo: true
-# Capture the current state of the environment
+# On the console
+renv::status()
+#> The following package(s) are used in this project, but are not installed:
+#> - dplyr
+#> 
+#> See `?renv::status` for advice on resolving these issues.
+```
+---
+
+### Recording the Environment
+
+```{r}
+# On the console
 renv::snapshot()
+#> The following required packages are not installed:
+#> - dplyr
+#> Packages must first be installed before renv can snapshot them.
+#> Use `renv::dependencies()` to see where this package is used in your project.
+#> 
+#> What do you want to do? 
+#> 
+#> 1: Snapshot, just using the currently installed packages.
+#> 2: Install the packages, then snapshot.
+#> 3: Cancel, and resolve the situation on your own.
+#> 
+Selection: 
 ```
 
 ---
 
-### **Restoring the Environment**
+### Recording the Environment
+
+```{r}
+# On the console
+renv::snapshot()
+Selection: 2
+
+#> The following package(s) will be installed:
+#> - cli        [3.6.4]
+#> - dplyr      [1.1.4]
+#> - fansi      [1.0.6]
+#> - generics   [0.1.3]
+#> - glue       [1.8.0]
+#> - lifecycle  [1.0.4]
+#> - magrittr   [2.0.3]
+#> - pillar     [1.10.1]
+#> - pkgconfig  [2.0.3]
+#> - R6         [2.6.1]
+#> - rlang      [1.1.5]
+#> - tibble     [3.2.1]
+#> - tidyselect [1.2.1]
+#> - utf8       [1.2.4]
+#> - vctrs      [0.6.5]
+#> - withr      [3.0.2]
+#> These packages will be installed into "~/test/sandbox/my-project/renv/library/macos/R-4.4/aarch64-apple-darwin20".
+```
+
+---
+
+### Recording the Environment
+
+```{r `code-line-numbers`="7"}
+# On the console
+renv::snapshot()
+Selection: 2
+
+#> The following package(s) will be installed:
+#> - dplyr      [1.1.4]
+#> These packages will be installed into "~/test/sandbox/my-project/renv/library/macos/R-4.4/aarch64-apple-darwin20".
+
+#> # Installing packages --------------------------------------------------------
+#> ...
+
+#> # CRAN -----------------------------------------------------------------------
+#> ...
+#> - dplyr        [* -> 1.1.4]
+#> ... more dependencies
+
+Do you want to proceed? [Y/n]:
+```
+
+---
+
+### Recording the Environment
+
+```{r `code-line-numbers`="7"}
+# On the console
+renv::snapshot()
+Selection: 2
+
+Do you want to proceed? [Y/n]: y
+
+#> - Lockfile written to "~/test/sandbox/my-project/renv.lock".
+```
+
+---
+
+### The lockfile
+
+```{.json filename="renv.lock" code-line-numbers="3"}
+{
+  "R": {
+    "Version": "4.4.2",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://cloud.r-project.org"
+      }
+    ]
+  },
+```
+
+---
+
+### The lockfile
+
+```{.json filename="renv.lock" code-line-numbers="5"}
+  "Packages": {
+  ...
+    "dplyr": {
+      "Package": "dplyr",
+      "Version": "1.1.4",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "A Grammar of Data Manipulation",
+      ...
+      "Imports": [
+        ...
+      ],
+      "Suggests": [
+        ...
+      ],
+      ...
+      "Repository": "CRAN"
+    },
+}
+```
+
+---
+
+### Restoring the Environment
+
 ```{r}
 #| echo: true
-# Recreate the environment from renv.lock
+# On some other machine, recreate the environment from renv.lock
 renv::restore()
+#> The following package(s) will be updated:
+#> 
+#> # CRAN -----------------------------------------------------------------------
+#> - dplyr   [* -> 1.1.4]
+#> 
+#> Do you want to proceed? [Y/n]: 
 ```
 
 ---
 
-### **Updating Packages**
+### Updating Packages
+
 ```{r}
 #| echo: true
-# Update packages while maintaining version control
 renv::update()
+#> - Querying repositories for available binary packages ... Done!
+#> - Querying repositories for available source packages ... Done!
+#> - Checking for updated packages ... Done!
+#> The following package(s) will be updated:
+#> 
+#> # CRAN -----------------------------------------------------------------------
+#> - class        [7.3-22 -> 7.3-23]
+#> - foreign      [0.8-87 -> 0.8-88]
+#> - KernSmooth   [2.23-24 -> 2.23-26]
+#> - MASS         [7.3-61 -> 7.3-64]
+#> - Matrix       [1.7-1 -> 1.7-2]
+#> - nlme         [3.1-166 -> 3.1-167]
+#> - nnet         [7.3-19 -> 7.3-20]
+#> - rpart        [4.1.23 -> 4.1.24]
+#> - spatial      [7.3-17 -> 7.3-18]
+#> - survival     [3.7-0 -> 3.8-3]
 ```
 
-![Snapshot and Restore Workflow](path/to/image4.png)  
-*Example: Diagram showing the snapshot and restore process.*
+`renv` will update the `renv.lock` file in this case.
 
 ---
 
-## **Collaboration and Reproducibility**
+### Updating packages
 
----
+Always good to run
 
-### **Sharing Projects with `renv`**
-- Share the project folder, including `renv.lock` and `renv/`.
-- Collaborators can use `renv::restore()` to replicate the environment.
-
----
-
-### **Handling External Dependencies**
 ```{r}
-#| echo: true
-# Speed up environment setup by reusing global packages
-renv::hydrate()
+renv::status()
 ```
 
-![Collaboration Workflow](path/to/image5.png)  
-*Example: Diagram showing how collaborators use `renv` to replicate environments.*
+and make sure everything is as it should be
+
+</br>
+
+Don't forget to `git commit` changes to `renv.lock`!
+
 
 ---
 
-## **Advanced Features and Best Practices**
-
-- Use `.renvignore` to exclude files from `renv` management.
-- Modify `renv/settings.json` for project-specific configurations.
-- Using `renv` in automated workflows for consistent environments.
-
-![CI/CD Integration](path/to/image6.png)  
-*Example: Diagram showing `renv` in a CI/CD pipeline.*
+## Advanced Features and Best Practices {.center}
 
 ---
 
-## Pitfalls
+### Recording a specific version of a package
 
-- Conflicts with global packages.
-- Handling missing or incompatible packages.
+*Only do this when you have a compelling reason to do so*
+
+```{r}
+renv::record("dplyr@1.0.0")
+
+## Install the recorded version
+renv::restore() 
+```
+
+---
+
+---
+
+### Good to know
+
+::: {.nonincremental}
+- Use `.renvignore` to exclude files from `renv` management
+- Modify `renv/settings.json` for project-specific configurations
+- Using `renv` in automated workflows for consistent environments
+
+```{yaml}
+steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+    - name: Install R
+      uses: r-lib/actions/setup-r@v2
+    - name: Install dependencies
+      uses: r-lib/actions/setup-renv@v2
+```
+:::
+
+---
+
+### Gotchas and how to deal with them
+
+- **RESTART, RESTART, RESTART**
+    - Get in the habit of regularly restarting your *R session*
+    - Learn those [keyboard shortcuts](https://docs.posit.co/ide/user/ide/reference/shortcuts.html)!
+- Although the regular install commands (`install.packages()`, `remotes::install_github()`) should work with `renv`,
+  use `renv::install()` just to be sure
+
+---
+
+### Can't find a package
+
+
+```{r filename="my-cool-script.R"}
+library(dplyr)
+library(omopcept)
+# ... Doing something cool with dplyr and omopcept
+```
+
+</br>
+
+```{r}
+renv::snapshot()
+#> The following required packages are not installed:
+#> - omopcept
+#> Packages must first be installed before renv can snapshot them.
+#> Use `renv::dependencies()` to see where this package is used in your project.
+#> 
+#> What do you want to do? 
+#> 
+#> 1: Snapshot, just using the currently installed packages.
+#> 2: Install the packages, then snapshot.
+#> 3: Cancel, and resolve the situation on your own.
+#> 
+#> Selection:
+```
+
+---
+
+### Can't find a package
+
+```{r}
+renv::snapshot()
+#> What do you want to do? 
+#> 
+#> 1: Snapshot, just using the currently installed packages.
+#> 2: Install the packages, then snapshot.
+#> 3: Cancel, and resolve the situation on your own.
+#> 
+Selection: 2
+
+#> Error: package 'omopcept' is not available
+```
+
+😭
+
+---
+
+### Can't find a package
+
+Typical for GitHub packages, because `renv` only looks at CRAN repo by default
+
+Fix by manually installing the package first and then snapshotting again.
+
+```{r}
+renv::install("SAFEHR-data/omopcept")
+renv::snapshot()
+#> # GitHub ---------------------------------------------------------------------
+#> - omopcept       [* -> SAFEHR-data/omopcept]
+```
+
+🥳
 
 ---
 
 ## Resources
+
 - [Official `renv` documentation](https://rstudio.github.io/renv/).
 
