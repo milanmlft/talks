@@ -3,11 +3,10 @@ title: "Introduction to `renv`"
 subtitle: SAFEHR Learning session
 date: 2025-02-24
 author: "Milan Malfait"
-format: 
+format:
   revealjs:
     slide-number: true
     toc: false
-    footer: "{{< meta title >}}"
 execute:
   echo: true
   eval: false
@@ -16,6 +15,7 @@ execute:
 ## Overview of `renv`
 
 ::: {layout-ncol=2}
+
 #### What is `renv`?
 
 - A package for managing project-specific R environments
@@ -26,6 +26,7 @@ execute:
 - **Isolated** library paths for each project
 - **Portable**: cross-platform sharing of environments
 - **Reproducible**: ensures consistent package versions
+
 :::
 
 ---
@@ -33,11 +34,14 @@ execute:
 ## Why use `renv`?
 
 ::: {layout-ncol=2}
+
 - Challenges of dependency management in collaborative projects.
 - Ensuring reproducibility across different systems and over time.
 - Avoiding conflicts between package versions.
 
-![](./figures/it-works-on-my-machine.png){fig-align="center" fig-alt="It works on my machine meme"}
+![](./figures/it-works-on-my-machine.png){fig-align="center" fig-alt="It works
+on my machine meme"}
+
 :::
 
 ---
@@ -62,14 +66,15 @@ install.packages("renv")
 # Initialize renv in a project
 renv::init()
 ```
+
 </br>
 
-![](./figures/renv-folder-structure.png){fig-align="center" fig-alt="Project Structure with renv"}
+![](./figures/renv-folder-structure.png){fig-align="center" fig-alt="Project
+Structure with renv"}
 
 ---
 
 ### Recording the Environment
-
 
 ```{r filename="my-cool-script.R"}
 library(dplyr)
@@ -83,9 +88,10 @@ library(dplyr)
 renv::status()
 #> The following package(s) are used in this project, but are not installed:
 #> - dplyr
-#> 
+#>
 #> See `?renv::status` for advice on resolving these issues.
 ```
+
 ---
 
 ### Recording the Environment
@@ -97,14 +103,14 @@ renv::snapshot()
 #> - dplyr
 #> Packages must first be installed before renv can snapshot them.
 #> Use `renv::dependencies()` to see where this package is used in your project.
-#> 
-#> What do you want to do? 
-#> 
+#>
+#> What do you want to do?
+#>
 #> 1: Snapshot, just using the currently installed packages.
 #> 2: Install the packages, then snapshot.
 #> 3: Cancel, and resolve the situation on your own.
-#> 
-Selection: 
+#>
+Selection:
 ```
 
 ---
@@ -140,13 +146,15 @@ Selection: 2
 
 ### Recording the Environment
 
-```{r `code-line-numbers`="7"}
+```{r}
+#| `code-line-numbers`="7"
 # On the console
+
 renv::snapshot()
 Selection: 2
 
 #> The following package(s) will be installed:
-#> - dplyr      [1.1.4]
+#> - dplyr [1.1.4]
 #> These packages will be installed into "~/test/sandbox/my-project/renv/library/macos/R-4.4/aarch64-apple-darwin20".
 
 #> # Installing packages --------------------------------------------------------
@@ -154,7 +162,7 @@ Selection: 2
 
 #> # CRAN -----------------------------------------------------------------------
 #> ...
-#> - dplyr        [* -> 1.1.4]
+#> - dplyr [* -> 1.1.4]
 #> ... more dependencies
 
 Do you want to proceed? [Y/n]:
@@ -164,14 +172,17 @@ Do you want to proceed? [Y/n]:
 
 ### Recording the Environment
 
-```{r `code-line-numbers`="7"}
+```{r}
+#| `code-line-numbers`="7"
 # On the console
+
 renv::snapshot()
 Selection: 2
 
 Do you want to proceed? [Y/n]: y
 
 #> - Lockfile written to "~/test/sandbox/my-project/renv.lock".
+
 ```
 
 ---
@@ -226,11 +237,11 @@ Do you want to proceed? [Y/n]: y
 # On some other machine, recreate the environment from renv.lock
 renv::restore()
 #> The following package(s) will be updated:
-#> 
+#>
 #> # CRAN -----------------------------------------------------------------------
 #> - dplyr   [* -> 1.1.4]
-#> 
-#> Do you want to proceed? [Y/n]: 
+#>
+#> Do you want to proceed? [Y/n]:
 ```
 
 ---
@@ -244,7 +255,7 @@ renv::update()
 #> - Querying repositories for available source packages ... Done!
 #> - Checking for updated packages ... Done!
 #> The following package(s) will be updated:
-#> 
+#>
 #> # CRAN -----------------------------------------------------------------------
 #> - class        [7.3-22 -> 7.3-23]
 #> - foreign      [0.8-87 -> 0.8-88]
@@ -276,7 +287,6 @@ and make sure everything is as it should be
 
 Don't forget to `git commit` changes to `renv.lock`!
 
-
 ---
 
 ## Advanced Features and Best Practices {.center}
@@ -285,13 +295,13 @@ Don't forget to `git commit` changes to `renv.lock`!
 
 ### Recording a specific version of a package
 
-*Only do this when you have a compelling reason to do so*
+_Only do this when you have a compelling reason to do so_
 
 ```{r}
 renv::record("dplyr@1.0.0")
 
 ## Install the recorded version
-renv::restore() 
+renv::restore()
 ```
 
 ---
@@ -301,19 +311,21 @@ renv::restore()
 ### Good to know
 
 ::: {.nonincremental}
+
 - Use `.renvignore` to exclude files from `renv` management
 - Modify `renv/settings.json` for project-specific configurations
 - Using `renv` in automated workflows for consistent environments
 
-```{yaml}
+```yaml
 steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
-    - name: Install R
-      uses: r-lib/actions/setup-r@v2
-    - name: Install dependencies
-      uses: r-lib/actions/setup-renv@v2
+  - name: Checkout repo
+    uses: actions/checkout@v4
+  - name: Install R
+    uses: r-lib/actions/setup-r@v2
+  - name: Install dependencies
+    uses: r-lib/actions/setup-renv@v2
 ```
+
 :::
 
 ---
@@ -321,15 +333,16 @@ steps:
 ### Gotchas and how to deal with them
 
 - **RESTART, RESTART, RESTART**
-    - Get in the habit of regularly restarting your *R session*
-    - Learn those [keyboard shortcuts](https://docs.posit.co/ide/user/ide/reference/shortcuts.html)!
-- Although the regular install commands (`install.packages()`, `remotes::install_github()`) should work with `renv`,
-  use `renv::install()` just to be sure
+  - Get in the habit of regularly restarting your _R session_
+  - Learn those
+    [keyboard shortcuts](https://docs.posit.co/ide/user/ide/reference/shortcuts.html)!
+- Although the regular install commands (`install.packages()`,
+  `remotes::install_github()`) should work with `renv`, use `renv::install()`
+  just to be sure
 
 ---
 
 ### Can't find a package
-
 
 ```{r filename="my-cool-script.R"}
 library(dplyr)
@@ -345,13 +358,13 @@ renv::snapshot()
 #> - omopcept
 #> Packages must first be installed before renv can snapshot them.
 #> Use `renv::dependencies()` to see where this package is used in your project.
-#> 
-#> What do you want to do? 
-#> 
+#>
+#> What do you want to do?
+#>
 #> 1: Snapshot, just using the currently installed packages.
 #> 2: Install the packages, then snapshot.
 #> 3: Cancel, and resolve the situation on your own.
-#> 
+#>
 #> Selection:
 ```
 
@@ -361,12 +374,12 @@ renv::snapshot()
 
 ```{r}
 renv::snapshot()
-#> What do you want to do? 
-#> 
+#> What do you want to do?
+#>
 #> 1: Snapshot, just using the currently installed packages.
 #> 2: Install the packages, then snapshot.
 #> 3: Cancel, and resolve the situation on your own.
-#> 
+#>
 Selection: 2
 
 #> Error: package 'omopcept' is not available
@@ -397,3 +410,6 @@ renv::snapshot()
 
 - [Official `renv` documentation](https://rstudio.github.io/renv/).
 
+```
+
+```

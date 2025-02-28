@@ -11,22 +11,22 @@ format:
 ## What
 
 - R packages are the fundamental units of reproducible R code^[1]^
-- They bundle together code, data, documentation, and tests, and are easy to share with others
+- They bundle together code, data, documentation, and tests, and are easy to
+  share with others
 
 . . .
 
-![](figures/r-package-structure.png){width=60% fig-align="center" fig-alt="R package structure"}
+![](figures/r-package-structure.png){width=60% fig-align="center" fig-alt="R
+package structure"}
 
 [1]: https://r-pkgs.org/introduction.html
 
-
 ## But Why?
 
-* Code sharing / reproducibility
-* Convenience
-* Conventions, good practices
-* It makes you look really cool
-
+- Code sharing / reproducibility
+- Convenience
+- Conventions, good practices
+- It makes you look really cool
 
 ## How
 
@@ -35,13 +35,19 @@ format:
 What if I told you you can create an R package
 
 ::: {.fragment}
+
 ::: {.fragment .highlight-red}
-*in just 10 minutes* 
+
+_in just 10 minutes_
+
 :::
+
 :::
 
 ::: {.fragment style="text-align: center; font-size: 2em;"}
+
 🤯
+
 :::
 
 :::
@@ -88,30 +94,33 @@ check()
 #> ✔  checking whether the package can be loaded ...
 #> ✔  checking R code for possible problems (1.3s)
 #> ✔  checking examples ...
-#> 
-#> 
+#>
+#>
 #> ── R CMD check results ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stringsplitter 0.0.1 ────
-#> 
+#>
 #> 0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 ```
 
 ## 🏎️ Test drive
 
 ::: {.callout-note .nonincremental}
+
 ## RStudio keyboard shortcuts
 
 - `Shift + Ctrl/Cmd + L` to load all
-- `Shift + Ctrl/Cmd + E` to run checks
-:::
+- `Shift + Ctrl/Cmd + E` to run checks :::
 
 ## 📝 Add documentation
 
 Write some documentation in [roxygen format][roxygen] for your new function
 
-. . . 
+. . .
 
 ::: {.callout-tip}
-In RStudio, go to `Code -> Insert Roxygen skeleton` to  make your life easier
+
+In RStudio, go to `Code -> Insert Roxygen skeleton` to make
+your life easier
+
 :::
 
 [roxygen]: https://roxygen2.r-lib.org/articles/rd.html
@@ -185,7 +194,7 @@ install()
 #> ─  checking for LF line-endings in source and make files and shell scripts
 #> ─  checking for empty or unneeded directories
 #> ─  building ‘stringsplitter_0.0.1.tar.gz’
-#> 
+#>
 #> ... output truncated ...
 #>
 #> ** testing if installed package can be loaded from temporary location
@@ -198,7 +207,7 @@ install()
 
 🎉 Success!
 
-``` {.r}
+```{.r}
 library(stringsplitter)
 splitstring("a,b,c")
 #> [1] "a" "b" "c"
@@ -206,7 +215,10 @@ splitstring("a,b,c")
 
 ## Some Good Practices {.center .smaller}
 
-> *One of the things research programmers struggle with is the transition from exploration to infrastructure, i.e., from “coding to figure out what the problem is” to “I’m building a reusable tool”. Habits from the first are often carried over to the second.*
+> _One of the things research programmers struggle with is the transition from
+> exploration to infrastructure, i.e., from “coding to figure out what the
+> problem is” to “I’m building a reusable tool”. Habits from the first are often
+> carried over to the second._
 
 -- Tweet from [Greg Wilson 2018][wilson]
 
@@ -215,6 +227,7 @@ splitstring("a,b,c")
 ## Don't trust `rm(list = ls())`
 
 ::: {.callout-important}
+
 If the first line of your R script is
 
 ```{.r code-line-numbers="false" style="font-size: 200%;"}
@@ -222,10 +235,14 @@ rm(list = ls())
 ```
 
 I will come into your office and SET YOUR COMPUTER ON FIRE 🔥
+
 :::
 
 ::: {style="font-size: 60%;"}
--- [Zen And The aRt Of Workflow Maintenance - Jenny Bryan][bryan-zen-37]
+
+-- [Zen And The aRt Of Workflow Maintenance -
+Jenny Bryan][bryan-zen-37]
+
 :::
 
 . . .
@@ -242,29 +259,35 @@ Instead [start R with a clean slate and restart often][wtfr-restart]
 :::: {.columns}
 
 ::: {.column}
+
 ![Change these settings in RStudio](figures/rstudio-settings.png){fig-align="center" fig-alt="Recommended RStudio settings"}
+
 :::
 
 ::: {.column}
+
 ![](figures/rstudio-restart.png){width=80% fig-align="center" fig-alt="Restart RStudio"}
+
 :::
 
 ::::
 
-## 
+##
 
 ![](figures/if-you-liked-it-you-should-have-saved-the-source-for-it.jpg)
 
 ::: {style="font-size: 60%;"}
+
 -- [Saving Source and blank slates | What They Forgot to Teach You About R][wtfr-saving-source]
+
 :::
 
 [wtfr-saving-source]: https://rstats.wtf/source-and-blank-slates
 
-
 ## Don't do `setwd()`
 
 ::: {.callout-important}
+
 If the first line of your R script is
 
 ```{.r code-line-numbers="false" style="font-size: 200%;"}
@@ -272,13 +295,16 @@ setwd("C:\Users\myself\path\that\only\I\have")
 ```
 
 I will come into your office and SET YOUR COMPUTER ON FIRE 🔥
+
 :::
 
 ::: {style="font-size: 60%;"}
+
 -- [Zen And The aRt Of Workflow Maintenance - Jenny Bryan][bryan-zen-47]
+
 :::
 
-. . . 
+. . .
 
 <br>
 
@@ -291,14 +317,17 @@ Use a [project-oriented workflow][wtfr-projects] instead
 
 ## Debugging
 
-![](figures/debugging.jpg){fig-align="center" fig-alt="What debugging feels like"}
+![](figures/debugging.jpg){fig-align="center" fig-alt="What debugging feels
+like"}
 
 ## Code formatting
 
-![](figures/code-formatting-meme.png){width=50% fig-align="center" fig-alt="Code formatting meme"}
+![](figures/code-formatting-meme.png){width=50% fig-align="center" fig-alt="Code
+formatting meme"}
 
 ::: {style="text-align: center;"}
 _Because readability **is** important_
+
 :::
 
 ## Do's and don'ts
@@ -306,7 +335,7 @@ _Because readability **is** important_
 ```{.r}
 # Don’t do this
 if(x<100){
-  y<-200} 
+  y<-200}
 
 # Do this instead
 if (x < 100) {
@@ -326,15 +355,17 @@ T <- FALSE # this is valid R code # <1>
 ## Resources
 
 ::: {.nonincremental}
-* [*R Packages*][r-pkgs] by Hadley Wickham and Jenny Bryan – *The Golden Standard*
-* [*What They Forgot to Teach You About R*][wtf-r] by Jenny Bryan
 
+- [_R Packages_][r-pkgs] by Hadley Wickham and Jenny Bryan – _The Golden
+  Standard_
+- [_What They Forgot to Teach You About R_][wtf-r] by Jenny Bryan
 
 <br>
 
-* [*Tidyverse style guide*][tidyverse-style]
-* [*“Better packages”*][better-packages] presentation by Maëlle Salmon
-* [*Advanced R*][adv-r] by Hadley Wickham
+- [_Tidyverse style guide_][tidyverse-style]
+- [_“Better packages”_][better-packages] presentation by Maëlle Salmon
+- [_Advanced R_][adv-r] by Hadley Wickham
+
 :::
 
 [r-pkgs]: https://r-pkgs.org
