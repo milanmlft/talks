@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.40">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Milan Malfait">
   <meta name="dcterms.date" content="2025-02-24">
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a61f3db9498662863546a15df5d77640.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-e8578a66a42d0f6f54d3703704e4a488.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -294,7 +294,7 @@ Milan Malfait
 <span id="cb3-2"><a></a>renv<span class="sc">::</span><span class="fu">status</span>()</span>
 <span id="cb3-3"><a></a><span class="co">#&gt; The following package(s) are used in this project, but are not installed:</span></span>
 <span id="cb3-4"><a></a><span class="co">#&gt; - dplyr</span></span>
-<span id="cb3-5"><a></a><span class="co">#&gt; </span></span>
+<span id="cb3-5"><a></a><span class="co">#&gt;</span></span>
 <span id="cb3-6"><a></a><span class="co">#&gt; See `?renv::status` for advice on resolving these issues.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -308,14 +308,14 @@ Milan Malfait
 <span id="cb4-4"><a></a><span class="co">#&gt; - dplyr</span></span>
 <span id="cb4-5"><a></a><span class="co">#&gt; Packages must first be installed before renv can snapshot them.</span></span>
 <span id="cb4-6"><a></a><span class="co">#&gt; Use `renv::dependencies()` to see where this package is used in your project.</span></span>
-<span id="cb4-7"><a></a><span class="co">#&gt; </span></span>
-<span id="cb4-8"><a></a><span class="co">#&gt; What do you want to do? </span></span>
-<span id="cb4-9"><a></a><span class="co">#&gt; </span></span>
+<span id="cb4-7"><a></a><span class="co">#&gt;</span></span>
+<span id="cb4-8"><a></a><span class="co">#&gt; What do you want to do?</span></span>
+<span id="cb4-9"><a></a><span class="co">#&gt;</span></span>
 <span id="cb4-10"><a></a><span class="co">#&gt; 1: Snapshot, just using the currently installed packages.</span></span>
 <span id="cb4-11"><a></a><span class="co">#&gt; 2: Install the packages, then snapshot.</span></span>
 <span id="cb4-12"><a></a><span class="co">#&gt; 3: Cancel, and resolve the situation on your own.</span></span>
-<span id="cb4-13"><a></a><span class="co">#&gt; </span></span>
-<span id="cb4-14"><a></a>Selection<span class="sc">:</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-13"><a></a><span class="co">#&gt;</span></span>
+<span id="cb4-14"><a></a>Selection<span class="sc">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
@@ -351,22 +351,23 @@ Milan Malfait
 <h3>Recording the Environment</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># On the console</span></span>
-<span id="cb6-2"><a></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span>
-<span id="cb6-3"><a></a>Selection<span class="sc">:</span> <span class="dv">2</span></span>
-<span id="cb6-4"><a></a></span>
-<span id="cb6-5"><a></a><span class="co">#&gt; The following package(s) will be installed:</span></span>
-<span id="cb6-6"><a></a><span class="co">#&gt; - dplyr      [1.1.4]</span></span>
-<span id="cb6-7"><a></a><span class="co">#&gt; These packages will be installed into "~/test/sandbox/my-project/renv/library/macos/R-4.4/aarch64-apple-darwin20".</span></span>
-<span id="cb6-8"><a></a></span>
-<span id="cb6-9"><a></a><span class="co">#&gt; # Installing packages --------------------------------------------------------</span></span>
-<span id="cb6-10"><a></a><span class="co">#&gt; ...</span></span>
-<span id="cb6-11"><a></a></span>
-<span id="cb6-12"><a></a><span class="co">#&gt; # CRAN -----------------------------------------------------------------------</span></span>
-<span id="cb6-13"><a></a><span class="co">#&gt; ...</span></span>
-<span id="cb6-14"><a></a><span class="co">#&gt; - dplyr        [* -&gt; 1.1.4]</span></span>
-<span id="cb6-15"><a></a><span class="co">#&gt; ... more dependencies</span></span>
-<span id="cb6-16"><a></a></span>
-<span id="cb6-17"><a></a>Do you want to proceed? [Y<span class="sc">/</span>n]<span class="sc">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span>
+<span id="cb6-4"><a></a>Selection<span class="sc">:</span> <span class="dv">2</span></span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a><span class="co">#&gt; The following package(s) will be installed:</span></span>
+<span id="cb6-7"><a></a><span class="co">#&gt; - dplyr [1.1.4]</span></span>
+<span id="cb6-8"><a></a><span class="co">#&gt; These packages will be installed into "~/test/sandbox/my-project/renv/library/macos/R-4.4/aarch64-apple-darwin20".</span></span>
+<span id="cb6-9"><a></a></span>
+<span id="cb6-10"><a></a><span class="co">#&gt; # Installing packages --------------------------------------------------------</span></span>
+<span id="cb6-11"><a></a><span class="co">#&gt; ...</span></span>
+<span id="cb6-12"><a></a></span>
+<span id="cb6-13"><a></a><span class="co">#&gt; # CRAN -----------------------------------------------------------------------</span></span>
+<span id="cb6-14"><a></a><span class="co">#&gt; ...</span></span>
+<span id="cb6-15"><a></a><span class="co">#&gt; - dplyr [* -&gt; 1.1.4]</span></span>
+<span id="cb6-16"><a></a><span class="co">#&gt; ... more dependencies</span></span>
+<span id="cb6-17"><a></a></span>
+<span id="cb6-18"><a></a>Do you want to proceed? [Y<span class="sc">/</span>n]<span class="sc">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
@@ -374,12 +375,13 @@ Milan Malfait
 <h3>Recording the Environment</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># On the console</span></span>
-<span id="cb7-2"><a></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span>
-<span id="cb7-3"><a></a>Selection<span class="sc">:</span> <span class="dv">2</span></span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a>Do you want to proceed? [Y<span class="sc">/</span>n]<span class="sc">:</span> y</span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a><span class="co">#&gt; - Lockfile written to "~/test/sandbox/my-project/renv.lock".</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span>
+<span id="cb7-4"><a></a>Selection<span class="sc">:</span> <span class="dv">2</span></span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a>Do you want to proceed? [Y<span class="sc">/</span>n]<span class="sc">:</span> y</span>
+<span id="cb7-7"><a></a></span>
+<span id="cb7-8"><a></a><span class="co">#&gt; - Lockfile written to "~/test/sandbox/my-project/renv.lock".</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
@@ -436,11 +438,11 @@ Milan Malfait
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># On some other machine, recreate the environment from renv.lock</span></span>
 <span id="cb10-2"><a></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span>
 <span id="cb10-3"><a></a><span class="co">#&gt; The following package(s) will be updated:</span></span>
-<span id="cb10-4"><a></a><span class="co">#&gt; </span></span>
+<span id="cb10-4"><a></a><span class="co">#&gt;</span></span>
 <span id="cb10-5"><a></a><span class="co">#&gt; # CRAN -----------------------------------------------------------------------</span></span>
 <span id="cb10-6"><a></a><span class="co">#&gt; - dplyr   [* -&gt; 1.1.4]</span></span>
-<span id="cb10-7"><a></a><span class="co">#&gt; </span></span>
-<span id="cb10-8"><a></a><span class="co">#&gt; Do you want to proceed? [Y/n]: </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-7"><a></a><span class="co">#&gt;</span></span>
+<span id="cb10-8"><a></a><span class="co">#&gt; Do you want to proceed? [Y/n]:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
@@ -452,7 +454,7 @@ Milan Malfait
 <span id="cb11-3"><a></a><span class="co">#&gt; - Querying repositories for available source packages ... Done!</span></span>
 <span id="cb11-4"><a></a><span class="co">#&gt; - Checking for updated packages ... Done!</span></span>
 <span id="cb11-5"><a></a><span class="co">#&gt; The following package(s) will be updated:</span></span>
-<span id="cb11-6"><a></a><span class="co">#&gt; </span></span>
+<span id="cb11-6"><a></a><span class="co">#&gt;</span></span>
 <span id="cb11-7"><a></a><span class="co">#&gt; # CRAN -----------------------------------------------------------------------</span></span>
 <span id="cb11-8"><a></a><span class="co">#&gt; - class        [7.3-22 -&gt; 7.3-23]</span></span>
 <span id="cb11-9"><a></a><span class="co">#&gt; - foreign      [0.8-87 -&gt; 0.8-88]</span></span>
@@ -489,7 +491,7 @@ Milan Malfait
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>renv<span class="sc">::</span><span class="fu">record</span>(<span class="st">"dplyr@1.0.0"</span>)</span>
 <span id="cb13-2"><a></a></span>
 <span id="cb13-3"><a></a><span class="do">## Install the recorded version</span></span>
-<span id="cb13-4"><a></a>renv<span class="sc">::</span><span class="fu">restore</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
@@ -504,15 +506,13 @@ Milan Malfait
 <li>Modify <code>renv/settings.json</code> for project-specific configurations</li>
 <li>Using <code>renv</code> in automated workflows for consistent environments</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a></a><span class="fu">steps</span><span class="kw">:</span></span>
-<span id="cb14-2"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Checkout repo</span></span>
-<span id="cb14-3"><a></a><span class="at">      </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
-<span id="cb14-4"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install R</span></span>
-<span id="cb14-5"><a></a><span class="at">      </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-r@v2</span></span>
-<span id="cb14-6"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install dependencies</span></span>
-<span id="cb14-7"><a></a><span class="at">      </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-renv@v2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a></a><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb14-2"><a></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Checkout repo</span></span>
+<span id="cb14-3"><a></a><span class="at">    </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb14-4"><a></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install R</span></span>
+<span id="cb14-5"><a></a><span class="at">    </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-r@v2</span></span>
+<span id="cb14-6"><a></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install dependencies</span></span>
+<span id="cb14-7"><a></a><span class="at">    </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/setup-renv@v2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
@@ -547,13 +547,13 @@ Milan Malfait
 <span id="cb16-3"><a></a><span class="co">#&gt; - omopcept</span></span>
 <span id="cb16-4"><a></a><span class="co">#&gt; Packages must first be installed before renv can snapshot them.</span></span>
 <span id="cb16-5"><a></a><span class="co">#&gt; Use `renv::dependencies()` to see where this package is used in your project.</span></span>
-<span id="cb16-6"><a></a><span class="co">#&gt; </span></span>
-<span id="cb16-7"><a></a><span class="co">#&gt; What do you want to do? </span></span>
-<span id="cb16-8"><a></a><span class="co">#&gt; </span></span>
+<span id="cb16-6"><a></a><span class="co">#&gt;</span></span>
+<span id="cb16-7"><a></a><span class="co">#&gt; What do you want to do?</span></span>
+<span id="cb16-8"><a></a><span class="co">#&gt;</span></span>
 <span id="cb16-9"><a></a><span class="co">#&gt; 1: Snapshot, just using the currently installed packages.</span></span>
 <span id="cb16-10"><a></a><span class="co">#&gt; 2: Install the packages, then snapshot.</span></span>
 <span id="cb16-11"><a></a><span class="co">#&gt; 3: Cancel, and resolve the situation on your own.</span></span>
-<span id="cb16-12"><a></a><span class="co">#&gt; </span></span>
+<span id="cb16-12"><a></a><span class="co">#&gt;</span></span>
 <span id="cb16-13"><a></a><span class="co">#&gt; Selection:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -562,12 +562,12 @@ Milan Malfait
 <h3>Can’t find a package</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span>
-<span id="cb17-2"><a></a><span class="co">#&gt; What do you want to do? </span></span>
-<span id="cb17-3"><a></a><span class="co">#&gt; </span></span>
+<span id="cb17-2"><a></a><span class="co">#&gt; What do you want to do?</span></span>
+<span id="cb17-3"><a></a><span class="co">#&gt;</span></span>
 <span id="cb17-4"><a></a><span class="co">#&gt; 1: Snapshot, just using the currently installed packages.</span></span>
 <span id="cb17-5"><a></a><span class="co">#&gt; 2: Install the packages, then snapshot.</span></span>
 <span id="cb17-6"><a></a><span class="co">#&gt; 3: Cancel, and resolve the situation on your own.</span></span>
-<span id="cb17-7"><a></a><span class="co">#&gt; </span></span>
+<span id="cb17-7"><a></a><span class="co">#&gt;</span></span>
 <span id="cb17-8"><a></a>Selection<span class="sc">:</span> <span class="dv">2</span></span>
 <span id="cb17-9"><a></a></span>
 <span id="cb17-10"><a></a><span class="co">#&gt; Error: package 'omopcept' is not available</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -592,13 +592,14 @@ Milan Malfait
 <ul>
 <li class="fragment"><a href="https://rstudio.github.io/renv/">Official <code>renv</code> documentation</a>.</li>
 </ul>
+<pre><code></code></pre>
 
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Introduction to <code>renv</code></p>
+<p>Introduction to <code>renv</code> <a href="https://milanmlft.com/talks" class="uri">https://milanmlft.com/talks</a></p>
 </div>
 </div></div>
 
@@ -935,7 +936,7 @@ Milan Malfait
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/milanmlft\.github\.io\/talks\/");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

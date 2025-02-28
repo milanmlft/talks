@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.40">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Milan Malfait">
   <meta name="dcterms.date" content="2024-08-06">
@@ -95,7 +95,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a61f3db9498662863546a15df5d77640.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-e8578a66a42d0f6f54d3703704e4a488.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -281,10 +281,10 @@ Milan Malfait
 <span id="cb4-6"><a></a><span class="co">#&gt; ✔  checking whether the package can be loaded ...</span></span>
 <span id="cb4-7"><a></a><span class="co">#&gt; ✔  checking R code for possible problems (1.3s)</span></span>
 <span id="cb4-8"><a></a><span class="co">#&gt; ✔  checking examples ...</span></span>
-<span id="cb4-9"><a></a><span class="co">#&gt; </span></span>
-<span id="cb4-10"><a></a><span class="co">#&gt; </span></span>
+<span id="cb4-9"><a></a><span class="co">#&gt;</span></span>
+<span id="cb4-10"><a></a><span class="co">#&gt;</span></span>
 <span id="cb4-11"><a></a><span class="co">#&gt; ── R CMD check results ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stringsplitter 0.0.1 ────</span></span>
-<span id="cb4-12"><a></a><span class="co">#&gt; </span></span>
+<span id="cb4-12"><a></a><span class="co">#&gt;</span></span>
 <span id="cb4-13"><a></a><span class="co">#&gt; 0 errors ✔ | 0 warnings ✔ | 0 notes ✔</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -302,13 +302,8 @@ Milan Malfait
 <div class="callout-content">
 <ul>
 <li><code>Shift + Ctrl/Cmd + L</code> to load all</li>
-<li><code>Shift + Ctrl/Cmd + E</code> to run checks</li>
+<li><code>Shift + Ctrl/Cmd + E</code> to run checks :::</li>
 </ul>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section class="slide level2">
 <h2>📝 Add documentation</h2>
 <p>Write some documentation in <a href="https://roxygen2.r-lib.org/articles/rd.html">roxygen format</a> for your new function</p>
@@ -400,7 +395,7 @@ Milan Malfait
 <span id="cb8-6"><a></a><span class="co">#&gt; ─  checking for LF line-endings in source and make files and shell scripts</span></span>
 <span id="cb8-7"><a></a><span class="co">#&gt; ─  checking for empty or unneeded directories</span></span>
 <span id="cb8-8"><a></a><span class="co">#&gt; ─  building ‘stringsplitter_0.0.1.tar.gz’</span></span>
-<span id="cb8-9"><a></a><span class="co">#&gt; </span></span>
+<span id="cb8-9"><a></a><span class="co">#&gt;</span></span>
 <span id="cb8-10"><a></a><span class="co">#&gt; ... output truncated ...</span></span>
 <span id="cb8-11"><a></a><span class="co">#&gt;</span></span>
 <span id="cb8-12"><a></a><span class="co">#&gt; ** testing if installed package can be loaded from temporary location</span></span>
@@ -512,23 +507,23 @@ Milan Malfait
 </section>
 <section class="slide level2">
 <h2>Do’s and don’ts</h2>
-<div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1"></a><span class="co"># Don’t do this</span></span>
-<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2"></a><span class="cf">if</span>(x<span class="sc">&lt;</span><span class="dv">100</span>){</span>
-<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3"></a>  y<span class="ot">&lt;-</span><span class="dv">200</span>} </span>
-<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4"></a></span>
-<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5"></a><span class="co"># Do this instead</span></span>
-<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">100</span>) {</span>
-<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7"></a>  y <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8"></a>}</span>
-<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9"></a></span>
-<span id="annotated-cell-10-10"><a href="#annotated-cell-10-10"></a></span>
-<span id="annotated-cell-10-11"><a href="#annotated-cell-10-11"></a><span class="co"># NEVER use the shorthand versions of TRUE and FALSE</span></span>
-<span id="annotated-cell-10-12"><a href="#annotated-cell-10-12"></a><span class="co"># Why? This is why:</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-13" class="code-annotation-target"><a href="#annotated-cell-10-13"></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span> <span class="co"># this is valid R code</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a><span class="co"># Don’t do this</span></span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a><span class="cf">if</span>(x<span class="sc">&lt;</span><span class="dv">100</span>){</span>
+<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3"></a>  y<span class="ot">&lt;-</span><span class="dv">200</span>}</span>
+<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a></span>
+<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5"></a><span class="co"># Do this instead</span></span>
+<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">100</span>) {</span>
+<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7"></a>  y <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8"></a>}</span>
+<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9"></a></span>
+<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10"></a></span>
+<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11"></a><span class="co"># NEVER use the shorthand versions of TRUE and FALSE</span></span>
+<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12"></a><span class="co"># Why? This is why:</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-13" class="code-annotation-target"><a href="#annotated-cell-11-13"></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span> <span class="co"># this is valid R code</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
-<dt class="fragment" data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
-<dd class="fragment">
-<span data-code-cell="annotated-cell-10" data-code-lines="13" data-code-annotation="1">If you really want to mess with someone’s R code, see <a href="https://github.com/romainfrancois/evil.R/blob/397639f0ba6ddd8b6ff28d455016dacf4d444e73/R/evil.R#L49-L50">evil.R</a></span>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="13" data-code-annotation="1">If you really want to mess with someone’s R code, see <a href="https://github.com/romainfrancois/evil.R/blob/397639f0ba6ddd8b6ff28d455016dacf4d444e73/R/evil.R#L49-L50">evil.R</a></span>
 </dd>
 </dl>
 </section>
@@ -548,6 +543,11 @@ Milan Malfait
 </div>
 
 
+</section>
+</div>
+</div>
+</div>
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -851,7 +851,7 @@ Milan Malfait
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/milanmlft\.github\.io\/talks\/");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
