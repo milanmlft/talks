@@ -10,8 +10,8 @@
   <meta name="generator" content="quarto-1.6.43">
 
   <meta name="author" content="Milan Malfait">
-  <meta name="dcterms.date" content="2024-08-06">
-  <title>R packages: What, Why and How?</title>
+  <meta name="dcterms.date" content="2025-04-07">
+  <title>Unit testing in R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -193,8 +193,8 @@
     <div class="slides">
 
 <section class="quarto-title-block center">
-  <h1 class="title">R packages: What, Why and How?</h1>
-  <p class="subtitle"><a href="https://n8thangreen.github.io/htahack2024/">HTA Hackathon Belfast 2024</a></p>
+  <h1 class="title">Unit testing in R</h1>
+  <p class="subtitle">SAFEHR Learning session</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -204,355 +204,259 @@ Milan Malfait
 </div>
 </div>
 
-  <p class="date">2024-08-06</p>
+  <p class="date">2025-04-07</p>
 </section>
 <section class="slide level2">
-<h2>What</h2>
+<h2>Why bother?</h2>
 <ul>
-<li class="fragment">R packages are the fundamental units of reproducible R code<sup><a href="https://r-pkgs.org/introduction.html">1</a></sup></li>
-<li class="fragment">They bundle together code, data, documentation, and tests, and are easy to share with others</li>
-</ul>
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/r-package-structure.png" class="quarto-figure quarto-figure-center" style="width:60.0%" alt="R package structure"></p>
-</figure>
-</div>
-</div>
-</section>
-<section class="slide level2">
-<h2>But Why?</h2>
-<ul>
-<li class="fragment">Code sharing / reproducibility</li>
-<li class="fragment">Convenience</li>
-<li class="fragment">Conventions, good practices</li>
-<li class="fragment">It makes you look really cool</li>
+<li class="fragment"><p>Record the <em>expected behaviour</em> of your code</p></li>
+<li class="fragment"><p>No one likes to re-fix the same bug 5 times</p></li>
+<li class="fragment"><p>Tests as documentation</p>
+<p><em>Though not a valid replacement for actual documentation!</em></p></li>
 </ul>
 </section>
 <section class="slide level2">
-<h2>How</h2>
-<div style="margin-top: 200px; font-size: 1.2em;">
-<p>What if I told you you can create an R package</p>
-<div class="fragment">
-<div class="fragment highlight-red">
-<p><em>in just 10 minutes</em></p>
-</div>
-</div>
-<div class="fragment" style="text-align: center; font-size: 2em;">
-<p>🤯</p>
-</div>
-</div>
-</section>
-<section class="slide level2">
-<h2><a href="https://devtools.r-lib.org">{devtools}</a> to the rescue</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(devtools)</span>
-<span id="cb1-2"><a></a><span class="fu">create_package</span>(<span class="st">"~/htahackathon2024/stringsplitter"</span>)</span>
-<span id="cb1-3"><a></a><span class="fu">use_git</span>()</span>
-<span id="cb1-4"><a></a><span class="fu">use_r</span>(<span class="st">"split-string.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li class="fragment">Set up package structure</li>
-<li class="fragment">Set up version control</li>
-<li class="fragment">Add our first function</li>
-</ol>
-</section>
-<section class="slide level2">
-<h2>Add our first function</h2>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>R/split-string.R</strong></pre>
-</div>
-<div class="sourceCode" id="cb2" data-filename="R/split-string.R"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
-<span id="cb2-2"><a></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> sep)[[<span class="dv">1</span>]]</span>
-<span id="cb2-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-<h2>🏎️ Test drive</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">load_all</span>()</span>
-<span id="cb3-2"><a></a><span class="fu">splitstring</span>(<span class="st">"a,b,c"</span>)</span>
-<span id="cb3-3"><a></a><span class="co">#&gt; [1] "a" "b" "c"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p><br></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">check</span>()</span>
-<span id="cb4-2"><a></a><span class="co">#&gt; ... (output truncated) ...</span></span>
-<span id="cb4-3"><a></a><span class="co">#&gt; ── R CMD check ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
-<span id="cb4-4"><a></a><span class="co">#&gt; ✔  checking DESCRIPTION meta-information ...</span></span>
-<span id="cb4-5"><a></a><span class="co">#&gt; ✔  checking R files for syntax errors ...</span></span>
-<span id="cb4-6"><a></a><span class="co">#&gt; ✔  checking whether the package can be loaded ...</span></span>
-<span id="cb4-7"><a></a><span class="co">#&gt; ✔  checking R code for possible problems (1.3s)</span></span>
-<span id="cb4-8"><a></a><span class="co">#&gt; ✔  checking examples ...</span></span>
-<span id="cb4-9"><a></a><span class="co">#&gt;</span></span>
-<span id="cb4-10"><a></a><span class="co">#&gt;</span></span>
-<span id="cb4-11"><a></a><span class="co">#&gt; ── R CMD check results ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stringsplitter 0.0.1 ────</span></span>
-<span id="cb4-12"><a></a><span class="co">#&gt;</span></span>
-<span id="cb4-13"><a></a><span class="co">#&gt; 0 errors ✔ | 0 warnings ✔ | 0 notes ✔</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2">
-<h2>🏎️ Test drive</h2>
-<div>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>RStudio keyboard shortcuts</strong></p>
-</div>
-<div class="callout-content">
+<h2>What should I test?</h2>
 <ul>
-<li><code>Shift + Ctrl/Cmd + L</code> to load all</li>
-<li><code>Shift + Ctrl/Cmd + E</code> to run checks :::</li>
+<li class="fragment"><p>External APIs</p></li>
+<li class="fragment"><p>Behaviour</p></li>
+<li class="fragment"><p>Not every single function needs a test… but</p>
+<p><em>A bug fix that doesn’t include an additional test to catch the bug is not an actual fix!</em></p></li>
 </ul>
-<section class="slide level2">
-<h2>📝 Add documentation</h2>
-<p>Write some documentation in <a href="https://roxygen2.r-lib.org/articles/rd.html">roxygen format</a> for your new function</p>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>In RStudio, go to <code>Code -&gt; Insert Roxygen skeleton</code> to make your life easier</p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">📝 Document your function</h2>
+<section class="slide level2">
+<h2>Test to code</h2>
+<ul>
+<li class="fragment">Testing is not about finding bugs</li>
+<li class="fragment">A test is the first user of your code</li>
+<li class="fragment">Well-designed code is easier to test and vice-versa</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Test-driven development</h2>
+
+<img data-src="./figures/tdd.png" class="quarto-figure quarto-figure-center r-stretch" alt="Test-driven development process"><ul>
+<li class="fragment"><p>Strict TDD may often be overkill, but <em>thinking</em> about how you will test helps with design</p></li>
+<li class="fragment"><p>Especially useful for bug fixing</p>
+<p><em>when is my bug actually fixed?</em></p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>A word about test coverage</h2>
+<ul>
+<li class="fragment">Aim for comprehensive, not exhaustive coverage</li>
+<li class="fragment">Getting 100% code coverage is easy, getting meaningful coverage is not</li>
+<li class="fragment">Strive for 100% but in a meaningful way</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>100% test coverage is easy</h2>
+<div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>R/split-string.R</strong></pre>
+<pre><strong>mypkg/R/my-func.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" data-filename="R/split-string.R"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
-<span id="cb5-2" class="hljs-ln-code"><a></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> sep)[[<span class="dv">1</span>]]</span>
-<span id="cb5-3" class="hljs-ln-code"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>divide_by_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-2"><a></a>    res <span class="ot">&lt;-</span> x <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb1-3"><a></a>    <span class="fu">return</span>(<span class="dv">2</span>)</span>
+<span id="cb1-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">📝 Document your function</h2>
+</div>
+<div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>R/split-string.R</strong></pre>
+<pre><strong>mypkg/tests/testthat/test-my-func.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" data-filename="R/split-string.R"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a></a><span class="co">#' Split a string into a vector of strings</span></span>
-<span id="cb6-2" class="hljs-ln-code"><a></a><span class="co">#'</span></span>
-<span id="cb6-3" class="hljs-ln-code"><a></a><span class="co">#' @param x a character string to be split</span></span>
-<span id="cb6-4" class="hljs-ln-code"><a></a><span class="co">#' @param sep the separator on which to split</span></span>
-<span id="cb6-5" class="hljs-ln-code"><a></a><span class="co">#'</span></span>
-<span id="cb6-6" class="hljs-ln-code"><a></a><span class="co">#' @return a vector of strings</span></span>
-<span id="cb6-7" class="hljs-ln-code"><a></a><span class="co">#' @export</span></span>
-<span id="cb6-8" class="hljs-ln-code"><a></a><span class="co">#'</span></span>
-<span id="cb6-9" class="hljs-ln-code"><a></a><span class="co">#' @examples</span></span>
-<span id="cb6-10" class="hljs-ln-code"><a></a><span class="co">#' splitstring("alfa,bravo,charlie")</span></span>
-<span id="cb6-11" class="hljs-ln-code"><a></a><span class="co">#' splitstring("alfa,bravo charlie", sep = " ")</span></span>
-<span id="cb6-12" class="hljs-ln-code"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
-<span id="cb6-13" class="hljs-ln-code"><a></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> sep)[[<span class="dv">1</span>]]</span>
-<span id="cb6-14" class="hljs-ln-code"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">test_that</span>(<span class="st">"divide_by_two returns the correct result"</span>, {</span>
+<span id="cb2-2"><a></a>    <span class="fu">expect_equal</span>(<span class="fu">divide_by_two</span>(<span class="dv">4</span>), <span class="dv">2</span>)</span>
+<span id="cb2-3"><a></a>})</span>
+<span id="cb2-4"><a></a><span class="co">#&gt; Test passed 🌈</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="fragment">
-<p>Generate the help pages by running <code>document()</code></p>
-<p>or <code>Ctrl/Cmd + Shift + D</code> in RStudio</p>
+</div>
+
+<img data-src="./figures/mypkg-coverage.png" class="quarto-figure quarto-figure-center r-stretch" alt="100% test coverage"></section>
+<section class="slide level2">
+<h2>The <code>testthat</code> package</h2>
+<ul>
+<li class="fragment">Created to test <strong>R packages</strong></li>
+<li class="fragment">Tests go in files prefixed with <code>test-</code></li>
+<li class="fragment">Convention is to match each <code>&lt;filename&gt;.R</code> file with a <code>test-&lt;filename&gt;.R</code></li>
+<li class="fragment">Tests are written in <code>test_that()</code> blocks</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>The <code>testthat</code> package: an example</h2>
+<p>Basic structure of a test</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
+<span id="cb3-2"><a></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb3-3"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
-<h2>📝 Make <code>splitstring()</code> available</h2>
+<h2>The <code>testthat</code> package</h2>
+<ul>
+<li class="fragment">Use available <a href="https://testthat.r-lib.org/reference/index.html"><code>expect_*()</code> functions</a>
+<ul>
+<li class="fragment">Or write your own <a href="https://testthat.r-lib.org/articles/custom-expectation.html">custom expectation</a> if necessary</li>
+</ul></li>
+<li class="fragment">Testing helper functions go into <code>helper.R</code> or <code>helper-*.R</code> files</li>
+<li class="fragment">Custom setup and corresponding teardown go into <code>setup.R</code></li>
+<li class="fragment">Tests can be skipped using <code>skip_*()</code> helper functions</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Storing test data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>.</span>
+<span id="cb4-2"><a></a>├── ...</span>
+<span id="cb4-3"><a></a>└── tests</span>
+<span id="cb4-4"><a></a>    ├── testthat</span>
+<span id="cb4-5"><a></a>    │   ├── fixtures</span>
+<span id="cb4-6"><a></a>    │   │   ├── make<span class="sc">-</span>useful<span class="sc">-</span>things.R</span>
+<span id="cb4-7"><a></a>    │   │   ├── useful_thing1.rds</span>
+<span id="cb4-8"><a></a>    │   │   └── useful_thing2.rds</span>
+<span id="cb4-9"><a></a>    │   ├── helper.R</span>
+<span id="cb4-10"><a></a>    │   ├── setup.R</span>
+<span id="cb4-11"><a></a>    │   └── (all the test files)</span>
+<span id="cb4-12"><a></a>    └── testthat.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Writing files during tests</h2>
+<ul>
+<li class="fragment">Avoid if possible</li>
+<li class="fragment">Use <code>withr::local_tempfile()</code> or <code>withr::local_tempdir()</code> to create temporary self-deleting files</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">test_that</span>(<span class="st">"can read from file name with utf-8 path"</span>, {</span>
+<span id="cb5-2"><a></a>  path <span class="ot">&lt;-</span> withr<span class="sc">::</span><span class="fu">local_tempfile</span>(</span>
+<span id="cb5-3"><a></a>    <span class="at">pattern =</span> <span class="st">"Universit\u00e0-"</span>,</span>
+<span id="cb5-4"><a></a>    <span class="at">lines =</span> <span class="fu">c</span>(<span class="st">"#' @include foo.R"</span>, <span class="cn">NULL</span>)</span>
+<span id="cb5-5"><a></a>  )</span>
+<span id="cb5-6"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">find_includes</span>(path), <span class="st">"foo.R"</span>)</span>
+<span id="cb5-7"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Best practices</h2>
+<ul>
+<li class="fragment">Readability is important</li>
+<li class="fragment">Self-sufficient tests</li>
+<li class="fragment">Self-contained tests</li>
+<li class="fragment">Plan for test failure</li>
+<li class="fragment">Repetition is OK</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>DRY vs.&nbsp;DAMP: a case-study</h2>
+<p><a href="https://ropensci.org/blog/2024/03/18/dry-damp/">rOpenSci | An Example of the DRY/DAMP Principles for Package Tests</a></p>
+</section>
+<section class="slide level2">
+
+<h3>Muddy</h3>
+<div class="cell">
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>R/split-string.R</strong></pre>
+<pre><strong>test-A.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb7" data-filename="R/split-string.R" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co">#' Split a string into a vector of strings</span></span>
-<span id="cb7-2"><a></a><span class="co">#'</span></span>
-<span id="cb7-3"><a></a><span class="co">#' @param x a character string to be split</span></span>
-<span id="cb7-4"><a></a><span class="co">#' @param sep the separator on which to split</span></span>
-<span id="cb7-5"><a></a><span class="co">#'</span></span>
-<span id="cb7-6"><a></a><span class="co">#' @return a vector of strings</span></span>
-<span id="cb7-7"><a></a><span class="co">#' @export</span></span>
-<span id="cb7-8"><a></a><span class="co">#'</span></span>
-<span id="cb7-9"><a></a><span class="co">#' @examples</span></span>
-<span id="cb7-10"><a></a><span class="co">#' splitstring("alfa,bravo,charlie")</span></span>
-<span id="cb7-11"><a></a><span class="co">#' splitstring("alfa,bravo charlie", sep = " ")</span></span>
-<span id="cb7-12"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
-<span id="cb7-13"><a></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> sep)[[<span class="dv">1</span>]]</span>
-<span id="cb7-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
+<span id="cb6-4"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb6-5"><a></a>})</span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a><span class="fu">test_that</span>(<span class="st">"addition works"</span>, {</span>
+<span id="cb6-8"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"a"</span>]] <span class="sc">+</span> <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb6-9"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="fragment">
-<p><code>document()</code> will update the <a href="https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-namespace"><code>NAMESPACE</code> file</a> for us</p>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test-B.R</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="fu">test_that</span>(<span class="st">"division works"</span>, {</span>
+<span id="cb7-4"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb7-5"><a></a>})</span>
+<span id="cb7-6"><a></a></span>
+<span id="cb7-7"><a></a><span class="fu">test_that</span>(<span class="st">"substraction works"</span>, {</span>
+<span id="cb7-8"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"a"</span>]] <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb7-9"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </section>
 <section class="slide level2">
-<h2>📦 Build and install</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">install</span>()</span>
-<span id="cb8-2"><a></a><span class="co">#&gt; ── R CMD build ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
-<span id="cb8-3"><a></a><span class="co">#&gt; ✔  checking for file ‘/Users/milan/htahackathon2024/stringsplitter/DESCRIPTION’ ...</span></span>
-<span id="cb8-4"><a></a><span class="co">#&gt; ─  preparing ‘stringsplitter’:</span></span>
-<span id="cb8-5"><a></a><span class="co">#&gt; ✔  checking DESCRIPTION meta-information ...</span></span>
-<span id="cb8-6"><a></a><span class="co">#&gt; ─  checking for LF line-endings in source and make files and shell scripts</span></span>
-<span id="cb8-7"><a></a><span class="co">#&gt; ─  checking for empty or unneeded directories</span></span>
-<span id="cb8-8"><a></a><span class="co">#&gt; ─  building ‘stringsplitter_0.0.1.tar.gz’</span></span>
-<span id="cb8-9"><a></a><span class="co">#&gt;</span></span>
-<span id="cb8-10"><a></a><span class="co">#&gt; ... output truncated ...</span></span>
-<span id="cb8-11"><a></a><span class="co">#&gt;</span></span>
-<span id="cb8-12"><a></a><span class="co">#&gt; ** testing if installed package can be loaded from temporary location</span></span>
-<span id="cb8-13"><a></a><span class="co">#&gt; ** testing if installed package can be loaded from final location</span></span>
-<span id="cb8-14"><a></a><span class="co">#&gt; ** testing if installed package keeps a record of temporary installation path</span></span>
-<span id="cb8-15"><a></a><span class="co">#&gt; * DONE (stringsplitter)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p>🎉 Success!</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(stringsplitter)</span>
-<span id="cb9-2"><a></a><span class="fu">splitstring</span>(<span class="st">"a,b,c"</span>)</span>
-<span id="cb9-3"><a></a><span class="co">#&gt; [1] "a" "b" "c"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section class="slide level2 center smaller">
-<h2>Some Good Practices</h2>
-<blockquote>
-<p><em>One of the things research programmers struggle with is the transition from exploration to infrastructure, i.e., from “coding to figure out what the problem is” to “I’m building a reusable tool”. Habits from the first are often carried over to the second.</em></p>
-</blockquote>
-<p>– Tweet from <a href="https://twitter.com/gvwilson/status/1028964474135429122">Greg Wilson 2018</a></p>
-</section>
-<section class="slide level2">
-<h2>Don’t trust <code>rm(list = ls())</code></h2>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>If the first line of your R script is</p>
-<div class="sourceCode" id="cb10" style="font-size: 200%;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I will come into your office and SET YOUR COMPUTER ON FIRE 🔥</p>
-</div>
-</div>
-</div>
-<div style="font-size: 60%;">
-<p>– <a href="https://speakerdeck.com/jennybc/zen-and-the-art-of-workflow-maintenance?slide=37">Zen And The aRt Of Workflow Maintenance - Jenny Bryan</a></p>
-</div>
-<div class="fragment">
-<p><br></p>
-<p>Instead <a href="https://rstats.wtf/source-and-blank-slates#always-start-r-with-a-blank-slate">start R with a clean slate and restart often</a></p>
-</div>
-</section>
-<section class="slide level2">
-<h2>Restart your R session regularly</h2>
-<div class="columns">
-<div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/rstudio-settings.png" alt="Recommended RStudio settings"></p>
-<figcaption>Change these settings in RStudio</figcaption>
-</figure>
-</div>
-</div><div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="figures/rstudio-restart.png" class="quarto-figure quarto-figure-center" style="width:80.0%" alt="Restart RStudio"></p>
-</figure>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-<h2></h2>
 
-<img data-src="figures/if-you-liked-it-you-should-have-saved-the-source-for-it.jpg" class="r-stretch"><div style="font-size: 60%;">
-<p>– <a href="https://rstats.wtf/source-and-blank-slates">Saving Source and blank slates | What They Forgot to Teach You About R</a></p>
+<h3>DRY</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>helper.R</strong></pre>
 </div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li class="fragment">Removed repetition</li>
+<li class="fragment">But now <code>test_object</code> is <em>always</em> defined, for <em>every</em> test</li>
+<li class="fragment">Unecessary and useless at best, unintended side-effects at worst</li>
+</ul>
 </section>
 <section class="slide level2">
-<h2>Don’t do <code>setwd()</code></h2>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>If the first line of your R script is</p>
-<div class="sourceCode" id="cb11" style="font-size: 200%;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:\Users\myself\path</span><span class="sc">\t</span><span class="st">hat\only\I\have"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I will come into your office and SET YOUR COMPUTER ON FIRE 🔥</p>
-</div>
-</div>
-</div>
-<div style="font-size: 60%;">
-<p>– <a href="https://speakerdeck.com/jennybc/zen-and-the-art-of-workflow-maintenance?slide=47">Zen And The aRt Of Workflow Maintenance - Jenny Bryan</a></p>
-</div>
-<div class="fragment">
-<p><br></p>
-<p>Use a <a href="https://rstats.wtf/projects">project-oriented workflow</a> instead</p>
-</div>
-</section>
-<section class="slide level2 center">
-<h2>Advanced topics</h2>
-</section>
-<section class="slide level2">
-<h2>Debugging</h2>
 
-<img data-src="figures/debugging.jpg" class="quarto-figure quarto-figure-center r-stretch" alt="What debugging feels like"></section>
-<section class="slide level2">
-<h2>Code formatting</h2>
-
-<img data-src="figures/code-formatting-meme.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%" alt="Code formatting meme"><div style="text-align: center;">
-<p><em>Because readability <strong>is</strong> important</em></p>
+<h3>DAMP</h3>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>helper.R</strong></pre>
 </div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>basic_list <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb9-2"><a></a>  <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
+<span id="cb9-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>test-A.R</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
+<span id="cb10-2"><a></a>  test_object <span class="ot">&lt;-</span> <span class="fu">basic_list</span>()</span>
+<span id="cb10-3"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb10-4"><a></a>})</span>
+<span id="cb10-5"><a></a></span>
+<span id="cb10-6"><a></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<ul>
+<li class="fragment">Re-introduce some replication to improve clarity</li>
+<li class="fragment"><code>test_object</code> is only created in the tests where it’s needed</li>
+</ul>
 </section>
 <section class="slide level2">
-<h2>Do’s and don’ts</h2>
-<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a><span class="co"># Don’t do this</span></span>
-<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a><span class="cf">if</span>(x<span class="sc">&lt;</span><span class="dv">100</span>){</span>
-<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3"></a>  y<span class="ot">&lt;-</span><span class="dv">200</span>}</span>
-<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a></span>
-<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5"></a><span class="co"># Do this instead</span></span>
-<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">100</span>) {</span>
-<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7"></a>  y <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8"></a>}</span>
-<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9"></a></span>
-<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10"></a></span>
-<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11"></a><span class="co"># NEVER use the shorthand versions of TRUE and FALSE</span></span>
-<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12"></a><span class="co"># Why? This is why:</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-13" class="code-annotation-target"><a href="#annotated-cell-11-13"></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span> <span class="co"># this is valid R code</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="13" data-code-annotation="1">If you really want to mess with someone’s R code, see <a href="https://github.com/romainfrancois/evil.R/blob/397639f0ba6ddd8b6ff28d455016dacf4d444e73/R/evil.R#L49-L50">evil.R</a></span>
-</dd>
-</dl>
+<h2>Special types of tests and techniques</h2>
+<ul>
+<li class="fragment"><a href="https://testthat.r-lib.org/articles/test-fixtures.html">Test fixtures • testthat</a></li>
+<li class="fragment"><a href="https://testthat.r-lib.org/articles/snapshotting.html">Snapshot tests • testthat</a></li>
+<li class="fragment"><a href="https://github.com/google/patrick">google/patrick: Parameterized testing in R is kind of cool!</a> (experimental)</li>
+</ul>
 </section>
 <section class="slide level2">
 <h2>Resources</h2>
-<div>
 <ul>
-<li><a href="https://r-pkgs.org"><em>R Packages</em></a> by Hadley Wickham and Jenny Bryan – <em>The Golden Standard</em></li>
-<li><a href="https://rstats.wtf"><em>What They Forgot to Teach You About R</em></a> by Jenny Bryan</li>
+<li class="fragment"><a href="https://r-pkgs.org/testing-basics.html">13&nbsp; Testing basics – R Packages (2e)</a></li>
+<li class="fragment"><a href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/">The Pragmatic Programmer, 20th Anniversary Edition: your journey to mastery by David Thomas and Andrew Hunt</a></li>
 </ul>
-<p><br></p>
-<ul>
-<li><a href="https://style.tidyverse.org"><em>Tidyverse style guide</em></a></li>
-<li><a href="https://rpkgdev-rocket-2024.netlify.app/taste-abilities/slides/#/"><em>“Better packages”</em></a> presentation by Maëlle Salmon</li>
-<li><a href="https://adv-r.hadley.nz"><em>Advanced R</em></a> by Hadley Wickham</li>
-</ul>
-</div>
 
 
-</section>
-</div>
-</div>
-</div>
-</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><em>R packages: What, Why and How?</em></p>
+<p>Unit testing in R <a href="https://milanmlft.com/talks" class="uri">https://milanmlft.com/talks</a></p>
 </div>
 </div></div>
 
@@ -764,6 +668,44 @@ Milan Malfait
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
