@@ -1,0 +1,239 @@
+---
+title: "Unit testing in R"
+subtitle: SAFEHR Learning session
+date: 2025-04-07
+author: "Milan Malfait"
+format:
+  revealjs:
+    slide-number: true
+    toc: false
+execute:
+  echo: true
+  eval: false
+---
+
+## Why bother?
+
+- Record the _expected behaviour_ of your code
+- No one likes to re-fix the same bug 5 times
+- Tests as documentation
+
+  _Though not a valid replacement for actual documentation!_
+
+---
+
+## What should I test?
+
+- External APIs
+- Behaviour
+- Not every single function needs a test... but
+
+  _A bug fix that doesn't include an additional test to catch the bug is not an actual fix!_
+
+---
+
+## Test to code
+
+- Testing is not about finding bugs
+- A test is the first user of your code
+- Well-designed code is easier to test and vice-versa
+
+---
+
+## Test-driven development
+
+![](./figures/tdd.png){fig-align="center" fig-alt="Test-driven development process"}
+
+- Strict TDD may often be overkill, but _thinking_ about how you will test helps with design
+- Especially useful for bug fixing
+
+  _when is my bug actually fixed?_
+
+---
+
+## A word about test coverage
+
+- Aim for comprehensive, not exhaustive coverage
+- Getting 100% code coverage is easy, getting meaningful coverage is not
+- Strive for 100% but in a meaningful way
+
+---
+
+## 100% test coverage is easy
+
+```{r filename="mypkg/R/my-func.R"}
+divide_by_two <- function(x) {
+    res <- x / 2
+    return(2)
+}
+```
+
+```{r filename="mypkg/tests/testthat/test-my-func.R"}
+test_that("divide_by_two returns the correct result", {
+    expect_equal(divide_by_two(4), 2)
+})
+#> Test passed 🌈
+```
+
+![](./figures/mypkg-coverage.png){fig-align="center" fig-alt="100% test coverage"}
+
+---
+
+## The `testthat` package
+
+- Created to test **R packages**
+- Tests go in files prefixed with `test-`
+- Convention is to match each `<filename>.R` file with a `test-<filename>.R`
+- Tests are written in `test_that()` blocks
+
+---
+
+## The `testthat` package: an example
+
+Basic structure of a test
+
+```{r}
+test_that("multiplication works", {
+  expect_equal(2 * 2, 4)
+})
+```
+
+---
+
+## The `testthat` package
+
+- Use available [`expect_*()` functions](https://testthat.r-lib.org/reference/index.html)
+  - Or write your own [custom expectation](https://testthat.r-lib.org/articles/custom-expectation.html) if necessary
+- Testing helper functions go into `helper.R` or `helper-*.R` files
+- Custom setup and corresponding teardown go into `setup.R`
+- Tests can be skipped using `skip_*()` helper functions
+
+---
+
+## Storing test data
+
+```{r}
+#| `code-line-numbers`="5-8"
+.
+├── ...
+└── tests
+    ├── testthat
+    │   ├── fixtures
+    │   │   ├── make-useful-things.R
+    │   │   ├── useful_thing1.rds
+    │   │   └── useful_thing2.rds
+    │   ├── helper.R
+    │   ├── setup.R
+    │   └── (all the test files)
+    └── testthat.R
+```
+
+---
+
+## Writing files during tests
+
+- Avoid if possible
+- Use `withr::local_tempfile()` or `withr::local_tempdir()` to create temporary self-deleting files
+
+```{r}
+test_that("can read from file name with utf-8 path", {
+  path <- withr::local_tempfile(
+    pattern = "Universit\u00e0-",
+    lines = c("#' @include foo.R", NULL)
+  )
+  expect_equal(find_includes(path), "foo.R")
+})
+```
+
+---
+
+## Best practices
+
+- Readability is important
+- Self-sufficient tests
+- Self-contained tests
+- Plan for test failure
+- Repetition is OK
+
+---
+
+## DRY vs. DAMP: a case-study
+
+[rOpenSci | An Example of the DRY/DAMP Principles for Package Tests](https://ropensci.org/blog/2024/03/18/dry-damp/)
+
+---
+
+### Muddy
+
+```{r filename="test-A.R"}
+test_object <- list(a = 1, b = 2)
+
+test_that("multiplication works", {
+  expect_equal(test_object[["b"]] * 2, 4)
+})
+
+test_that("addition works", {
+  expect_equal(test_object[["a"]] + 2, 3)
+})
+```
+
+```{r filename="test-B.R"}
+test_object <- list(a = 1, b = 2)
+
+test_that("division works", {
+  expect_equal(test_object[["b"]] / 2, 1)
+})
+
+test_that("substraction works", {
+  expect_equal(test_object[["a"]] - 1, 0)
+})
+```
+
+---
+
+### DRY
+
+```{r filename="helper.R"}
+test_object <- list(a = 1, b = 2)
+```
+
+- Removed repetition
+- But now `test_object` is _always_ defined, for _every_ test
+- Unecessary and useless at best, unintended side-effects at worst
+
+---
+
+### DAMP
+
+```{r filename="helper.R"}
+basic_list <- function() {
+  list(a = 1, b = 2)
+}
+```
+
+```{r filename="test-A.R"}
+test_that("multiplication works", {
+  test_object <- basic_list()
+  expect_equal(test_object[["b"]] * 2, 4)
+})
+
+# ...
+```
+
+- Re-introduce some replication to improve clarity
+- `test_object` is only created in the tests where it's needed
+
+---
+
+## Special types of tests and techniques
+
+- [Test fixtures • testthat](https://testthat.r-lib.org/articles/test-fixtures.html)
+- [Snapshot tests • testthat](https://testthat.r-lib.org/articles/snapshotting.html)
+- [google/patrick: Parameterized testing in R is kind of cool!](https://github.com/google/patrick) (experimental)
+
+---
+
+## Resources
+
+- [13  Testing basics – R Packages (2e)](https://r-pkgs.org/testing-basics.html)
+- [The Pragmatic Programmer, 20th Anniversary Edition: your journey to mastery by David Thomas and Andrew Hunt](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/)
