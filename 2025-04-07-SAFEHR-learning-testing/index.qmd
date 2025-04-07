@@ -236,4 +236,5 @@ test_that("multiplication works", {
 ## Resources
 
 - [13  Testing basics – R Packages (2e)](https://r-pkgs.org/testing-basics.html)
+- [Unit Testing for R • testthat](https://testthat.r-lib.org/index.html)
 - [The Pragmatic Programmer, 20th Anniversary Edition: your journey to mastery by David Thomas and Andrew Hunt](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/)
