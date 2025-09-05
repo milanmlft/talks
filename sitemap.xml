@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://milanmlft.github.io/talks/2025-02-24-SAFEHR-learning-renv/index.html</loc>
-    <lastmod>2025-08-15T09:27:04.132Z</lastmod>
-  </url>
-  <url>
     <loc>https://milanmlft.github.io/talks/2024-08-06-HTAhackathon-packages/index.html</loc>
-    <lastmod>2025-08-15T09:27:04.129Z</lastmod>
-  </url>
-  <url>
-    <loc>https://milanmlft.github.io/talks/2025-04-07-SAFEHR-learning-testing/index.html</loc>
-    <lastmod>2025-08-15T09:27:04.132Z</lastmod>
+    <lastmod>2025-09-05T10:08:42.240Z</lastmod>
   </url>
   <url>
     <loc>https://milanmlft.github.io/talks/index.html</loc>
-    <lastmod>2025-08-15T09:27:04.133Z</lastmod>
+    <lastmod>2025-09-05T10:08:42.244Z</lastmod>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/talks/2025-04-07-SAFEHR-learning-testing/index.html</loc>
+    <lastmod>2025-09-05T10:08:42.244Z</lastmod>
+  </url>
+  <url>
+    <loc>https://milanmlft.github.io/talks/2025-02-24-SAFEHR-learning-renv/index.html</loc>
+    <lastmod>2025-09-05T10:08:42.243Z</lastmod>
   </url>
 </urlset>
