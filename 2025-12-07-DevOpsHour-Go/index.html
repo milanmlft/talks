@@ -10,8 +10,8 @@
   <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Milan Malfait">
-  <meta name="dcterms.date" content="2025-04-07">
-  <title>Unit testing in R</title>
+  <meta name="dcterms.date" content="2025-12-07">
+  <title>Go: Your New Go-To DevOps Language</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,72 +29,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #f8f8f2;  }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #f07178; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #00e0e0; } /* Attribute */
-    code span.bn { color: #d4d0ab; } /* BaseN */
-    code span.bu { color: #abe338; } /* BuiltIn */
-    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffd700; } /* Constant */
-    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
-    code span.cv { color: #ffd700; } /* CommentVar */
-    code span.do { color: #f8f8f2; } /* Documentation */
-    code span.dt { color: #ffa07a; } /* DataType */
-    code span.dv { color: #d4d0ab; } /* DecVal */
-    code span.er { color: #f07178; text-decoration: underline; } /* Error */
-    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
-    code span.fl { color: #d4d0ab; } /* Float */
-    code span.fu { color: #ffa07a; } /* Function */
-    code span.im { color: #abe338; } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
-    code span.op { color: #ffa07a; } /* Operator */
-    code span.ot { color: #00e0e0; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
-    code span.sc { color: #abe338; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #00e0e0; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-c0ef25dcaf4e1a0b98fb1c2177344d78.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -194,8 +128,8 @@
     <div class="slides">
 
 <section class="quarto-title-block center">
-  <h1 class="title">Unit testing in R</h1>
-  <p class="subtitle">SAFEHR Learning session</p>
+  <h1 class="title">Go: Your New Go-To DevOps Language</h1>
+  <p class="subtitle">ARC DevOps Hour</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -205,260 +139,38 @@ Milan Malfait
 </div>
 </div>
 
-  <p class="date">2025-04-07</p>
+  <p class="date">2025-12-07</p>
 </section>
 <section class="slide level2">
-<h2>Why bother?</h2>
-<ul>
-<li class="fragment"><p>Record the <em>expected behaviour</em> of your code</p></li>
-<li class="fragment"><p>No one likes to re-fix the same bug 5 times</p></li>
-<li class="fragment"><p>Tests as documentation</p>
-<p><em>Though not a valid replacement for actual documentation!</em></p></li>
-</ul>
+<h2>Introduction</h2>
 </section>
 <section class="slide level2">
-<h2>What should I test?</h2>
-<ul>
-<li class="fragment"><p>External APIs</p></li>
-<li class="fragment"><p>Behaviour</p></li>
-<li class="fragment"><p>Not every single function needs a test… but</p>
-<p><em>A bug fix that doesn’t include an additional test to catch the bug is not an actual fix!</em></p></li>
-</ul>
+<h2>What Makes Go Different</h2>
 </section>
 <section class="slide level2">
-<h2>Test to code</h2>
-<ul>
-<li class="fragment">Testing is not about finding bugs</li>
-<li class="fragment">A test is the first user of your code</li>
-<li class="fragment">Well-designed code is easier to test and vice-versa</li>
-</ul>
+<h2>Go’s DevOps Superpowers</h2>
 </section>
 <section class="slide level2">
-<h2>Test-driven development</h2>
-
-<img data-src="./figures/tdd.png" class="quarto-figure quarto-figure-center r-stretch" alt="Test-driven development process"><ul>
-<li class="fragment"><p>Strict TDD may often be overkill, but <em>thinking</em> about how you will test helps with design</p></li>
-<li class="fragment"><p>Especially useful for bug fixing</p>
-<p><em>when is my bug actually fixed?</em></p></li>
-</ul>
+<h2>Go in the Wild</h2>
 </section>
 <section class="slide level2">
-<h2>A word about test coverage</h2>
-<ul>
-<li class="fragment">Aim for comprehensive, not exhaustive coverage</li>
-<li class="fragment">Getting 100% code coverage is easy, getting meaningful coverage is not</li>
-<li class="fragment">Strive for 100% but in a meaningful way</li>
-</ul>
+<h2>Go and Explore</h2>
 </section>
 <section class="slide level2">
-<h2>100% test coverage is easy</h2>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>mypkg/R/my-func.R</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>divide_by_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb1-2"><a></a>    res <span class="ot">&lt;-</span> x <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb1-3"><a></a>    <span class="fu">return</span>(<span class="dv">2</span>)</span>
-<span id="cb1-4"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>mypkg/tests/testthat/test-my-func.R</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">test_that</span>(<span class="st">"divide_by_two returns the correct result"</span>, {</span>
-<span id="cb2-2"><a></a>    <span class="fu">expect_equal</span>(<span class="fu">divide_by_two</span>(<span class="dv">4</span>), <span class="dv">2</span>)</span>
-<span id="cb2-3"><a></a>})</span>
-<span id="cb2-4"><a></a><span class="co">#&gt; Test passed 🌈</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-
-<img data-src="./figures/mypkg-coverage.png" class="quarto-figure quarto-figure-center r-stretch" alt="100% test coverage"></section>
-<section class="slide level2">
-<h2>The <code>testthat</code> package</h2>
-<ul>
-<li class="fragment">Created to test <strong>R packages</strong></li>
-<li class="fragment">Tests go in files prefixed with <code>test-</code></li>
-<li class="fragment">Convention is to match each <code>&lt;filename&gt;.R</code> file with a <code>test-&lt;filename&gt;.R</code></li>
-<li class="fragment">Tests are written in <code>test_that()</code> blocks</li>
-</ul>
+<h2>When to Go (and when not to)</h2>
 </section>
 <section class="slide level2">
-<h2>The <code>testthat</code> package: an example</h2>
-<p>Basic structure of a test</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
-<span id="cb3-2"><a></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb3-3"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<h2>Things to Go Away With (Takeaways)</h2>
 </section>
 <section class="slide level2">
-<h2>The <code>testthat</code> package</h2>
-<ul>
-<li class="fragment">Use available <a href="https://testthat.r-lib.org/reference/index.html"><code>expect_*()</code> functions</a>
-<ul>
-<li class="fragment">Or write your own <a href="https://testthat.r-lib.org/articles/custom-expectation.html">custom expectation</a> if necessary</li>
-</ul></li>
-<li class="fragment">Testing helper functions go into <code>helper.R</code> or <code>helper-*.R</code> files</li>
-<li class="fragment">Custom setup and corresponding teardown go into <code>setup.R</code></li>
-<li class="fragment">Tests can be skipped using <code>skip_*()</code> helper functions</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Storing test data</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>.</span>
-<span id="cb4-2"><a></a>├── ...</span>
-<span id="cb4-3"><a></a>└── tests</span>
-<span id="cb4-4"><a></a>    ├── testthat</span>
-<span id="cb4-5"><a></a>    │   ├── fixtures</span>
-<span id="cb4-6"><a></a>    │   │   ├── make<span class="sc">-</span>useful<span class="sc">-</span>things.R</span>
-<span id="cb4-7"><a></a>    │   │   ├── useful_thing1.rds</span>
-<span id="cb4-8"><a></a>    │   │   └── useful_thing2.rds</span>
-<span id="cb4-9"><a></a>    │   ├── helper.R</span>
-<span id="cb4-10"><a></a>    │   ├── setup.R</span>
-<span id="cb4-11"><a></a>    │   └── (all the test files)</span>
-<span id="cb4-12"><a></a>    └── testthat.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section class="slide level2">
-<h2>Writing files during tests</h2>
-<ul>
-<li class="fragment">Avoid if possible</li>
-<li class="fragment">Use <code>withr::local_tempfile()</code> or <code>withr::local_tempdir()</code> to create temporary self-deleting files</li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">test_that</span>(<span class="st">"can read from file name with utf-8 path"</span>, {</span>
-<span id="cb5-2"><a></a>  path <span class="ot">&lt;-</span> withr<span class="sc">::</span><span class="fu">local_tempfile</span>(</span>
-<span id="cb5-3"><a></a>    <span class="at">pattern =</span> <span class="st">"Universit\u00e0-"</span>,</span>
-<span id="cb5-4"><a></a>    <span class="at">lines =</span> <span class="fu">c</span>(<span class="st">"#' @include foo.R"</span>, <span class="cn">NULL</span>)</span>
-<span id="cb5-5"><a></a>  )</span>
-<span id="cb5-6"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">find_includes</span>(path), <span class="st">"foo.R"</span>)</span>
-<span id="cb5-7"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section class="slide level2">
-<h2>Best practices</h2>
-<ul>
-<li class="fragment">Readability is important</li>
-<li class="fragment">Self-sufficient tests</li>
-<li class="fragment">Self-contained tests</li>
-<li class="fragment">Plan for test failure</li>
-<li class="fragment">Repetition is OK</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>DRY vs.&nbsp;DAMP: a case-study</h2>
-<p><a href="https://ropensci.org/blog/2024/03/18/dry-damp/">rOpenSci | An Example of the DRY/DAMP Principles for Package Tests</a></p>
-</section>
-<section class="slide level2">
-
-<h3>Muddy</h3>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test-A.R</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
-<span id="cb6-4"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb6-5"><a></a>})</span>
-<span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a><span class="fu">test_that</span>(<span class="st">"addition works"</span>, {</span>
-<span id="cb6-8"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"a"</span>]] <span class="sc">+</span> <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb6-9"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test-B.R</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="fu">test_that</span>(<span class="st">"division works"</span>, {</span>
-<span id="cb7-4"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb7-5"><a></a>})</span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a><span class="fu">test_that</span>(<span class="st">"substraction works"</span>, {</span>
-<span id="cb7-8"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"a"</span>]] <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb7-9"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<h3>DRY</h3>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>helper.R</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<ul>
-<li class="fragment">Removed repetition</li>
-<li class="fragment">But now <code>test_object</code> is <em>always</em> defined, for <em>every</em> test</li>
-<li class="fragment">Unecessary and useless at best, unintended side-effects at worst</li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3>DAMP</h3>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>helper.R</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>basic_list <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb9-2"><a></a>  <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
-<span id="cb9-3"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>test-A.R</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
-<span id="cb10-2"><a></a>  test_object <span class="ot">&lt;-</span> <span class="fu">basic_list</span>()</span>
-<span id="cb10-3"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb10-4"><a></a>})</span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a><span class="co"># ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<ul>
-<li class="fragment">Re-introduce some replication to improve clarity</li>
-<li class="fragment"><code>test_object</code> is only created in the tests where it’s needed</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Special types of tests and techniques</h2>
-<ul>
-<li class="fragment"><a href="https://testthat.r-lib.org/articles/test-fixtures.html">Test fixtures • testthat</a></li>
-<li class="fragment"><a href="https://testthat.r-lib.org/articles/snapshotting.html">Snapshot tests • testthat</a></li>
-<li class="fragment"><a href="https://github.com/google/patrick">google/patrick: Parameterized testing in R is kind of cool!</a> (experimental)</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>Resources</h2>
-<ul>
-<li class="fragment"><a href="https://r-pkgs.org/testing-basics.html">13&nbsp; Testing basics – R Packages (2e)</a></li>
-<li class="fragment"><a href="https://testthat.r-lib.org/index.html">Unit Testing for R • testthat</a></li>
-<li class="fragment"><a href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/">The Pragmatic Programmer, 20th Anniversary Edition: your journey to mastery by David Thomas and Andrew Hunt</a></li>
-</ul>
+<h2>Further Reading</h2>
 
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Unit testing in R | <a href="https://milanmlft.github.io/talks/" class="uri">https://milanmlft.github.io/talks/</a></p>
+<p>Go: Your New Go-To DevOps Language | <a href="https://milanmlft.github.io/talks/" class="uri">https://milanmlft.github.io/talks/</a></p>
 </div>
 </div></div>
 
@@ -670,44 +382,6 @@ Milan Malfait
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

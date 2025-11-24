@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.34">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Milan Malfait">
   <meta name="dcterms.date" content="2024-08-06">
@@ -96,7 +96,7 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #dcc6e0; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-5039a4587fa43511bbcaa404b381c84a.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-c0ef25dcaf4e1a0b98fb1c2177344d78.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -246,10 +246,10 @@ Milan Malfait
 </section>
 <section class="slide level2">
 <h2><a href="https://devtools.r-lib.org">{devtools}</a> to the rescue</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(devtools)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(devtools)</span>
 <span id="cb1-2"><a></a><span class="fu">create_package</span>(<span class="st">"~/htahackathon2024/stringsplitter"</span>)</span>
 <span id="cb1-3"><a></a><span class="fu">use_git</span>()</span>
-<span id="cb1-4"><a></a><span class="fu">use_r</span>(<span class="st">"split-string.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a><span class="fu">use_r</span>(<span class="st">"split-string.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol type="1">
 <li class="fragment">Set up package structure</li>
 <li class="fragment">Set up version control</li>
@@ -262,19 +262,19 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>R/split-string.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" data-filename="R/split-string.R"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="R/split-string.R"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
 <span id="cb2-2"><a></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> sep)[[<span class="dv">1</span>]]</span>
-<span id="cb2-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 <h2>🏎️ Test drive</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">load_all</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">load_all</span>()</span>
 <span id="cb3-2"><a></a><span class="fu">splitstring</span>(<span class="st">"a,b,c"</span>)</span>
-<span id="cb3-3"><a></a><span class="co">#&gt; [1] "a" "b" "c"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a></a><span class="co">#&gt; [1] "a" "b" "c"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p><br></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">check</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">check</span>()</span>
 <span id="cb4-2"><a></a><span class="co">#&gt; ... (output truncated) ...</span></span>
 <span id="cb4-3"><a></a><span class="co">#&gt; ── R CMD check ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
 <span id="cb4-4"><a></a><span class="co">#&gt; ✔  checking DESCRIPTION meta-information ...</span></span>
@@ -286,7 +286,7 @@ Milan Malfait
 <span id="cb4-10"><a></a><span class="co">#&gt;</span></span>
 <span id="cb4-11"><a></a><span class="co">#&gt; ── R CMD check results ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── stringsplitter 0.0.1 ────</span></span>
 <span id="cb4-12"><a></a><span class="co">#&gt;</span></span>
-<span id="cb4-13"><a></a><span class="co">#&gt; 0 errors ✔ | 0 warnings ✔ | 0 notes ✔</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-13"><a></a><span class="co">#&gt; 0 errors ✔ | 0 warnings ✔ | 0 notes ✔</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -302,8 +302,12 @@ Milan Malfait
 <div class="callout-content">
 <ul>
 <li><code>Shift + Ctrl/Cmd + L</code> to load all</li>
-<li><code>Shift + Ctrl/Cmd + E</code> to run checks :::</li>
+<li><code>Shift + Ctrl/Cmd + E</code> to run checks</li>
 </ul>
+</div>
+</div>
+</div>
+</section>
 <section class="slide level2">
 <h2>📝 Add documentation</h2>
 <p>Write some documentation in <a href="https://roxygen2.r-lib.org/articles/rd.html">roxygen format</a> for your new function</p>
@@ -329,9 +333,9 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>R/split-string.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" data-filename="R/split-string.R"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="R/split-string.R"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb5-1" class="hljs-ln-code"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
 <span id="cb5-2" class="hljs-ln-code"><a></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> sep)[[<span class="dv">1</span>]]</span>
-<span id="cb5-3" class="hljs-ln-code"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3" class="hljs-ln-code"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2" data-auto-animate="true">
@@ -340,7 +344,7 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>R/split-string.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" data-filename="R/split-string.R"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a></a><span class="co">#' Split a string into a vector of strings</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="R/split-string.R"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb6-1" class="hljs-ln-code"><a></a><span class="co">#' Split a string into a vector of strings</span></span>
 <span id="cb6-2" class="hljs-ln-code"><a></a><span class="co">#'</span></span>
 <span id="cb6-3" class="hljs-ln-code"><a></a><span class="co">#' @param x a character string to be split</span></span>
 <span id="cb6-4" class="hljs-ln-code"><a></a><span class="co">#' @param sep the separator on which to split</span></span>
@@ -353,7 +357,7 @@ Milan Malfait
 <span id="cb6-11" class="hljs-ln-code"><a></a><span class="co">#' splitstring("alfa,bravo charlie", sep = " ")</span></span>
 <span id="cb6-12" class="hljs-ln-code"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
 <span id="cb6-13" class="hljs-ln-code"><a></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> sep)[[<span class="dv">1</span>]]</span>
-<span id="cb6-14" class="hljs-ln-code"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-14" class="hljs-ln-code"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>Generate the help pages by running <code>document()</code></p>
@@ -366,7 +370,7 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>R/split-string.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb7" data-filename="R/split-string.R" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co">#' Split a string into a vector of strings</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="R/split-string.R" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co">#' Split a string into a vector of strings</span></span>
 <span id="cb7-2"><a></a><span class="co">#'</span></span>
 <span id="cb7-3"><a></a><span class="co">#' @param x a character string to be split</span></span>
 <span id="cb7-4"><a></a><span class="co">#' @param sep the separator on which to split</span></span>
@@ -379,7 +383,7 @@ Milan Malfait
 <span id="cb7-11"><a></a><span class="co">#' splitstring("alfa,bravo charlie", sep = " ")</span></span>
 <span id="cb7-12"><a></a>splitstring <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">sep =</span> <span class="st">","</span>) {</span>
 <span id="cb7-13"><a></a>  <span class="fu">strsplit</span>(x, <span class="at">split =</span> sep)[[<span class="dv">1</span>]]</span>
-<span id="cb7-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-14"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p><code>document()</code> will update the <a href="https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-namespace"><code>NAMESPACE</code> file</a> for us</p>
@@ -387,7 +391,7 @@ Milan Malfait
 </section>
 <section class="slide level2">
 <h2>📦 Build and install</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">install</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">install</span>()</span>
 <span id="cb8-2"><a></a><span class="co">#&gt; ── R CMD build ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
 <span id="cb8-3"><a></a><span class="co">#&gt; ✔  checking for file ‘/Users/milan/htahackathon2024/stringsplitter/DESCRIPTION’ ...</span></span>
 <span id="cb8-4"><a></a><span class="co">#&gt; ─  preparing ‘stringsplitter’:</span></span>
@@ -401,12 +405,12 @@ Milan Malfait
 <span id="cb8-12"><a></a><span class="co">#&gt; ** testing if installed package can be loaded from temporary location</span></span>
 <span id="cb8-13"><a></a><span class="co">#&gt; ** testing if installed package can be loaded from final location</span></span>
 <span id="cb8-14"><a></a><span class="co">#&gt; ** testing if installed package keeps a record of temporary installation path</span></span>
-<span id="cb8-15"><a></a><span class="co">#&gt; * DONE (stringsplitter)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-15"><a></a><span class="co">#&gt; * DONE (stringsplitter)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p>🎉 Success!</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(stringsplitter)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(stringsplitter)</span>
 <span id="cb9-2"><a></a><span class="fu">splitstring</span>(<span class="st">"a,b,c"</span>)</span>
-<span id="cb9-3"><a></a><span class="co">#&gt; [1] "a" "b" "c"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a></a><span class="co">#&gt; [1] "a" "b" "c"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2 center smaller">
@@ -428,7 +432,7 @@ Milan Malfait
 </div>
 <div class="callout-content">
 <p>If the first line of your R script is</p>
-<div class="sourceCode" id="cb10" style="font-size: 200%;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="font-size: 200%;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>I will come into your office and SET YOUR COMPUTER ON FIRE 🔥</p>
 </div>
 </div>
@@ -478,7 +482,7 @@ Milan Malfait
 </div>
 <div class="callout-content">
 <p>If the first line of your R script is</p>
-<div class="sourceCode" id="cb11" style="font-size: 200%;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:\Users\myself\path</span><span class="sc">\t</span><span class="st">hat\only\I\have"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="font-size: 200%;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:\Users\myself\path</span><span class="sc">\t</span><span class="st">hat\only\I\have"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>I will come into your office and SET YOUR COMPUTER ON FIRE 🔥</p>
 </div>
 </div>
@@ -507,23 +511,23 @@ Milan Malfait
 </section>
 <section class="slide level2">
 <h2>Do’s and don’ts</h2>
-<div class="sourceCode" id="annotated-cell-11"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a><span class="co"># Don’t do this</span></span>
-<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a><span class="cf">if</span>(x<span class="sc">&lt;</span><span class="dv">100</span>){</span>
-<span id="annotated-cell-11-3"><a href="#annotated-cell-11-3"></a>  y<span class="ot">&lt;-</span><span class="dv">200</span>}</span>
-<span id="annotated-cell-11-4"><a href="#annotated-cell-11-4"></a></span>
-<span id="annotated-cell-11-5"><a href="#annotated-cell-11-5"></a><span class="co"># Do this instead</span></span>
-<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">100</span>) {</span>
-<span id="annotated-cell-11-7"><a href="#annotated-cell-11-7"></a>  y <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="annotated-cell-11-8"><a href="#annotated-cell-11-8"></a>}</span>
-<span id="annotated-cell-11-9"><a href="#annotated-cell-11-9"></a></span>
-<span id="annotated-cell-11-10"><a href="#annotated-cell-11-10"></a></span>
-<span id="annotated-cell-11-11"><a href="#annotated-cell-11-11"></a><span class="co"># NEVER use the shorthand versions of TRUE and FALSE</span></span>
-<span id="annotated-cell-11-12"><a href="#annotated-cell-11-12"></a><span class="co"># Why? This is why:</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-13" class="code-annotation-target"><a href="#annotated-cell-11-13"></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span> <span class="co"># this is valid R code</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="annotated-cell-10"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1"></a><span class="co"># Don’t do this</span></span>
+<span id="annotated-cell-10-2"><a href="#annotated-cell-10-2"></a><span class="cf">if</span>(x<span class="sc">&lt;</span><span class="dv">100</span>){</span>
+<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3"></a>  y<span class="ot">&lt;-</span><span class="dv">200</span>}</span>
+<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4"></a></span>
+<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5"></a><span class="co"># Do this instead</span></span>
+<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6"></a><span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">100</span>) {</span>
+<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7"></a>  y <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8"></a>}</span>
+<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9"></a></span>
+<span id="annotated-cell-10-10"><a href="#annotated-cell-10-10"></a></span>
+<span id="annotated-cell-10-11"><a href="#annotated-cell-10-11"></a><span class="co"># NEVER use the shorthand versions of TRUE and FALSE</span></span>
+<span id="annotated-cell-10-12"><a href="#annotated-cell-10-12"></a><span class="co"># Why? This is why:</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-13" class="code-annotation-target"><a href="#annotated-cell-10-13"></a>T <span class="ot">&lt;-</span> <span class="cn">FALSE</span> <span class="co"># this is valid R code</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="13" data-code-annotation="1">If you really want to mess with someone’s R code, see <a href="https://github.com/romainfrancois/evil.R/blob/397639f0ba6ddd8b6ff28d455016dacf4d444e73/R/evil.R#L49-L50">evil.R</a></span>
+<dt class="fragment" data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dd class="fragment">
+<span data-code-cell="annotated-cell-10" data-code-lines="13" data-code-annotation="1">If you really want to mess with someone’s R code, see <a href="https://github.com/romainfrancois/evil.R/blob/397639f0ba6ddd8b6ff28d455016dacf4d444e73/R/evil.R#L49-L50">evil.R</a></span>
 </dd>
 </dl>
 </section>
@@ -541,10 +545,6 @@ Milan Malfait
 </ul>
 
 
-</section>
-</div>
-</div>
-</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -735,7 +735,7 @@ Milan Malfait
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -809,13 +809,14 @@ Milan Malfait
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
