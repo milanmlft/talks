@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+      - renovate/**
+  pull_request:
 
 permissions:
   contents: write
@@ -37,7 +39,12 @@ jobs:
             any::downlit
             any::xml2
 
+      - name: Render ${{ github.ref_name }} branch
+        if: github.ref != 'refs/heads/main'
+        uses: quarto-dev/quarto-actions/render@v2
+
       - name: Render and Publish to GitHub Pages
+        if: github.ref == 'refs/heads/main'
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
