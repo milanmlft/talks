@@ -1,0 +1,44 @@
+---
+title: "Go: Your New Go-To DevOps Language"
+subtitle: ARC DevOps Hour
+date: 2025-12-07
+author: "Milan Malfait"
+format:
+  revealjs:
+    slide-number: true
+    toc: false
+execute:
+  echo: true
+  eval: false
+---
+
+## Introduction
+
+---
+
+## What Makes Go Different
+
+---
+
+## Go's DevOps Superpowers
+
+---
+
+## Go in the Wild
+
+
+---
+
+## Go and Explore
+
+---
+
+## When to Go (and when not to)
+
+---
+
+## Things to Go Away With (Takeaways)
+
+---
+
+## Further Reading
