@@ -108,7 +108,9 @@ check()
 ## RStudio keyboard shortcuts
 
 - `Shift + Ctrl/Cmd + L` to load all
-- `Shift + Ctrl/Cmd + E` to run checks :::
+- `Shift + Ctrl/Cmd + E` to run checks
+
+:::
 
 ## 📝 Add documentation
 
