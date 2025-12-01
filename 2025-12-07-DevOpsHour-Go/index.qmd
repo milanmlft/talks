@@ -1,7 +1,7 @@
 ---
 title: "Go: Your New Go-To DevOps Language"
 subtitle: ARC DevOps Hour
-date: 2025-12-07
+date: 2025-12-11
 author: "Milan Malfait"
 format:
   revealjs:
@@ -18,22 +18,125 @@ execute:
 
 ## What Makes Go Different
 
+- Created at Google (2009) as a modern simple alternative to C
+- Core philosophy: simplicity, readability, and pragmatism
+- Key features overview: compiled, statically typed, garbage collected, built-in concurrency
+- The "boring is good" principle - stability over novelty
+
+---
+
+## Why Go?
+
+- Designed for modern software engineering challenges
+  - Performance
+  - Scalability
+  - Security
+  - Reliability
+
+- Lean syntax &rarr; Easy to learn and use
+- Strong standard library
+- Built-in tools
+
+---
+
+## Go's Minimal Syntax
+
+- ***
+
+## All You Need Is STD
+
+Go's extensive standard library includes everything you need[^*]:
+
+- Logging: `log`, `log/slog`
+- OS interactions: `os`
+- File I/O: `io`
+- Networking: `net/http`
+- Databases: `database/sql`
+- Data: `encoding/json`, `encoding/xml`, `encoding/csv`
+- ... and much more
+
+Bonus: the standard library is actually readable and an excellent resource for learning Go (take that, C++)
+
+[^*]:
+    until it doesn't, in which case Go still has an excellent package
+    ecosystem. In any case, you should always start with just the standard library.
+
+---
+
+## The joy of having built-in tools
+
+<!--TODO: contrast with Python, use python-tooling website screenshot-->
+
+```shell
+# Formatting
+go fmt
+
+# Testing
+go test
+
+# Compile & execute
+go run
+
+# Dependency management
+go install
+go get
+
+# Docs generator
+go doc
+```
+
+---
+
+## A Note On Performance
+
+> Go has excellent performance right out of the box. By design, there are no
+> knobs or levers that you can use to squeeze more performance out of Go
+
 ---
 
 ## Go's DevOps Superpowers
+
+- Fast build times & cross-compilation
+- Small static binaries
+- Low memory footprint and garbage collection
+- Efficient concurrency
+- Lends itself very well to microservices architecture
 
 ---
 
 ## Go in the Wild
 
+- Docker
+- Kubernetes
+- Terraform
+- The ARC TRE!
 
 ---
 
-## Go and Explore
+## How Go Is Used In The ARC TRE[^*]
+
+Mainly to interface with SDKs (Software Development Kit):
+
+- AWS: resource management at runtime
+- Kubernetes
+
+[^*]: **T**rusted **R**esearch **E**nvironment (TRE)
+
+---
+
+## Show Me Some Go Code Already
 
 ---
 
 ## When to Go (and when not to)
+
+Typical [use cases](https://go.dev/solutions/use-cases):
+
+- APIs (Application Programming Interfaces)
+- Cloud & Network services
+- DevOps and Site Reliability Engineering (SRE)
+- Command-Line Interfaces (CLI)
+- Web Development
 
 ---
 
