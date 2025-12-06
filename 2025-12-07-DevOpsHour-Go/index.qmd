@@ -86,7 +86,26 @@ go doc
 
 ---
 
-## What About Performance
+## The joy of having built-in tools
+
+![](figures/python-tooling-formatters.png){fig-align="center"}
+
+---
+
+## What About Performance?
+
+::: {style="font-size: 50%;"}
+
+> Go has excellent performance right out of the box. By design, there are no
+> knobs or levers that you can use to squeeze more performance out of Go
+>
+> -- _[Steve Francia (Go Team)](https://spf13.com/p/rust-vs-go-better-together)_
+
+:::
+
+---
+
+## What About Performance?
 
 ::: {style="font-size: 50%;"}
 
