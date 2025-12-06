@@ -14,9 +14,10 @@ execute:
 
 ## Introduction
 
-- Who am I?
-  - Background with Go
-  - Why I'm excited to share this with you
+- My Go journey
+  - Started just playing around with it out of interest
+  - Used it for Advent of Code 2024
+  - Joined the ARC TRE team
 
 - What we'll cover today:
   - Go's unique characteristics
@@ -95,15 +96,11 @@ Go's standard library includes everything you need[^1]:
 
 <!--Bonus: the standard library is actually readable and an excellent resource for learning Go (take that, C++)-->
 
-[^1]:
-    until it doesn't, in which case Go still has an excellent package
-    ecosystem. In any case, you should always start with just the standard library.
+[^1]: until it doesn't, in which case Go still has an excellent package ecosystem.
 
 ---
 
 ## The joy of having built-in tools
-
-<!--TODO: contrast with Python, use python-tooling website screenshot-->
 
 ```bash
 # Formatting
@@ -173,8 +170,6 @@ go doc
 ---
 
 ## Go Powers Your DevOps Stack
-
-Already using Go (probably):
 
 - **Container orchestration**: Docker, Kubernetes, containerd
 - **Infrastructure**: Terraform, Packer, Consul, Vault
@@ -282,22 +277,6 @@ func main() {
 
 ---
 
-## Error Handling: Explicit is Better
-
-```go
-data, err := ioutil.ReadFile("config.yaml")
-if err != nil {
-    return fmt.Errorf("failed to read config: %w", err)
-}
-```
-
-- No hidden control flow (no exceptions)
-- Errors are values
-- Forces you to think about failure cases
-- `defer` for cleanup (like Python's context managers)
-
----
-
 ## Every Go Program is a Goroutine
 
 </br>
@@ -331,6 +310,22 @@ main.main()
 	/Users/milan/talks/2025-12-07-DevOpsHour-Go/examples/panic/main.go:4 +0x2c
 exit status 2
 ```
+
+---
+
+## Error Handling: Explicit is Better
+
+```go
+data, err := ioutil.ReadFile("config.yaml")
+if err != nil {
+    return fmt.Errorf("failed to read config: %w", err)
+}
+```
+
+- No hidden control flow (no exceptions)
+- Errors are values
+- Forces you to think about failure cases
+- `defer` for cleanup
 
 ---
 
