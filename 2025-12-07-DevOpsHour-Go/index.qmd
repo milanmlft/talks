@@ -14,6 +14,16 @@ execute:
 
 ## Introduction
 
+- Who am I?
+  - Background with Go
+  - Why I'm excited to share this with you
+
+- What we'll cover today:
+  - Go's unique characteristics
+  - Why it's ideal for DevOps
+  - Real-world examples
+  - Practical demonstrations
+
 ---
 
 ## What Makes Go Different
