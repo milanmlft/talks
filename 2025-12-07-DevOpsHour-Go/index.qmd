@@ -282,3 +282,18 @@ exit status 2
 ---
 
 ## Further Reading
+
+**Official Resources:**
+
+- Go Tour: <https://go.dev/tour/>
+- Effective Go: <https://go.dev/doc/effective_go>
+- Go by Example: <https://gobyexample.com/>
+
+**Books:**
+
+- "The Go Programming Language" (Donovan & Kernighan)
+- "Learning Go" (Jon Bodner)
+
+**DevOps-Specific:**
+
+- "Cloud Native Go" (M.-Leander Reimer)
