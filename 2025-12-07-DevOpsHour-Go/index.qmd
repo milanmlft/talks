@@ -32,6 +32,7 @@ execute:
 - Core philosophy: simplicity, readability, and pragmatism
 - Key features overview: compiled, statically typed, garbage collected, built-in concurrency
 - The "boring is good" principle - stability over novelty
+- Compilation speed: Go compiles so fast it feels interpreted
 
 ---
 
