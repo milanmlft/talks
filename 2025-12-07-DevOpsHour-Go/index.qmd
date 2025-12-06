@@ -45,19 +45,18 @@ execute:
 
 ## All You Need Is STD
 
-Go's extensive standard library includes everything you need[^*]:
+Go's standard library includes everything you need[^1]:
 
+- `os`, `io`, `fmt`
 - Logging: `log`, `log/slog`
-- OS interactions: `os`
-- File I/O: `io`
 - Networking: `net/http`
 - Databases: `database/sql`
 - Data: `encoding/json`, `encoding/xml`, `encoding/csv`
 - ... and much more
 
-Bonus: the standard library is actually readable and an excellent resource for learning Go (take that, C++)
+<!--Bonus: the standard library is actually readable and an excellent resource for learning Go (take that, C++)-->
 
-[^*]:
+[^1]:
     until it doesn't, in which case Go still has an excellent package
     ecosystem. In any case, you should always start with just the standard library.
 
@@ -67,7 +66,7 @@ Bonus: the standard library is actually readable and an excellent resource for l
 
 <!--TODO: contrast with Python, use python-tooling website screenshot-->
 
-```shell
+```bash
 # Formatting
 go fmt
 
@@ -87,7 +86,7 @@ go doc
 
 ---
 
-## A Note On Performance
+## What About Performance
 
 ::: {style="font-size: 50%;"}
 
