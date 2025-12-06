@@ -51,7 +51,13 @@ execute:
 
 ## Go's Minimal Syntax
 
-- ***
+- Only 25 keywords (Python: 35, Java: 50+)
+- One way to do things (vs. Python's "many ways")
+- No classes, no inheritance, no generics (until Go 1.18)
+- Explicit error handling - no exceptions
+- Fast compilation: feels like an interpreted language
+
+**Example: A complete web server in ~15 lines**
 
 ## All You Need Is STD
 
