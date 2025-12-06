@@ -271,6 +271,14 @@ exit status 2
 
 ## Things to Go Away With (Takeaways)
 
+- **Start simple**: Go's standard library covers most DevOps needs
+- **Embrace concurrency**: Goroutines make parallel tasks trivial
+- **Static binaries = deployment joy**: No dependency hell
+- **Performance by default**: No optimization gymnastics needed
+- **DevOps tooling loves Go**: Docker, Kubernetes, Terraform, Prometheus...
+
+**Try it yourself**: <https://go.dev/tour/>
+
 ---
 
 ## Further Reading
