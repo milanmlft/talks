@@ -112,39 +112,126 @@ go doc
 
 ---
 
-## Go in the Wild
+## Concurrency with Goroutines
 
-- Docker
-- Kubernetes
-- Terraform
-- The ARC TRE!
+![](figures/gopher-goroutines.jpg){fig-align="center"}
 
 ---
 
-## How Go Is Used In The ARC TRE[^*]
+## Concurrency with Goroutines
 
-Mainly to interface with SDKs (Software Development Kit):
-
-- AWS: resource management at runtime
-- Kubernetes
-
-[^*]: **T**rusted **R**esearch **E**nvironment (TRE)
-
----
-
-## Show Me Some Go Code Already
+- Goroutines: lightweight threads managed by Go runtime
+- Simple syntax: just add `go` before a function call
+- Channels: safe communication between goroutines
+- Perfect for DevOps tasks:
+  - Parallel API calls to multiple services
+  - Concurrent log processing
+  - Non-blocking I/O operations
 
 ---
 
-## When to Go (and when not to)
+## Goroutines in Action {auto-animate=true}
 
-Typical [use cases](https://go.dev/solutions/use-cases):
+A non-concurrent example
 
-- APIs (Application Programming Interfaces)
-- Cloud & Network services
-- DevOps and Site Reliability Engineering (SRE)
-- Command-Line Interfaces (CLI)
-- Web Development
+```{.go}
+func checkHealth(url string, results string)
+
+func main() {
+    services := []string{"http://api1.com", "http://api2.com", "http://api3.com"}
+    results := make(string, len(services))
+
+    for _, service := range services {
+        checkHealth(service, results)
+    }
+
+    for range services {
+        fmt.Println(results)
+    }
+}
+```
+
+---
+
+## Goroutines in Action {auto-animate=true}
+
+Making it concurrent
+
+```{.go}
+func checkHealth(url string, results chan<- string)
+
+func main() {
+    services := []string{"http://api1.com", "http://api2.com", "http://api3.com"}
+    results := make(chan string, len(services))
+
+    for _, service := range services {
+        go checkHealth(service, results)
+    }
+
+    for range services {
+        fmt.Println(<-results)
+    }
+}
+```
+
+---
+
+## Goroutines in Action
+
+Making it concurrent
+
+```{.go code-line-numbers="1,5,8,12"}
+func checkHealth(url string, results chan<- string)
+
+func main() {
+    services := []string{"http://api1.com", "http://api2.com", "http://api3.com"}
+    results := make(chan string, len(services))
+
+    for _, service := range services {
+        go checkHealth(service, results)
+    }
+
+    for range services {
+        fmt.Println(<-results)
+    }
+}
+```
+
+---
+
+## Every Go Program is a Goroutine
+
+</br>
+
+```{.go filename="main.go"}
+func main() {
+    panic("AAAAHHH!")
+}
+```
+
+---
+
+## Every Go Program is a Goroutine
+
+</br>
+
+```{.go filename="main.go"}
+func main() {
+    panic("AAAAHHH!")
+}
+```
+
+</br>
+
+```{.bash code-line-numbers="4"}
+$ go run ./main.go
+panic: AAAAHHH!
+
+goroutine 1 [running]:
+main.main()
+	/Users/milan/talks/2025-12-07-DevOpsHour-Go/examples/panic/main.go:4 +0x2c
+exit status 2
+```
 
 ---
 
