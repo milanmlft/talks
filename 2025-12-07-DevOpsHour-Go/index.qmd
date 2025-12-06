@@ -150,6 +150,29 @@ go doc
 
 ---
 
+## Go Powers Your DevOps Stack
+
+Already using Go (probably):
+
+- **Container orchestration**: Docker, Kubernetes, containerd
+- **Infrastructure**: Terraform, Packer, Consul, Vault
+- **Monitoring**: Prometheus, Grafana, Telegraf
+- **CLI tools**: GitHub CLI, kubectl, helm
+- **Cloud**: Many AWS/GCP/Azure tools
+
+---
+
+## Go Powers Your DevOps Stack
+
+Why did they choose Go?
+
+- Fast builds for rapid iteration
+- Easy deployment (single binary)
+- Excellent networking libraries
+- Natural fit for distributed systems
+
+---
+
 ## Concurrency with Goroutines
 
 ![](figures/gopher-goroutines.jpg){fig-align="center"}
