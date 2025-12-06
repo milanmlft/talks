@@ -140,8 +140,11 @@ go doc
 ## Go's DevOps Superpowers
 
 - Fast build times & cross-compilation
+  - Cross-compile for all platforms: `GOOS=linux GOARCH=amd64 go build`
 - Small static binaries
+  - Binary size: ~15MB for a full-featured CLI tool
 - Low memory footprint and garbage collection
+  - Memory: typical Go service uses 10-50MB vs. 100-500MB for JVM
 - Efficient concurrency
 - Lends itself very well to microservices architecture
 
