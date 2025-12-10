@@ -180,6 +180,10 @@ go doc
 >
 > -- _[Steve Francia (Go Team)](https://spf13.com/p/rust-vs-go-better-together)_
 
+- Compiled
+- Garbage collected
+  &rarr; memory safe but pays some performance cost
+
 ---
 
 ## What About Performance? {.smaller}
