@@ -239,11 +239,11 @@ Why did they choose Go?
 A non-concurrent example
 
 ```{.go}
-func checkHealth(url string, results string)
+func checkHealth(url string, results *[]string)
 
 func main() {
     services := []string{"http://api1.com", "http://api2.com", "http://api3.com"}
-    results := make(string, len(services))
+    results := make(string, 0, len(services))
 
     for _, service := range services {
         checkHealth(service, results)
