@@ -142,7 +142,6 @@ if err != nil {
 - No hidden control flow (no exceptions)
 - Errors are values
 - Forces you to think about failure cases
-- `defer` for cleanup
 
 ---
 
@@ -213,6 +212,18 @@ go doc
 :::
 
 ::::
+
+---
+
+## Size Matters {.smaller}
+
+Typical image sizes of an API written in Python (with Flask) or Go:
+
+| Image               | Base             | Final Size | Reduction                     |
+| ------------------- | ---------------- | ---------- | ----------------------------- |
+| `python-api`        | python:3.14-slim | ~160MB     | baseline                      |
+| `go-api`            | golang:1.25      | ~950MB     | +9x larger (includes runtime) |
+| `go-api-multistage` | scratch          | **~8MB**   | **20x smaller**               |
 
 ---
 
@@ -368,6 +379,7 @@ exit status 2
 - Go Tour: <https://go.dev/tour/>
 - Effective Go: <https://go.dev/doc/effective_go>
 - Go by Example: <https://gobyexample.com/>
+- Join the ARC TRE team!
 
 **Books:**
 
