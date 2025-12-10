@@ -376,12 +376,16 @@ exit status 2
 
 ## How To Get Going
 
+:::{.nonincremental}
+
 - Go Tour: <https://go.dev/tour/>
 - Effective Go: <https://go.dev/doc/effective_go>
 - Go by Example: <https://gobyexample.com/>
+- [Go Proverbs](https://go-proverbs.github.io/)
 - Join the ARC TRE team!
 
 **Books:**
 
-- [Go Programming - From Beginner to Professional (Samantha Coyle)](https://learning.oreilly.com/library/view/go-programming/9781803243054/)
-- https://go.dev/learn/#featured-books
+- <https://go.dev/learn/#featured-books>
+
+:::
