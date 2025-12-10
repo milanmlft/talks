@@ -368,5 +368,5 @@ exit status 2
 
 **Books:**
 
-- "The Go Programming Language" (Donovan & Kernighan)
-- "Learning Go" (Jon Bodner)
+- [Go Programming - From Beginner to Professional (Samantha Coyle)](https://learning.oreilly.com/library/view/go-programming/9781803243054/)
+- https://go.dev/learn/#featured-books
