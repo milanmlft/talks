@@ -126,6 +126,24 @@ Bonus: the standard library is actually readable and an excellent resource for l
 
 ---
 
+## Error Handling: Explicit is Better
+
+```go
+func thingThatMightMessUp() (string, error)
+
+result, err := thingThatMightMessUp()
+if err != nil {
+    return fmt.Errorf("failed to read config: %w", err)
+}
+```
+
+- No hidden control flow (no exceptions)
+- Errors are values
+- Forces you to think about failure cases
+- `defer` for cleanup
+
+---
+
 ## The joy of having built-in tools
 
 ```bash
@@ -192,27 +210,6 @@ go doc
   :::
 
 ::::
-
----
-
-## Go Powers Your DevOps Stack
-
-- **Container orchestration**: Docker, Kubernetes, containerd
-- **Infrastructure**: Terraform, Packer, Consul, Vault
-- **Monitoring**: Prometheus, Grafana, Telegraf
-- **CLI tools**: GitHub CLI, kubectl, helm
-- **Cloud**: Many AWS/GCP/Azure tools
-
----
-
-## Go Powers Your DevOps Stack
-
-Why did they choose Go?
-
-- Fast builds for rapid iteration
-- Easy deployment (single binary)
-- Excellent networking libraries
-- Natural fit for distributed systems
 
 ---
 
@@ -339,19 +336,24 @@ exit status 2
 
 ---
 
-## Error Handling: Explicit is Better
+## Go Powers Your DevOps Stack
 
-```go
-data, err := ioutil.ReadFile("config.yaml")
-if err != nil {
-    return fmt.Errorf("failed to read config: %w", err)
-}
-```
+- **Container orchestration**: Docker, Kubernetes, containerd
+- **Infrastructure**: Terraform, Packer, Consul, Vault
+- **Monitoring**: Prometheus, Grafana, Telegraf
+- **CLI tools**: GitHub CLI, kubectl, helm
+- **Cloud**: Many AWS/GCP/Azure tools
 
-- No hidden control flow (no exceptions)
-- Errors are values
-- Forces you to think about failure cases
-- `defer` for cleanup
+---
+
+## Go Powers Your DevOps Stack
+
+Why did they choose Go?
+
+- Fast builds for rapid iteration
+- Easy deployment (single binary)
+- Excellent networking libraries
+- Natural fit for distributed systems
 
 ---
 
