@@ -336,42 +336,31 @@ exit status 2
 
 ---
 
-## Go Powers Your DevOps Stack
+## Go in the Wild
 
 - **Container orchestration**: Docker, Kubernetes, containerd
 - **Infrastructure**: Terraform, Packer, Consul, Vault
 - **Monitoring**: Prometheus, Grafana, Telegraf
 - **CLI tools**: GitHub CLI, kubectl, helm
 - **Cloud**: Many AWS/GCP/Azure tools
+- The **ARC TRE**!
 
 ---
 
-## Go Powers Your DevOps Stack
+## Why Did ARC TRE Choose Go?
 
-Why did they choose Go?
-
-- Fast builds for rapid iteration
-- Easy deployment (single binary)
-- Excellent networking libraries
-- Natural fit for distributed systems
-
----
-
-## Things to Go Away With (Takeaways)
-
-- **Start simple**: Go's standard library covers most DevOps needs
-- **Embrace concurrency**: Goroutines make parallel tasks trivial
-- **Static binaries = deployment joy**: No dependency hell
-- **Performance by default**: No optimization gymnastics needed
-- **DevOps tooling loves Go**: Docker, Kubernetes, Terraform, Prometheus...
-
-**Try it yourself**: <https://go.dev/tour/>
+- Simple concurrency
+- Small binaries &rarr; small containers
+- Great Standard Library
+- Good Tooling
+- Fast Compilation &rarr; enables [**hot reloading**](https://github.com/air-verse/air)
+- Safety: recoverable panics and memory safety
+- Good external libraries: AWS SDK, Kubernetes client-go
+- Tom Y was learning it and liked it
 
 ---
 
-## Further Reading
-
-**Official Resources:**
+## How To Get Going
 
 - Go Tour: <https://go.dev/tour/>
 - Effective Go: <https://go.dev/doc/effective_go>
@@ -381,7 +370,3 @@ Why did they choose Go?
 
 - "The Go Programming Language" (Donovan & Kernighan)
 - "Learning Go" (Jon Bodner)
-
-**DevOps-Specific:**
-
-- "Cloud Native Go" (M.-Leander Reimer)
