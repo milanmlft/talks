@@ -30,7 +30,8 @@ execute:
   - Go's unique characteristics
   - Why it's ideal for DevOps
   - Real-world examples
-    :::
+
+:::
 
 ::::
 
@@ -47,7 +48,8 @@ execute:
 - Key features overview: compiled, statically typed, garbage collected, built-in concurrency
 - The "boring is good" principle - stability over novelty
 - Compilation speed: Go compiles so fast it feels interpreted
-  :::
+
+:::
 
 ::: {.column}
 
@@ -207,7 +209,8 @@ go doc
 - Low memory footprint and garbage collection
 - Efficient concurrency
 - Lends itself well to microservices architecture
-  :::
+
+:::
 
 ::::
 
