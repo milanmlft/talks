@@ -45,8 +45,8 @@ execute:
 
 - Created at Google (2009) as a modern simple alternative to C
 - Core philosophy: simplicity, readability, and pragmatism
-- Key features overview: compiled, statically typed, garbage collected, built-in concurrency
 - The "boring is good" principle - stability over novelty
+- Key features overview: compiled, statically typed, garbage collected, built-in concurrency
 - Compilation speed: Go compiles so fast it feels interpreted
 
 :::
@@ -58,6 +58,20 @@ execute:
 :::
 
 ::::
+
+::: {.notes}
+
+Go was created at Google in 2009, and here's the interesting part - it was designed by some of the same people who created C and Unix. They were frustrated with the complexity of C++ and Java, and the slow compile times that were killing productivity.
+
+The core philosophy is radical simplicity. While other languages keep adding features, Go deliberately stays minimal. One of the key principles is **backwards compatibility**, Go code written 10 years ago will still compile with the most recent version of Go. Go is currently on version 1.25 and there is a common saying that Go will never reach version 2, meaning that it will never introduce breaking changes that would break compilation of old code (of course, never say never, but it's doing a pretty good job so far).
+
+This also follows the 'boring is good' principle, meaning Go values stability and predictability over novelty. There's usually one obvious way to do something, which makes reading other people's code much easier.
+
+[Point to bullet about compilation speed] this is one of the main reasons why Go is so productive. It has the performance of a compiled language, but the compilation is so fast, it feels like you're working with an interpreted language. This, together with its simple syntax, is how Go hits that sweet spot between C-like performance and Python-like user-friendliness.
+
+**Transition:** "But why should you, as someone working in DevOps, care about Go specifically?"
+
+:::
 
 ---
 
@@ -75,6 +89,26 @@ execute:
 
 ![](https://raw.githubusercontent.com/keygx/Go-gopher-Vector/fe01b920482f9ab2c6ec7d1928c3c617341e3841/svg/gopher02c.svg){.absolute top=200 right=100 width="300"}
 
+::: {.notes}
+
+Go was designed for the exact challenges we face in DevOps every day:
+
+**Performance** - It's compiled, so you get near-C performance without the complexity.
+
+**Scalability** - Built-in concurrency primitives make it trivial to write services that scale.
+
+**Security** - Memory-safe, thanks to garbage collection, and the compiler catches many bugs.
+
+**Reliability** - The language is so stable that code written 10 years ago still compiles and runs today.
+
+What really sets it apart is the lean syntax combined with a powerful standard library. You can build production-ready services without pulling in dozens of dependencies.
+
+And the tooling! Everything you need comes built-in. No more arguing about which formatter or test runner to use, you just the built-in tools and that's that.
+
+**Transition:** "Let me show you what I mean by 'lean syntax'...
+
+:::
+
 ---
 
 ## Go's Minimal Syntax
@@ -82,8 +116,20 @@ execute:
 - Only 25 keywords (Python: 35, Java: 68, C++23: 92)
 - Strongly idiomatic - one way to do things
 - No classes, no inheritance - favour composition
+- Define behaviour through interfaces
 - Explicit error handling - no exceptions
-- Fast compilation: feels like an interpreted language
+
+::: {.notes}
+
+Only 25 keywords! Think about that - Python has 35, Java has 68, and C++ is just off the charts.
+
+This isn't limitation, it's liberation. There's no inheritance to worry about, no classes - just structs and interfaces. You define behaviour through interfaces, rather than inherit it.
+
+[Emphasize] The explicit error handling might seem verbose at first, but it forces you to think about what can go wrong. No more mysterious exceptions bubbling up from deep in your call stack.
+
+**Transition:** "Let me show you just how simple it can be...
+
+:::
 
 ---
 
@@ -107,6 +153,21 @@ func main() {
 }
 ```
 
+::: {.notes}
+Here's a complete, production-capable web server in 15 lines. No framework, no dependencies, just the standard library.
+
+[Walk through the code]
+
+- Package declaration - every Go file belongs to a package
+- Import just what we need from the standard library
+- A simple handler function that takes a ResponseWriter and Request
+- Main function that registers the handler and starts the server
+
+The beauty is there's no magic here - you can read this code and understand exactly what's happening."
+
+**Transition:** "And this is all standard library...
+:::
+
 ---
 
 ## All You Need Is STD
@@ -121,7 +182,13 @@ Go's standard library includes everything you need[^1]:
 - ... and much more
 
 ::: {.notes}
-Bonus: the standard library is actually readable and an excellent resource for learning Go (take that, C++)
+The Go standard library is incredible. It's not just comprehensive, it's actually well-designed and consistent.
+
+You've got everything for file I/O, networking, HTTP servers and clients, JSON parsing, database connections, cryptography - all maintained by the Go team with guaranteed backward compatibility.
+
+And the best thing is - the standard library source code is actually readable! You can actually dive into the standard library code to learn how things work and it's often used as a reference for idiomatic Go code. Try doing that in C++.
+
+Most importantly for DevOps - you can build entire services using just the standard library. No dependency hell, no version conflicts.
 :::
 
 [^1]: until it doesn't, in which case Go still has an excellent package ecosystem.
@@ -135,13 +202,29 @@ func thingThatMightMessUp() (string, error)
 
 result, err := thingThatMightMessUp()
 if err != nil {
-    return fmt.Errorf("failed to read config: %w", err)
+    return fmt.Errorf("failed to do the thing: %w", err)
 }
 ```
 
 - No hidden control flow (no exceptions)
-- Errors are values
+- Errors are values - `error` is just another type
 - Forces you to think about failure cases
+
+::: {.notes}
+If you've seen Go code, you've seen 'if err != nil' everywhere. At first, it seems repetitive, but there's method to this madness.
+
+Errors are just values, not special control flow. This means:
+
+- No hidden exceptions that can crash your program
+- You're forced to handle errors where they occur
+- The error path is as clear as the happy path
+
+The error wrapping with '%w' lets you add context while preserving the original error - perfect for debugging production issues.
+
+This makes it easy to debug even errors that happen 20 levels down the call stack, again improving developer experience.
+
+**Transition:** "Speaking of developer experience, let's talk about tooling..."
+:::
 
 ---
 
@@ -158,18 +241,39 @@ go test
 go run
 
 # Dependency management
-go install
 go get
+go mod
 
 # Docs generator
 go doc
 ```
+
+::: {.notes}
+"Everything you need comes in the box. No decision fatigue about which tools to use.
+
+- `go fmt` - One formatter to rule them all. No debates about tabs vs spaces!
+- `go test` - Built-in testing framework
+- `go doc` - Documentation generation
+- `go get` and `go mod` - Dependency management that actually works
+
+[Show Python slide]
+:::
 
 ---
 
 ## The joy of having built-in tools
 
 ![](figures/python-tooling-formatters.png){fig-align="center"}
+
+::: {.notes}
+Compare this to Python - where you need an entire (very beautiful I might add) website full of traffic lights just to know which formatter to use, and even then there are multiple options...
+
+In Go, there's one way, it's built-in, and everyone uses it.
+
+This consistency is huge for teams. No bikeshedding about tooling choices - you just write code."
+
+**Transition:** "Now, you might be wondering about performance..."
+:::
 
 ---
 
