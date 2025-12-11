@@ -1,0 +1,554 @@
+---
+title: "Go: Your New Go-To DevOps Language"
+subtitle: ARC DevOps Hour
+date: 2025-12-11
+author: "Milan Malfait"
+format:
+  revealjs:
+    slide-number: true
+    toc: false
+execute:
+  echo: true
+  eval: false
+---
+
+## Introduction
+
+:::: {.columns}
+
+::: {.column width="30%"}
+![](https://raw.githubusercontent.com/egonelbre/gophers/63b1f5a9f334f9e23735c6e09ac003479ffe5df5/vector/adventure/hiking.svg)
+:::
+
+::: {.column width="70%"}
+
+- My Go journey
+  - Fiddling around with it and used it for Advent of Code 2024
+  - Joined the ARC TRE team January 2025
+
+- What we'll cover today:
+  - Go's unique characteristics
+  - Why it's ideal for DevOps
+  - Real-world examples
+
+:::
+
+::::
+
+---
+
+## What Makes Go Different {.smaller}
+
+:::: {.columns}
+
+::: {.column}
+
+- Created at Google (2009) as a modern simple alternative to C
+- Core philosophy: simplicity, readability, and pragmatism
+- The "boring is good" principle - stability over novelty
+- Key features overview: compiled, statically typed, garbage collected, built-in concurrency
+- Compilation speed: Go compiles so fast it feels interpreted
+
+:::
+
+::: {.column}
+
+![](https://raw.githubusercontent.com/golang-samples/gopher-vector/9fe99fbf17b019125bf649f8a921882b54e151a6/gopher.svg)
+
+:::
+
+::::
+
+::: {.notes}
+
+Go was created at Google in 2009, and here's the interesting part - it was designed by some of the same people who created C and Unix. They were frustrated with the complexity of C++ and Java, and the slow compile times that were killing productivity.
+
+The core philosophy is radical simplicity. While other languages keep adding features, Go deliberately stays minimal. One of the key principles is **backwards compatibility**, Go code written 10 years ago will still compile with the most recent version of Go. Go is currently on version 1.25 and there is a common saying that Go will never reach version 2, meaning that it will never introduce breaking changes that would break compilation of old code (of course, never say never, but it's doing a pretty good job so far).
+
+This also follows the 'boring is good' principle, meaning Go values stability and predictability over novelty. There's usually one obvious way to do something, which makes reading other people's code much easier.
+
+[Point to bullet about compilation speed] this is one of the main reasons why Go is so productive. It has the performance of a compiled language, but the compilation is so fast, it feels like you're working with an interpreted language. This, together with its simple syntax, is how Go hits that sweet spot between C-like performance and Python-like user-friendliness.
+
+**Transition:** "But why should you, as someone working in DevOps, care about Go specifically?"
+
+:::
+
+---
+
+## Why Go?
+
+- Designed for modern software engineering challenges
+  - Performance
+  - Scalability
+  - Security
+  - Reliability
+
+- Lean syntax
+- Strong standard library
+- Built-in tools
+
+![](https://raw.githubusercontent.com/keygx/Go-gopher-Vector/fe01b920482f9ab2c6ec7d1928c3c617341e3841/svg/gopher02c.svg){.absolute top=200 right=100 width="300"}
+
+::: {.notes}
+
+Go was designed for the exact challenges we face in DevOps every day:
+
+**Performance** - It's compiled, so you get near-C performance without the complexity.
+
+**Scalability** - Built-in concurrency primitives make it trivial to write services that scale.
+
+**Security** - Memory-safe, thanks to garbage collection, and the compiler catches many bugs.
+
+**Reliability** - The language is so stable that code written 10 years ago still compiles and runs today.
+
+What really sets it apart is the lean syntax combined with a powerful standard library. You can build production-ready services without pulling in dozens of dependencies.
+
+And the tooling! Everything you need comes built-in. No more arguing about which formatter or test runner to use, you just the built-in tools and that's that.
+
+**Transition:** "Let me show you what I mean by 'lean syntax'...
+
+:::
+
+---
+
+## Go's Minimal Syntax
+
+- Only 25 keywords (Python: 35, Java: 68, C++23: 92)
+- Strongly idiomatic - one way to do things
+- No classes, no inheritance - favour composition
+- Define behaviour through interfaces
+- Explicit error handling - no exceptions
+
+::: {.notes}
+
+Only 25 keywords! Think about that - Python has 35, Java has 68, and C++ is just off the charts.
+
+This isn't limitation, it's liberation. There's no inheritance to worry about, no classes - just structs and interfaces. You define behaviour through interfaces, rather than inherit it.
+
+[Emphasize] The explicit error handling might seem verbose at first, but it forces you to think about what can go wrong. No more mysterious exceptions bubbling up from deep in your call stack.
+
+**Transition:** "Let me show you just how simple it can be...
+
+:::
+
+---
+
+### A complete web server in 15 lines
+
+```{.go}
+package main
+
+import (
+    "fmt"
+    "net/http"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
+}
+
+func main() {
+    http.HandleFunc("/", handler)
+    http.ListenAndServe(":8080", nil)
+}
+```
+
+::: {.notes}
+Here's a complete, production-capable web server in 15 lines. No framework, no dependencies, just the standard library.
+
+[Walk through the code]
+
+- Package declaration - every Go file belongs to a package
+- Import just what we need from the standard library
+- A simple handler function that takes a ResponseWriter and Request
+- Main function that registers the handler and starts the server
+
+The beauty is there's no magic here - you can read this code and understand exactly what's happening."
+
+**Transition:** "And this is all standard library...
+:::
+
+---
+
+## All You Need Is STD
+
+Go's standard library includes everything you need[^1]:
+
+- `os`, `io`, `fmt`
+- Logging: `log`, `log/slog`
+- Networking: `net/http`
+- Databases: `database/sql`
+- Data: `encoding/json`, `encoding/xml`, `encoding/csv`
+- ... and much more
+
+::: {.notes}
+The Go standard library is incredible. It's not just comprehensive, it's actually well-designed and consistent.
+
+You've got everything for file I/O, networking, HTTP servers and clients, JSON parsing, database connections, cryptography - all maintained by the Go team with guaranteed backward compatibility.
+
+And the best thing is - the standard library source code is actually readable! You can actually dive into the standard library code to learn how things work and it's often used as a reference for idiomatic Go code. Try doing that in C++.
+
+Most importantly for DevOps - you can build entire services using just the standard library. No dependency hell, no version conflicts.
+:::
+
+[^1]: until it doesn't, in which case Go still has an excellent package ecosystem.
+
+---
+
+## Error Handling: Explicit is Better
+
+```go
+func thingThatMightMessUp() (string, error)
+
+result, err := thingThatMightMessUp()
+if err != nil {
+    return fmt.Errorf("failed to do the thing: %w", err)
+}
+```
+
+- No hidden control flow (no exceptions)
+- Errors are values - `error` is just another type
+- Forces you to think about failure cases
+
+::: {.notes}
+If you've seen Go code, you've seen 'if err != nil' everywhere. At first, it seems repetitive, but there's method to this madness.
+
+Errors are just values, not special control flow. This means:
+
+- No hidden exceptions that can crash your program
+- You're forced to handle errors where they occur
+- The error path is as clear as the happy path
+
+The error wrapping with '%w' lets you add context while preserving the original error - perfect for debugging production issues.
+
+This makes it easy to debug even errors that happen 20 levels down the call stack, again improving developer experience.
+
+**Transition:** "Speaking of developer experience, let's talk about tooling..."
+:::
+
+---
+
+## The joy of having built-in tools
+
+```bash
+# Formatting
+go fmt
+
+# Testing
+go test
+
+# Compile & execute
+go run
+
+# Dependency management
+go get
+go mod
+
+# Docs generator
+go doc
+```
+
+::: {.notes}
+"Everything you need comes in the box. No decision fatigue about which tools to use.
+
+- `go fmt` - One formatter to rule them all. No debates about tabs vs spaces!
+- `go test` - Built-in testing framework
+- `go doc` - Documentation generation
+- `go get` and `go mod` - Dependency management that actually works
+
+[Show Python slide]
+:::
+
+---
+
+## The joy of having built-in tools
+
+![](figures/python-tooling-formatters.png){fig-align="center"}
+
+::: {.notes}
+Compare this to Python - where you need an entire (very beautiful I might add) website full of traffic lights just to know which formatter to use, and even then there are multiple options...
+
+In Go, there's one way, it's built-in, and everyone uses it.
+
+This consistency is huge for teams. No bikeshedding about tooling choices - you just write code."
+
+**Transition:** "Now, you might be wondering about performance..."
+:::
+
+---
+
+## What About Performance?
+
+> Go has excellent performance right out of the box. By design, there are no
+> knobs or levers that you can use to squeeze more performance out of Go
+>
+> -- _[Steve Francia (Go Team)](https://spf13.com/p/rust-vs-go-better-together)_
+
+- Compiled
+- Garbage collected
+  &rarr; memory safe but pays some performance cost
+
+::: {.notes}
+"Steve Francia from the Go team said something interesting - 'Go has excellent performance right out of the box with no knobs or levers.'
+
+This is by design. You write simple, idiomatic Go and get great performance. No need for optimization tricks or manual memory management.
+
+[Show benchmark chart]
+:::
+
+---
+
+## What About Performance? {.smaller}
+
+> Go has excellent performance right out of the box. By design, there are no
+> knobs or levers that you can use to squeeze more performance out of Go
+>
+> -- _[Steve Francia (Go Team)](https://spf13.com/p/rust-vs-go-better-together)_
+
+![](figures/speed-comparison.png){fig-align="center" fig-alt="Speed comparison of programming languages"}
+
+::: {.notes}
+
+Look at these benchmarks - Go consistently performs close to C and Rust, while being much easier to write and maintain. Yes, there's a garbage collector, so you pay a small price, but you gain memory safety and simplicity.
+
+For DevOps tools, this sweet spot is perfect. We need fast, but we also need maintainable and bug-free."
+
+**Transition:** "So far we've covered some of the core features of Go and why it's good for software engineering in general, but why is Go particularly popular for DevOps work..."
+
+:::
+
+---
+
+## Go's DevOps Superpowers
+
+:::: {.columns}
+
+:::{.column width="30%"}
+![](https://raw.githubusercontent.com/egonelbre/gophers/63b1f5a9f334f9e23735c6e09ac003479ffe5df5/vector/superhero/standing.svg)
+:::
+
+:::{.column width="70%"}
+
+- Fast build times & cross-compilation
+- Small static binaries
+- Low memory footprint and garbage collection
+- Efficient concurrency
+- Lends itself well to microservices architecture
+
+:::
+
+::::
+
+::: {.notes}
+"Go has several features that make it perfect for DevOps:
+
+**Cross-compilation** is trivial - build for Linux on your Mac with just an environment variable.
+
+**Static binaries** - everything compiled into one file. No runtime dependencies, no 'works on my machine' problems.
+
+**Small memory footprint** - Go services typically use a fraction of the memory of equivalent Python or Java services.
+
+**Built-in concurrency** - We'll dive into this in a moment, but this is really why it shines for DevOps
+
+**Transition:** "Let me show you what I mean by small binaries..."
+:::
+
+---
+
+## Size Matters {.smaller}
+
+Typical image sizes of an API written in Python (with Flask) or Go:
+
+| Image               | Base             | Final Size | Reduction                     |
+| ------------------- | ---------------- | ---------- | ----------------------------- |
+| `python-api`        | python:3.14-slim | ~160MB     | baseline                      |
+| `go-api`            | golang:1.25      | ~950MB     | +9x larger (includes runtime) |
+| `go-api-multistage` | scratch          | **~8MB**   | **20x smaller**               |
+
+:::{.notes}
+
+A Python Flask API - about 160MB even with the slim base image.
+The same API in Go - can be as small as 8MB using a multi-stage build with a scratch base!
+
+[Emphasize] That's a 20x reduction! Think about what this means:
+
+- Faster deployments
+- Lower storage costs
+- Reduced attack surface
+- Quicker auto-scaling
+
+In the TRE, our service containers are tiny, which means our Kubernetes cluster can spin up new pods in seconds, not minutes."
+
+**Transition:** "Now let's talk about my favorite Go feature - goroutines..."
+
+:::
+
+---
+
+## Concurrency with Goroutines
+
+![](figures/gopher-goroutines.jpg){fig-align="center"}
+
+---
+
+## Concurrency with Goroutines
+
+- Goroutines: lightweight threads managed by Go runtime
+- Simple syntax: just add `go` before a function call
+- Channels: safe communication between goroutines
+- Perfect for DevOps tasks:
+  - Parallel API calls to multiple services
+  - Concurrent log processing
+  - Non-blocking I/O operations
+
+---
+
+## Goroutines in Action {auto-animate=true}
+
+A non-concurrent example
+
+```{.go}
+func checkHealth(url string, results *[]string)
+
+func main() {
+	services := []string{"http://api1.com", "http://api2.com", "http://api3.com"}
+	results := make([]string, 0, len(services))
+
+	for _, service := range services {
+		checkHealth(service, &results) // Run health checks sequentially
+	}
+
+	for _, res := range results {
+		fmt.Println(res)
+	}
+}
+```
+
+---
+
+## Goroutines in Action {auto-animate=true}
+
+Making it concurrent
+
+```{.go}
+func checkHealth(url string, results chan<- string)
+
+func main() {
+	services := []string{"http://api1.com", "http://api2.com", "http://api3.com"}
+	results := make(chan string, len(services))
+
+	for _, service := range services {
+		go checkHealth(service, results) // Run health checks concurrently
+	}
+
+	for range services {
+		fmt.Println(<-results) // Collect results
+	}
+}
+
+```
+
+---
+
+## Goroutines in Action
+
+Making it concurrent
+
+```{.go code-line-numbers="1,5,8,12"}
+func checkHealth(url string, results chan<- string)
+
+func main() {
+    services := []string{"http://api1.com", "http://api2.com", "http://api3.com"}
+    results := make(chan string, len(services))
+
+    for _, service := range services {
+        go checkHealth(service, results)
+    }
+
+    for range services {
+        fmt.Println(<-results)
+    }
+}
+```
+
+---
+
+## Every Go Program is a Goroutine
+
+</br>
+
+```{.go filename="main.go"}
+func main() {
+    panic("AAAAHHH!")
+}
+```
+
+---
+
+## Every Go Program is a Goroutine
+
+</br>
+
+```{.go filename="main.go"}
+func main() {
+    panic("AAAAHHH!")
+}
+```
+
+</br>
+
+```{.bash code-line-numbers="4"}
+$ go run ./main.go
+panic: AAAAHHH!
+
+goroutine 1 [running]:
+main.main()
+	/Users/milan/talks/2025-12-11-DevOpsHour-Go/examples/panic/main.go:4 +0x2c
+exit status 2
+```
+
+---
+
+## Go in the Wild
+
+- **Container orchestration**: Docker, Kubernetes, containerd
+- **Infrastructure**: Terraform, Packer, Consul, Vault
+- **Monitoring**: Prometheus, Grafana, Telegraf
+- **CLI tools**: GitHub CLI, kubectl, helm
+- **Cloud**: Many AWS/GCP/Azure tools
+- The **ARC TRE**!
+
+---
+
+## Why Did ARC TRE Choose Go?
+
+- Simple concurrency
+- Small binaries &rarr; small containers
+- Great Standard Library
+- Good Tooling
+- Fast Compilation &rarr; enables [**hot reloading**](https://github.com/air-verse/air)
+- Safety: recoverable panics and memory safety
+- Good external libraries: AWS SDK, Kubernetes client
+- Tom Y was learning it and liked it
+
+---
+
+## How To Get Going
+
+:::{.nonincremental}
+
+- Go Tour: <https://go.dev/tour/>
+- Effective Go: <https://go.dev/doc/effective_go>
+- Go by Example: <https://gobyexample.com/>
+- [Go Proverbs](https://go-proverbs.github.io/)
+- Join the ARC TRE team!
+
+**Books:**
+
+- <https://go.dev/learn/#featured-books>
+
+:::
+
+---
+
+More code examples available at <https://github.com/milanmlft/talks/tree/main/2025-12-11-DevOpsHour-Go/examples>
