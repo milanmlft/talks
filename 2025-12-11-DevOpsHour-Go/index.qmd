@@ -528,7 +528,7 @@ exit status 2
 - Good Tooling
 - Fast Compilation &rarr; enables [**hot reloading**](https://github.com/air-verse/air)
 - Safety: recoverable panics and memory safety
-- Good external libraries: AWS SDK, Kubernetes client-go
+- Good external libraries: AWS SDK, Kubernetes client
 - Tom Y was learning it and liked it
 
 ---
