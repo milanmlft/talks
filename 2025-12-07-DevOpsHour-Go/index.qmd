@@ -288,6 +288,14 @@ This consistency is huge for teams. No bikeshedding about tooling choices - you 
 - Garbage collected
   &rarr; memory safe but pays some performance cost
 
+::: {.notes}
+"Steve Francia from the Go team said something interesting - 'Go has excellent performance right out of the box with no knobs or levers.'
+
+This is by design. You write simple, idiomatic Go and get great performance. No need for optimization tricks or manual memory management.
+
+[Show benchmark chart]
+:::
+
 ---
 
 ## What About Performance? {.smaller}
@@ -298,6 +306,16 @@ This consistency is huge for teams. No bikeshedding about tooling choices - you 
 > -- _[Steve Francia (Go Team)](https://spf13.com/p/rust-vs-go-better-together)_
 
 ![](figures/speed-comparison.png){fig-align="center" fig-alt="Speed comparison of programming languages"}
+
+::: {.notes}
+
+Look at these benchmarks - Go consistently performs close to C and Rust, while being much easier to write and maintain. Yes, there's a garbage collector, so you pay a small price, but you gain memory safety and simplicity.
+
+For DevOps tools, this sweet spot is perfect. We need fast, but we also need maintainable and bug-free."
+
+**Transition:** "So far we've covered some of the core features of Go and why it's good for software engineering in general, but why is Go particularly popular for DevOps work..."
+
+:::
 
 ---
 
@@ -321,6 +339,20 @@ This consistency is huge for teams. No bikeshedding about tooling choices - you 
 
 ::::
 
+::: {.notes}
+"Go has several features that make it perfect for DevOps:
+
+**Cross-compilation** is trivial - build for Linux on your Mac with just an environment variable.
+
+**Static binaries** - everything compiled into one file. No runtime dependencies, no 'works on my machine' problems.
+
+**Small memory footprint** - Go services typically use a fraction of the memory of equivalent Python or Java services.
+
+**Built-in concurrency** - We'll dive into this in a moment, but this is really why it shines for DevOps
+
+**Transition:** "Let me show you what I mean by small binaries..."
+:::
+
 ---
 
 ## Size Matters {.smaller}
@@ -332,6 +364,24 @@ Typical image sizes of an API written in Python (with Flask) or Go:
 | `python-api`        | python:3.14-slim | ~160MB     | baseline                      |
 | `go-api`            | golang:1.25      | ~950MB     | +9x larger (includes runtime) |
 | `go-api-multistage` | scratch          | **~8MB**   | **20x smaller**               |
+
+:::{.notes}
+
+A Python Flask API - about 160MB even with the slim base image.
+The same API in Go - can be as small as 8MB using a multi-stage build with a scratch base!
+
+[Emphasize] That's a 20x reduction! Think about what this means:
+
+- Faster deployments
+- Lower storage costs
+- Reduced attack surface
+- Quicker auto-scaling
+
+In the TRE, our service containers are tiny, which means our Kubernetes cluster can spin up new pods in seconds, not minutes."
+
+**Transition:** "Now let's talk about my favorite Go feature - goroutines..."
+
+:::
 
 ---
 
