@@ -503,7 +503,7 @@ panic: AAAAHHH!
 
 goroutine 1 [running]:
 main.main()
-	/Users/milan/talks/2025-12-07-DevOpsHour-Go/examples/panic/main.go:4 +0x2c
+	/Users/milan/talks/2025-12-11-DevOpsHour-Go/examples/panic/main.go:4 +0x2c
 exit status 2
 ```
 
@@ -551,4 +551,4 @@ exit status 2
 
 ---
 
-More code examples available at <https://github.com/milanmlft/talks/tree/main/2025-12-07-DevOpsHour-Go/examples>
+More code examples available at <https://github.com/milanmlft/talks/tree/main/2025-12-11-DevOpsHour-Go/examples>
