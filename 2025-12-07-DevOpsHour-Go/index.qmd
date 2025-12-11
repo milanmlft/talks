@@ -415,7 +415,7 @@ func main() {
     results := make([]string, 0, len(services))
 
     for _, service := range services {
-        checkHealth(service, results)
+        checkHealth(service, &results)
     }
 
     for range services {
