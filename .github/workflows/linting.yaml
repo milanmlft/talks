@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Cache pre-commit
-        uses: actions/cache@v4
+        uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5
         with:
           path: ~/.cache/pre-commit
           key: cache-${{ hashFiles(inputs.pre-commit-config) }}
