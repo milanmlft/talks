@@ -1,0 +1,334 @@
+---
+title: "Expert Generalists"
+subtitle: ARC Collaboration Hour
+date: 2025-12-16
+author: "Milan Malfait"
+format:
+  revealjs:
+    slide-number: true
+    toc: false
+---
+
+# Introduction
+
+## What is an Expert Generalist?
+
+> Someone who combines **broad knowledge** across multiple domains with **deep expertise** in several areas
+
+- Not a shallow generalist, not a narrow specialist
+- **Key abilities:**
+  - Learn quickly
+  - Recognize fundamental patterns beneath shifting tools
+  - Apply insights across disciplines
+
+---
+
+## Beyond T-Shaped
+
+![](https://martinfowler.com/articles/expert-generalist/t-shape.png){fig-align="center" width="60%"}
+
+::: {.notes}
+Traditional model: T-shaped people (one deep skill + broad knowledge)
+Expert Generalists are more like **"combs"** or **"paint drips"**
+Multiple areas of deep expertise with varying depths
+:::
+
+# Six Key Characteristics
+
+## 1. Curiosity
+
+- Always learning
+- **Driven to explore** new technologies and domains
+- Seeking **understanding** rather than quick solutions
+- When encountering answers, they dig deeper to ensure comprehension
+
+---
+
+## 2. Collaborativeness
+
+- **Recognizing personal knowledge limits**, actively partner with specialists
+- Ask informed questions and approach unfamiliar domains with **humility**
+- Understanding there are usually valid reasons behind established practices
+
+---
+
+## 3. User Focus
+
+- Channels curiosity **productively**
+- Rather than chasing every trend, prioritize learning that **helps users excel**
+- Direct attention to technologies serving project goals
+
+---
+
+## 4. Favour Fundamental Knowledge
+
+- Prioritise **principles and patterns** over tool-specific expertise
+- Patterns remain relevant across technology shifts
+- Frameworks become obsolete; fundamentals endure
+
+::: {.notes}
+**Example:** focus on cloud-native architecture, like auto-scaling heuristics
+and multi-region fail-over, rather than focusing on AWS-specific configuration
+syntax
+:::
+
+---
+
+## 5. Blend of Specialist and Generalist Skills
+
+- Develop **deep knowledge in several domains**
+- Typically acquired through:
+  - Necessary project work
+  - Intellectual curiosity
+
+---
+
+## 6. Sympathy for Related Domains
+
+**"Mechanical sympathy"** — intuitive understanding of adjacent fields
+
+. . .
+
+Examples:
+
+- Database designers understanding UX constraints
+- Frontend engineers grasping infrastructure limitations
+
+# Organizational Benefits
+
+## Breaking Down Silos
+
+Navigate between specialized teams
+
+. . .
+
+Reduce handoff delays
+
+. . .
+
+Enable feature completion across competency boundaries
+
+---
+
+## Knowledge Transfer & Decision-Making
+
+**Knowledge transfer:**
+
+- Cross-domain presence helps specialists develop sympathy for related areas
+
+. . .
+
+**Better decisions:**
+
+- Exposure to multiple tools enables better solution selection
+- Avoid defaulting to familiar tools
+
+---
+
+## Complex Problem Solving
+
+System faults often exist in **implicit interactions between technologies**
+
+. . .
+
+Only those seeing the complete picture can diagnose them
+
+. . .
+
+> "An engineer versed in Raft can untangle a Kubernetes control-plane stall that might puzzle several certified admins"
+
+---
+
+## Innovation & Leadership
+
+**Accelerates innovation:**
+
+- Broader perspective reveals patterns invisible to specialists
+
+. . .
+
+**Natural leadership development:**
+
+- Communication skills emerge naturally
+- Organizational relationships strengthen
+- Credibility grows organically
+
+# Developing Expert Generalists
+
+## From Tools to Fundamentals
+
+**The Problem:** Industry focuses on tool expertise rather than underlying principles
+
+. . .
+
+**The Solution:** Emphasize patterns and principles
+
+. . .
+
+Example: Application Development, Data Engineering, and DevOps all share **distributed systems foundations**
+
+- Partitioning, replication, consistency, consensus
+
+---
+
+## Workshop Model: Building Miniatures
+
+Hands-on training through implementing **simplified versions** of production systems
+
+. . .
+
+### Examples:
+
+- **Build Your Own Kafka** — messaging system with quorum replication
+- **Kubernetes from the Inside Out** — controller with reconcile loops
+- **ACID on Object Storage** — mini Delta Lake with transaction logs
+
+. . .
+
+Miniatures serve as gateways to understanding real open-source codebases
+
+# The Role of Specialists
+
+## Specialists Are Essential
+
+Expert Generalists **enhance** but don't **replace** specialists
+
+. . .
+
+**Best practices:**
+
+- At least one full-time specialist for core technologies
+- Prioritize responsiveness over utilization
+- Monitor question-answer latency to prevent bottlenecks
+
+. . .
+
+Teams of pure generalists succeed slower than **blended teams**
+
+---
+
+## Collaboration Attitudes
+
+**From specialists:**
+
+- Eager to share knowledge
+- Patient with questions
+
+. . .
+
+**From generalists:**
+
+- Comfortable with ignorance
+- Humble when learning new domains
+- Thoughtful when introducing different approaches
+
+# Expert Generalists in the LLM Era
+
+## LLMs Amplify Expert Generalist Value
+
+**Lower barriers** to exploring unfamiliar tools
+
+. . .
+
+Expert Generalists with strong fundamentals:
+
+- Ask better questions
+- Critically evaluate AI suggestions against architectural patterns
+- Avoid blindly accepting unreliable outputs
+
+. . .
+
+Use LLMs to **generate questions**, explain mechanisms, and provide exploratory tools
+
+. . .
+
+**Prediction:** LLMs will further **increase** Expert Generalist importance
+
+# Assessment & Development
+
+## Hiring Expert Generalists
+
+**Move beyond tool trivia questions**
+
+. . .
+
+**Explore:**
+
+- How candidates approached unfamiliar challenges
+- How they approached new domains
+- How they collaborated across disciplines
+
+. . .
+
+Focus on **learning agility** rather than tool familiarity
+
+---
+
+## Career Progression
+
+Organizations should **encourage cross-disciplinary experimentation**
+
+. . .
+
+**Avoid vertical silos:**
+
+- ❌ UI Engineer → Senior UI Engineer → UI Architect
+
+. . .
+
+**Reward expansion** into adjacent domains
+
+. . .
+
+Treat Expert Generalist as a **"first-class skill"** in career frameworks
+
+---
+
+## Important Challenges
+
+**Assessment difficulty**
+
+- Requires intensive participation from known practitioners
+- Harder than certifications and tenure metrics
+
+. . .
+
+**Risk of shallow work**
+
+- Teams need specialist depth in core domains
+
+. . .
+
+**Potential over-commitment**
+
+- Drive to "Get Things Done" can lead to overextension
+
+# Conclusion
+
+## Key Takeaways
+
+Expert Generalists represent **sophisticated expertise** combining:
+
+- Learning velocity
+- Systems thinking
+- Interpersonal skills
+
+. . .
+
+Their ability to navigate multiple domains while maintaining **principled understanding** makes them invaluable
+
+. . .
+
+Organizations should **deliberately cultivate** this capability
+
+---
+
+## Further Reading
+
+📖 Full article: [martinfowler.com/articles/expert-generalist.html](https://martinfowler.com/articles/expert-generalist.html)
+
+. . .
+
+**Key Quote:**
+
+> "Developers who roam across languages, architectures, and problem spaces may seem like 'jack-of-all-trades, master-of-none,' yet repeated dives below surface differences help them develop durable, principle-level mastery."
