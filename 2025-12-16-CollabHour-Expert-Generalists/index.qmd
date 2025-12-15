@@ -102,7 +102,7 @@ Examples:
 
 ---
 
-## Why Organistations Need Expert Generalists
+## Why Organisations Need Expert Generalists
 
 - Finding exactly the right kind of specialist limits the candidate pool
 - Expert Generalists are particularly valuable at working across the specialist skill boundaries, handling interactions and filling in gaps
