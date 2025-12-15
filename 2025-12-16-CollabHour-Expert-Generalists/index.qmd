@@ -11,6 +11,12 @@ format:
 
 # Introduction
 
+---
+
+[![](figures/article.png)](https://martinfowler.com/articles/expert-generalist.html)
+
+---
+
 ## What is an Expert Generalist?
 
 > Someone who combines **broad knowledge** across multiple domains with **deep expertise** in several areas
@@ -94,82 +100,51 @@ Examples:
 - Database designers understanding UX constraints
 - Frontend engineers grasping infrastructure limitations
 
-# Organizational Benefits
+# Assessing Expert Generalists
 
-## Breaking Down Silos
+## How to Recognise an Expert Generalist {.smaller}
 
-Navigate between specialized teams
+- How do they approach a particularly challenging situation?
+- Do they venture into unfamiliar domains, and how do they get up to speed?
+- How do they collaborate with people inside and outside their own organisation or discipline?
 
-. . .
-
-Reduce handoff delays
-
-. . .
-
-Enable feature completion across competency boundaries
+![](https://martinfowler.com/articles/expert-generalist/gen-or-egen.png){.absolute width="400px" right=320 bottom=100}
 
 ---
 
-## Knowledge Transfer & Decision-Making
+## Career Progression
 
-**Knowledge transfer:**
+**Avoid vertical silos:**
 
-- Cross-domain presence helps specialists develop sympathy for related areas
+- ❌ UI Engineer → Senior UI Engineer → UI Architect
 
-. . .
+- The implicit message:
 
-**Better decisions:**
+  _"Wander outside your lane and your progress stalls."_
 
-- Exposure to multiple tools enables better solution selection
-- Avoid defaulting to familiar tools
-
----
-
-## Complex Problem Solving
-
-System faults often exist in **implicit interactions between technologies**
-
-. . .
-
-Only those seeing the complete picture can diagnose them
-
-. . .
-
-> "An engineer versed in Raft can untangle a Kubernetes control-plane stall that might puzzle several certified admins"
+::: {.notes}
+Even if not explicit, the naming of roles implies vertical silo
+:::
 
 ---
 
-## Innovation & Leadership
+## Career Progression
 
-**Accelerates innovation:**
+Organizations should **encourage cross-disciplinary experimentation**
 
-- Broader perspective reveals patterns invisible to specialists
+**Examples**:
 
-. . .
+- Business analyst writing code out of curiosity
 
-**Natural leadership development:**
+  → _A PRISM writing code out of curiosity_
 
-- Communication skills emerge naturally
-- Organizational relationships strengthen
-- Credibility grows organically
+- A front-end engineer dabbling in DevOps
 
-# Developing Expert Generalists
+  → _An RSE doing some RID work_
 
-## From Tools to Fundamentals
+- A data engineer trying product analysis
 
-**The Problem:** Industry focuses on tool expertise rather than underlying principles
-
-. . .
-
-**The Solution:** Emphasize patterns and principles
-
-. . .
-
-Example: Application Development, Data Engineering, and DevOps all share **distributed systems foundations**
-
-- Partitioning, replication, consistency, consensus
-
----
+  → _A data steward doing some data science work_
 
 ## Workshop Model: Building Miniatures
 
@@ -186,6 +161,32 @@ Hands-on training through implementing **simplified versions** of production sys
 . . .
 
 Miniatures serve as gateways to understanding real open-source codebases
+
+. . .
+
+**Reward expansion** into adjacent domains
+
+. . .
+
+Treat Expert Generalist as a **"first-class skill"** in career frameworks
+
+---
+
+## From Tools to Fundamentals
+
+**The Problem:** Industry focuses on tool expertise rather than underlying principles
+
+. . .
+
+**The Solution:** Emphasize patterns and principles
+
+. . .
+
+Example: Application Development, Data Engineering, and DevOps all share **distributed systems foundations**
+
+- Partitioning, replication, consistency, consensus
+
+---
 
 # The Role of Specialists
 
@@ -261,26 +262,6 @@ Use LLMs to **generate questions**, explain mechanisms, and provide exploratory 
 . . .
 
 Focus on **learning agility** rather than tool familiarity
-
----
-
-## Career Progression
-
-Organizations should **encourage cross-disciplinary experimentation**
-
-. . .
-
-**Avoid vertical silos:**
-
-- ❌ UI Engineer → Senior UI Engineer → UI Architect
-
-. . .
-
-**Reward expansion** into adjacent domains
-
-. . .
-
-Treat Expert Generalist as a **"first-class skill"** in career frameworks
 
 ---
 
