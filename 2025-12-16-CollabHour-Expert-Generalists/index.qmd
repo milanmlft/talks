@@ -100,7 +100,16 @@ Examples:
 - Database designers understanding UX constraints
 - Frontend engineers grasping infrastructure limitations
 
-# Assessing Expert Generalists
+---
+
+## Why Organistations Need Expert Generalists
+
+- Finding exactly the right kind of specialist limits the candidate pool
+- Expert Generalists are particularly valuable at working across the specialist skill boundaries, handling interactions and filling in gaps
+
+  → they can be **the glue** in a team
+
+# Cultivating Expert Generalists
 
 ## How to Recognise an Expert Generalist {.smaller}
 
@@ -112,7 +121,7 @@ Examples:
 
 ---
 
-## Career Progression
+## Cultivating Expert Generalists
 
 **Avoid vertical silos:**
 
@@ -128,7 +137,7 @@ Even if not explicit, the naming of roles implies vertical silo
 
 ---
 
-## Career Progression
+## Cultivating Expert Generalists
 
 Organizations should **encourage cross-disciplinary experimentation**
 
@@ -146,86 +155,65 @@ Organizations should **encourage cross-disciplinary experimentation**
 
   → _A data steward doing some data science work_
 
-## Workshop Model: Building Miniatures
-
-Hands-on training through implementing **simplified versions** of production systems
-
-. . .
-
-### Examples:
-
-- **Build Your Own Kafka** — messaging system with quorum replication
-- **Kubernetes from the Inside Out** — controller with reconcile loops
-- **ACID on Object Storage** — mini Delta Lake with transaction logs
-
-. . .
-
-Miniatures serve as gateways to understanding real open-source codebases
-
-. . .
-
-**Reward expansion** into adjacent domains
-
-. . .
-
-Treat Expert Generalist as a **"first-class skill"** in career frameworks
-
 ---
 
 ## From Tools to Fundamentals
 
-**The Problem:** Industry focuses on tool expertise rather than underlying principles
-
-. . .
-
-**The Solution:** Emphasize patterns and principles
+- **The Problem:** Industry focuses on tool expertise rather than underlying principles
+- **The Solution:** Emphasize patterns and principles
 
 . . .
 
 Example: Application Development, Data Engineering, and DevOps all share **distributed systems foundations**
 
-- Partitioning, replication, consistency, consensus
+. . .
+
+→ It's all just Partitioning, replication and consistency
 
 ---
 
-# The Role of Specialists
+## From Tools to Fundamentals
 
-## Specialists Are Essential
-
-Expert Generalists **enhance** but don't **replace** specialists
-
-. . .
-
-**Best practices:**
-
-- At least one full-time specialist for core technologies
-- Prioritize responsiveness over utilization
-- Monitor question-answer latency to prevent bottlenecks
-
-. . .
-
-Teams of pure generalists succeed slower than **blended teams**
+![](https://martinfowler.com/articles/expert-generalist/dist-workshop.png){fig-align="center"}
 
 ---
 
-## Collaboration Attitudes
+## But What About the Specialists
 
-**From specialists:**
+- Expert Generalists **enhance** but don't **replace** specialists
+- Expert Generalists don't know what they don't know
+- **Recommendation**: have at least one specialist for any core technology
+- Teams of only generalists succeed slower than **blended teams**
+- Teams of only specialists easily miss things outside their specialty
 
-- Eager to share knowledge
-- Patient with questions
+# How is Any of This Relevant to ARC?
+
+## Emerging Silos
+
+- Profession groups
+- Subgroups within Collaboration team
+- Push for specialisation (?)
 
 . . .
 
-**From generalists:**
+Expert Generalists can be the bridges
 
-- Comfortable with ignorance
-- Humble when learning new domains
-- Thoughtful when introducing different approaches
+::: {.notes}
+
+"Natural evolution" for a growing organisation of ARC's size,
+but that doesn't mean we shouldn't try to counteract it.
+
+:::
+
+---
+
+## Not So Different
+
+![](figures/roles.png){fig-align="center"}
 
 # Expert Generalists in the LLM Era
 
-## LLMs Amplify Expert Generalist Value
+## LLMs will further **increase** Expert Generalist importance {.smaller}
 
 **Lower barriers** to exploring unfamiliar tools
 
@@ -239,50 +227,7 @@ Expert Generalists with strong fundamentals:
 
 . . .
 
-Use LLMs to **generate questions**, explain mechanisms, and provide exploratory tools
-
-. . .
-
-**Prediction:** LLMs will further **increase** Expert Generalist importance
-
-# Assessment & Development
-
-## Hiring Expert Generalists
-
-**Move beyond tool trivia questions**
-
-. . .
-
-**Explore:**
-
-- How candidates approached unfamiliar challenges
-- How they approached new domains
-- How they collaborated across disciplines
-
-. . .
-
-Focus on **learning agility** rather than tool familiarity
-
----
-
-## Important Challenges
-
-**Assessment difficulty**
-
-- Requires intensive participation from known practitioners
-- Harder than certifications and tenure metrics
-
-. . .
-
-**Risk of shallow work**
-
-- Teams need specialist depth in core domains
-
-. . .
-
-**Potential over-commitment**
-
-- Drive to "Get Things Done" can lead to overextension
+Use LLMs to **generate questions**, explain mechanisms, and provide tools
 
 # Conclusion
 
@@ -296,7 +241,7 @@ Expert Generalists represent **sophisticated expertise** combining:
 
 . . .
 
-Their ability to navigate multiple domains while maintaining **principled understanding** makes them invaluable
+Expert Generalist should be treated as a first-class skill
 
 . . .
 
@@ -312,4 +257,6 @@ Organizations should **deliberately cultivate** this capability
 
 **Key Quote:**
 
-> "Developers who roam across languages, architectures, and problem spaces may seem like 'jack-of-all-trades, master-of-none,' yet repeated dives below surface differences help them develop durable, principle-level mastery."
+> "Developers who roam across languages, architectures, and problem spaces may
+> seem like 'jack-of-all-trades, master-of-none,' yet repeated dives below surface
+> differences help them develop durable, principle-level mastery."
