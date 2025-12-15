@@ -1,0 +1,353 @@
+---
+title: "Expert Generalists"
+subtitle: ARC Collaboration Hour
+date: 2025-12-16
+author: "Milan Malfait"
+format:
+  revealjs:
+    slide-number: true
+    toc: false
+---
+
+# Introduction
+
+---
+
+[![](figures/article.png)](https://martinfowler.com/articles/expert-generalist.html)
+
+::: {.notes}
+This presentation is based on an excellent article by Martin Fowler about Expert
+Generalists. The article challenges conventional thinking about specialisation
+versus generalisation in technical roles. Rather than forcing a choice between
+the two, it explores a third option: people who combine broad knowledge with
+deep expertise in multiple areas.
+:::
+
+---
+
+## What is an Expert Generalist?
+
+> Someone who combines **broad knowledge** across multiple domains with **deep expertise** in several areas
+
+- Not a shallow generalist, not a narrow specialist
+- **Key abilities:**
+  - Learn quickly
+  - Recognize fundamental patterns beneath shifting tools
+  - Apply insights across disciplines
+
+::: {.notes}
+Start by defining what we mean by Expert Generalist. They maintain broad knowledge whilst also developing deep expertise in multiple areas. Emphasise that this isn't about being superficial—these people genuinely go deep, just in more than one area. The key distinguishing abilities are: rapid learning (they can get up to speed quickly), pattern recognition (they see the fundamental principles that persist across different tools and frameworks), and cross-pollination (they can apply insights from one domain to solve problems in another).
+:::
+
+---
+
+## Beyond T-Shaped
+
+![](https://martinfowler.com/articles/expert-generalist/t-shape.png){fig-align="center" width="60%"}
+
+::: {.notes}
+Traditionally Expert Generalists are described as T-shaped people (one deep skill + broad knowledge)
+But they quickly grow more legs, so they look more like **"combs"** or **"paint drips"**
+Multiple areas of deep expertise with varying depths
+:::
+
+# Six Key Characteristics
+
+::: {.notes}
+The article identifies six key characteristics that define Expert Generalists. These aren't just personality traits—they're learnable skills and mindsets that organisations can cultivate.
+:::
+
+## 1. Curiosity
+
+- Always learning
+- **Driven to explore** new technologies and domains
+- Seeking **understanding** rather than quick solutions
+- When encountering answers, they dig deeper to ensure comprehension
+
+::: {.notes}
+The first characteristic is curiosity—this is the engine that drives everything else. Expert Generalists have an intrinsic motivation to learn. They're not content with surface-level knowledge or copy-paste solutions. When they encounter an answer, they want to understand why it works. This curiosity extends beyond their immediate job requirements—they explore new technologies and domains because they're genuinely interested, not just because they need to for a project.
+:::
+
+---
+
+## 2. Collaborativeness
+
+- **Recognizing personal knowledge limits**, actively partner with specialists
+- Ask informed questions and approach unfamiliar domains with **humility**
+- Understanding there are usually valid reasons behind established practices
+
+::: {.notes}
+Despite having broad knowledge, Expert Generalists recognise their limits. They know when to bring in specialists and how to work effectively with them. They ask informed questions rather than assuming they know everything. Importantly, they approach unfamiliar domains with humility—they assume that established practices exist for good reasons and seek to understand those reasons before suggesting changes. This makes them excellent collaborators.
+:::
+
+---
+
+## 3. User Focus
+
+- Channels curiosity **productively**
+- Rather than chasing every trend, prioritise learning that **helps users excel**
+- Direct attention to technologies serving project goals
+
+::: {.notes}
+This is the counterbalance to curiosity. Without user focus, curiosity can become distraction—chasing every new framework or technology just because it's interesting. Expert Generalists channel their curiosity productively by keeping the user's needs at the centre. They ask: "Will learning this help our users?" This doesn't mean ignoring new technologies, but it means being strategic about where to invest learning time. They prioritise technologies that serve project goals and user needs.
+:::
+
+---
+
+## 4. Favour Fundamental Knowledge
+
+- Prioritise **principles and patterns** over tool-specific expertise
+- Patterns remain relevant across technology shifts
+- Frameworks become obsolete; fundamentals endure
+
+::: {.notes}
+**Example:** focus on cloud-native architecture, like auto-scaling heuristics
+and multi-region fail-over, rather than focusing on AWS-specific configuration
+syntax
+:::
+
+---
+
+## 5. Blend of Specialist and Generalist Skills
+
+- Develop **deep knowledge in several domains**
+- Typically acquired through:
+  - Necessary project work
+  - Intellectual curiosity
+
+::: {.notes}
+This is what makes them Expert Generalists rather than just generalists. They've gone deep in multiple areas. This usually happens in two ways: sometimes project necessity forces them to develop deep expertise in an area, and sometimes intellectual curiosity drives them to explore an area deeply just because they find it fascinating. Either way, they're building a portfolio of deep expertise across multiple domains.
+:::
+
+---
+
+## 6. Sympathy for Related Domains
+
+**"Mechanical sympathy"** — intuitive understanding of adjacent fields
+
+. . .
+
+Examples:
+
+- Database designers understanding UX constraints
+- Frontend engineers grasping infrastructure limitations
+
+::: {.notes}
+Mechanical sympathy is a racing term—it refers to understanding how the machine works so you can drive it better. In our context, it means having an intuitive understanding of adjacent fields. A database designer with mechanical sympathy understands UX constraints and how their schema design affects the user experience. A frontend engineer with mechanical sympathy grasps infrastructure limitations and designs accordingly. This sympathy for related domains helps Expert Generalists make better decisions because they understand the broader system context.
+:::
+
+---
+
+## Why Organisations Need Expert Generalists
+
+- Finding exactly the right kind of specialist limits the candidate pool
+- Expert Generalists are particularly valuable at working across the specialist skill boundaries, handling interactions and filling in gaps
+
+  → they can be **the glue** in a team
+
+::: {.notes}
+Organisations need Expert Generalists because they solve several problems. First, hiring is difficult—if you're looking for exactly the right kind of specialist, you're severely limiting your candidate pool. Second, and more importantly, Expert Generalists excel at working across boundaries. In any complex project, there are gaps between specialisms and interfaces where different domains interact. Expert Generalists are brilliant at navigating these spaces. They can speak the language of multiple domains, translate between specialists, and fill in gaps where needed. This is why they're often described as "the glue" that holds teams together.
+:::
+
+# Cultivating Expert Generalists
+
+::: {.notes}
+Understanding what Expert Generalists are is one thing, but how do we actually cultivate them in our organisations? Let's explore how to recognise, develop, and support Expert Generalists.
+:::
+
+## How to Recognise an Expert Generalist {.smaller}
+
+- How do they approach a particularly challenging situation?
+- Do they venture into unfamiliar domains, and how do they get up to speed?
+- How do they collaborate with people inside and outside their own organisation or discipline?
+
+![](https://martinfowler.com/articles/expert-generalist/gen-or-egen.png){.absolute width="400px" right=320 bottom=100}
+
+::: {.notes}
+When you're looking to identify Expert Generalists, these questions are revealing. How do they approach challenging situations—do they only work within their comfort zone, or do they venture into unfamiliar territory? When they do venture out, watch how they get up to speed—do they ask good questions, do they seek to understand fundamentals? And observe their collaboration style—do they work well with people from different disciplines? Can they communicate effectively across domain boundaries?
+:::
+
+---
+
+## Cultivating Expert Generalists
+
+**Avoid vertical silos:**
+
+- ❌ UI Engineer → Senior UI Engineer → UI Architect
+
+- The implicit message:
+
+  _"Wander outside your lane and your progress stalls."_
+
+::: {.notes}
+In terms of career progression, the article recommends to avoid vertical silos.
+Even if not intentional, the naming of roles implies that progress is linear and narrow.
+Interestingly, the article doesn't really suggest an alternative for this.
+:::
+
+---
+
+## Cultivating Expert Generalists
+
+Organizations should **encourage cross-disciplinary experimentation**
+
+**Examples**:
+
+- Business analyst writing code out of curiosity
+
+  → _A PRISM writing code out of curiosity_
+
+- A front-end engineer dabbling in DevOps
+
+  → _An RSE doing some RID work_
+
+- A data engineer trying product analysis
+
+  → _A data steward doing some data science work_
+
+::: {.notes}
+To cultivate Expert Generalists, organisations need to actively encourage cross-disciplinary experimentation. Create an environment where it's safe and encouraged to explore outside your primary domain. The examples show how this could work in practice—and I've translated them into ARC context. A PRISM writing code, an RSE doing RID work, a data steward doing data science. These aren't distractions from "real work"—they're investments in developing people who can bridge domains and think systemically.
+:::
+
+---
+
+## From Tools to Fundamentals
+
+- **The Problem:** Industry focuses on tool expertise rather than underlying principles
+- **The Solution:** Emphasize patterns and principles
+
+. . .
+
+Example: Application Development, Data Engineering, and DevOps all share **distributed systems foundations**
+
+. . .
+
+→ It's all just Partitioning, replication and consistency
+
+::: {.notes}
+This is crucial for cultivating Expert Generalists. The industry has a problem: we organise around tools rather than principles. Job descriptions ask for "5 years of Kubernetes" rather than "deep understanding of distributed systems". But tools change constantly—Kubernetes might not be relevant in five years. The principles endure. When you understand the fundamentals, you can quickly learn new tools. The example illustrates this: Application Development, Data Engineering, and DevOps might seem like completely different domains with different tools, but they all share distributed systems foundations. Once you understand partitioning, replication, and consistency, you can reason about problems across all these domains.
+:::
+
+---
+
+## From Tools to Fundamentals
+
+![](https://martinfowler.com/articles/expert-generalist/dist-workshop.png){fig-align="center"}
+
+::: {.notes}
+This diagram from the article shows how Martin Fowler's company approaches this. Rather than having separate trainings for each tool or role, they run workshops on distributed systems fundamentals that bring together people from different specialisms. Application developers, data engineers, and operations people all attend the same workshop because they're all working with the same underlying principles. This approach naturally cultivates Expert Generalists by helping people see the patterns that cut across their usual domains.
+:::
+
+---
+
+## But What About the Specialists
+
+- Expert Generalists **enhance** but don't **replace** specialists
+- Expert Generalists don't know what they don't know
+- **Recommendation**: have at least one specialist for any core technology
+- Teams of only generalists succeed slower than **blended teams**
+- Teams of only specialists easily miss things outside their specialty
+
+::: {.notes}
+This is critical: Expert Generalists are not a replacement for specialists. They enhance teams but don't replace deep specialists. Expert Generalists, by definition, don't know what they don't know in domains where they lack deep expertise. The research shows that the best teams are blended—they combine specialists and Expert Generalists. Teams of only generalists tend to miss important deep issues and succeed more slowly. Teams of only specialists tend to miss connections and opportunities that cut across specialisms. You need both.
+:::
+
+# How is Any of This Relevant to ARC?
+
+::: {.notes}
+This is all fascinating in theory, but you might be wondering: what does this have to do with ARC specifically? Let me make the connections explicit.
+:::
+
+## Emerging Silos
+
+- Profession groups
+- Subgroups within Collaboration team
+- Push for specialisation (?)
+
+. . .
+
+Expert Generalists can be the bridges
+
+::: {.notes}
+This is where the concept becomes directly relevant to ARC. As we've grown, we're seeing the natural emergence of silos—profession groups forming, subgroups within the Collaboration team, potentially a push towards increasing specialisation. This is natural for a growing organisation of ARC's size. But just because it's natural doesn't mean we shouldn't consciously counteract it. Expert Generalists can serve as bridges between these emerging silos, helping maintain the cross-functional collaboration that's been one of ARC's strengths.
+:::
+
+---
+
+## Not So Different
+
+![](figures/roles.png){fig-align="center"}
+
+::: {.notes}
+This diagram illustrates a key point about ARC's roles. Whilst we have different job titles and specialisms, there's actually significant overlap in what we do. RSEs write code but also do research. Data stewards manage data but also do analysis. PRISMs facilitate collaboration but also understand technical constraints. This natural overlap is something to celebrate and cultivate, not fight against. It's the foundation for developing Expert Generalists within ARC.
+:::
+
+# Expert Generalists in the LLM Era
+
+::: {.notes}
+Before wrapping up, I want to address how LLMs change this picture. Some might think that AI tools make generalists less necessary—if anyone can ask ChatGPT how to do something, why do we need people with broad knowledge? But the reality is quite different.
+:::
+
+## LLMs will further **increase** Expert Generalist importance {.smaller}
+
+**Lower barriers** to exploring unfamiliar tools
+
+. . .
+
+Expert Generalists with strong fundamentals:
+
+- Ask better questions
+- Critically evaluate AI suggestions against architectural patterns
+- Avoid blindly accepting unreliable outputs
+
+. . .
+
+Use LLMs to **generate questions**, explain mechanisms, and provide tools
+
+::: {.notes}
+LLMs are transforming how we work, and they actually make Expert Generalists more valuable, not less. LLMs lower the barriers to exploring unfamiliar tools—you can now get productive in a new framework or language much faster with AI assistance. But here's the key: Expert Generalists with strong fundamentals are far better positioned to use LLMs effectively. They know how to ask better questions because they understand the underlying principles. They can critically evaluate AI suggestions against architectural patterns rather than blindly accepting them. They recognise when an LLM is confidently wrong because they understand the fundamentals. Use LLMs as tools to accelerate learning—to generate questions you should ask, to explain mechanisms, to provide examples—but your fundamental understanding is what makes that effective.
+:::
+
+# Conclusion
+
+::: {.notes}
+Let me bring this all together with some final thoughts.
+:::
+
+## Key Takeaways
+
+Expert Generalists represent **sophisticated expertise** combining:
+
+- Learning velocity
+- Systems thinking
+- Interpersonal skills
+
+. . .
+
+Expert Generalist should be treated as a first-class skill
+
+. . .
+
+Organizations should **deliberately cultivate** this capability
+
+::: {.notes}
+Let me wrap up with the key points. Expert Generalists aren't just people who happen to know a bit about everything—they represent sophisticated expertise that combines learning velocity (they can get up to speed quickly), systems thinking (they see the bigger picture and connections), and interpersonal skills (they collaborate effectively across boundaries). This should be treated as a first-class skill, not as a consolation prize for people who aren't "proper specialists". Organisations should deliberately cultivate this capability through how they structure roles, how they train people, and what they reward. For ARC specifically, I think we're well-positioned to do this given our inherently cross-functional nature, but we need to be intentional about it as we grow.
+:::
+
+---
+
+## Further Reading
+
+📖 Full article: [martinfowler.com/articles/expert-generalist.html](https://martinfowler.com/articles/expert-generalist.html)
+
+. . .
+
+**Key Quote:**
+
+> "Developers who roam across languages, architectures, and problem spaces may
+> seem like 'jack-of-all-trades, master-of-none,' yet repeated dives below surface
+> differences help them develop durable, principle-level mastery."
+
+::: {.notes}
+I highly recommend reading the full article—it's comprehensive and well-argued. This quote captures something important: Expert Generalists might initially appear to be jacks-of-all-trades, but their repeated exploration across domains actually develops something deeper—principle-level mastery. They're not staying on the surface; they're diving deep repeatedly and building an understanding of the fundamental patterns that persist across different contexts.
+:::
