@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
 
       - name: Cache pre-commit
         uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5
@@ -26,7 +26,7 @@ jobs:
           key: cache-${{ hashFiles(inputs.pre-commit-config) }}
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: 3.x
 
@@ -39,5 +39,5 @@ jobs:
         run: pre-commit run --all-files --color always --verbose
 
       # yamllint disable-line rule:line-length
-      - uses: pre-commit-ci/lite-action@v1.1.0
+      - uses: pre-commit-ci/lite-action@5d6cc0eb514c891a40562a58a8e71576c5c7fb43 # v1.1.0
         if: ${{ !cancelled() }}
