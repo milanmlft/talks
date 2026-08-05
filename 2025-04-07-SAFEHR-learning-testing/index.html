@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Milan Malfait">
   <meta name="dcterms.date" content="2025-04-07">
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -203,7 +206,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Milan Malfait 
+Milan Malfait
 </div>
 </div>
 </div>
@@ -260,10 +263,10 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>mypkg/R/my-func.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>divide_by_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb1-2"><a></a>    res <span class="ot">&lt;-</span> x <span class="sc">/</span> <span class="dv">2</span></span>
-<span id="cb1-3"><a></a>    <span class="fu">return</span>(<span class="dv">2</span>)</span>
-<span id="cb1-4"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>divide_by_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-2"><a aria-label="2"></a>    res <span class="ot">&lt;-</span> x <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb1-3"><a aria-label="3"></a>    <span class="fu">return</span>(<span class="dv">2</span>)</span>
+<span id="cb1-4"><a aria-label="4"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="cell">
@@ -271,10 +274,10 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>mypkg/tests/testthat/test-my-func.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">test_that</span>(<span class="st">"divide_by_two returns the correct result"</span>, {</span>
-<span id="cb2-2"><a></a>    <span class="fu">expect_equal</span>(<span class="fu">divide_by_two</span>(<span class="dv">4</span>), <span class="dv">2</span>)</span>
-<span id="cb2-3"><a></a>})</span>
-<span id="cb2-4"><a></a><span class="co">#&gt; Test passed 🌈</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">test_that</span>(<span class="st">"divide_by_two returns the correct result"</span>, {</span>
+<span id="cb2-2"><a aria-label="2"></a>    <span class="fu">expect_equal</span>(<span class="fu">divide_by_two</span>(<span class="dv">4</span>), <span class="dv">2</span>)</span>
+<span id="cb2-3"><a aria-label="3"></a>})</span>
+<span id="cb2-4"><a aria-label="4"></a><span class="co">#&gt; Test passed 🌈</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 
@@ -292,9 +295,9 @@ Milan Malfait
 <h2>The <code>testthat</code> package: an example</h2>
 <p>Basic structure of a test</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
-<span id="cb3-2"><a></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb3-3"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb3-3"><a aria-label="3"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -312,18 +315,18 @@ Milan Malfait
 <section class="slide level2">
 <h2>Storing test data</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>.</span>
-<span id="cb4-2"><a></a>├── ...</span>
-<span id="cb4-3"><a></a>└── tests</span>
-<span id="cb4-4"><a></a>    ├── testthat</span>
-<span id="cb4-5"><a></a>    │   ├── fixtures</span>
-<span id="cb4-6"><a></a>    │   │   ├── make<span class="sc">-</span>useful<span class="sc">-</span>things.R</span>
-<span id="cb4-7"><a></a>    │   │   ├── useful_thing1.rds</span>
-<span id="cb4-8"><a></a>    │   │   └── useful_thing2.rds</span>
-<span id="cb4-9"><a></a>    │   ├── helper.R</span>
-<span id="cb4-10"><a></a>    │   ├── setup.R</span>
-<span id="cb4-11"><a></a>    │   └── (all the test files)</span>
-<span id="cb4-12"><a></a>    └── testthat.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-code-line-numbers="5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>.</span>
+<span id="cb4-2"><a aria-label="2"></a>├── ...</span>
+<span id="cb4-3"><a aria-label="3"></a>└── tests</span>
+<span id="cb4-4"><a aria-label="4"></a>    ├── testthat</span>
+<span id="cb4-5"><a aria-label="5"></a>    │   ├── fixtures</span>
+<span id="cb4-6"><a aria-label="6"></a>    │   │   ├── make<span class="sc">-</span>useful<span class="sc">-</span>things.R</span>
+<span id="cb4-7"><a aria-label="7"></a>    │   │   ├── useful_thing1.rds</span>
+<span id="cb4-8"><a aria-label="8"></a>    │   │   └── useful_thing2.rds</span>
+<span id="cb4-9"><a aria-label="9"></a>    │   ├── helper.R</span>
+<span id="cb4-10"><a aria-label="10"></a>    │   ├── setup.R</span>
+<span id="cb4-11"><a aria-label="11"></a>    │   └── (all the test files)</span>
+<span id="cb4-12"><a aria-label="12"></a>    └── testthat.R</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -333,13 +336,13 @@ Milan Malfait
 <li class="fragment">Use <code>withr::local_tempfile()</code> or <code>withr::local_tempdir()</code> to create temporary self-deleting files</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">test_that</span>(<span class="st">"can read from file name with utf-8 path"</span>, {</span>
-<span id="cb5-2"><a></a>  path <span class="ot">&lt;-</span> withr<span class="sc">::</span><span class="fu">local_tempfile</span>(</span>
-<span id="cb5-3"><a></a>    <span class="at">pattern =</span> <span class="st">"Universit\u00e0-"</span>,</span>
-<span id="cb5-4"><a></a>    <span class="at">lines =</span> <span class="fu">c</span>(<span class="st">"#' @include foo.R"</span>, <span class="cn">NULL</span>)</span>
-<span id="cb5-5"><a></a>  )</span>
-<span id="cb5-6"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">find_includes</span>(path), <span class="st">"foo.R"</span>)</span>
-<span id="cb5-7"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">test_that</span>(<span class="st">"can read from file name with utf-8 path"</span>, {</span>
+<span id="cb5-2"><a aria-label="2"></a>  path <span class="ot">&lt;-</span> withr<span class="sc">::</span><span class="fu">local_tempfile</span>(</span>
+<span id="cb5-3"><a aria-label="3"></a>    <span class="at">pattern =</span> <span class="st">"Universit\u00e0-"</span>,</span>
+<span id="cb5-4"><a aria-label="4"></a>    <span class="at">lines =</span> <span class="fu">c</span>(<span class="st">"#' @include foo.R"</span>, <span class="cn">NULL</span>)</span>
+<span id="cb5-5"><a aria-label="5"></a>  )</span>
+<span id="cb5-6"><a aria-label="6"></a>  <span class="fu">expect_equal</span>(<span class="fu">find_includes</span>(path), <span class="st">"foo.R"</span>)</span>
+<span id="cb5-7"><a aria-label="7"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -364,15 +367,15 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>test-A.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
-<span id="cb6-4"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb6-5"><a></a>})</span>
-<span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a><span class="fu">test_that</span>(<span class="st">"addition works"</span>, {</span>
-<span id="cb6-8"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"a"</span>]] <span class="sc">+</span> <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb6-9"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
+<span id="cb6-4"><a aria-label="4"></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb6-5"><a aria-label="5"></a>})</span>
+<span id="cb6-6"><a aria-label="6"></a></span>
+<span id="cb6-7"><a aria-label="7"></a><span class="fu">test_that</span>(<span class="st">"addition works"</span>, {</span>
+<span id="cb6-8"><a aria-label="8"></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"a"</span>]] <span class="sc">+</span> <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb6-9"><a aria-label="9"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="cell">
@@ -380,15 +383,15 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>test-B.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="fu">test_that</span>(<span class="st">"division works"</span>, {</span>
-<span id="cb7-4"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb7-5"><a></a>})</span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a><span class="fu">test_that</span>(<span class="st">"substraction works"</span>, {</span>
-<span id="cb7-8"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"a"</span>]] <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb7-9"><a></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
+<span id="cb7-2"><a aria-label="2"></a></span>
+<span id="cb7-3"><a aria-label="3"></a><span class="fu">test_that</span>(<span class="st">"division works"</span>, {</span>
+<span id="cb7-4"><a aria-label="4"></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">/</span> <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb7-5"><a aria-label="5"></a>})</span>
+<span id="cb7-6"><a aria-label="6"></a></span>
+<span id="cb7-7"><a aria-label="7"></a><span class="fu">test_that</span>(<span class="st">"substraction works"</span>, {</span>
+<span id="cb7-8"><a aria-label="8"></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"a"</span>]] <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb7-9"><a aria-label="9"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -400,7 +403,7 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>helper.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>test_object <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <ul>
@@ -417,9 +420,9 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>helper.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>basic_list <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb9-2"><a></a>  <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
-<span id="cb9-3"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a>basic_list <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb9-2"><a aria-label="2"></a>  <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>)</span>
+<span id="cb9-3"><a aria-label="3"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="cell">
@@ -427,12 +430,12 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>test-A.R</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
-<span id="cb10-2"><a></a>  test_object <span class="ot">&lt;-</span> <span class="fu">basic_list</span>()</span>
-<span id="cb10-3"><a></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb10-4"><a></a>})</span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a><span class="co"># ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
+<span id="cb10-2"><a aria-label="2"></a>  test_object <span class="ot">&lt;-</span> <span class="fu">basic_list</span>()</span>
+<span id="cb10-3"><a aria-label="3"></a>  <span class="fu">expect_equal</span>(test_object[[<span class="st">"b"</span>]] <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb10-4"><a aria-label="4"></a>})</span>
+<span id="cb10-5"><a aria-label="5"></a></span>
+<span id="cb10-6"><a aria-label="6"></a><span class="co"># ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <ul>

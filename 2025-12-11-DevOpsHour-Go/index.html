@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.38">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Milan Malfait">
   <meta name="dcterms.date" content="2025-12-11">
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -203,7 +206,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Milan Malfait 
+Milan Malfait
 </div>
 </div>
 </div>
@@ -328,21 +331,21 @@ Milan Malfait
 <section class="slide level2">
 
 <h3>A complete web server in 15 lines</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb1-1"><a></a><span class="kw">package</span> main</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="kw">import</span> <span class="op">(</span></span>
-<span id="cb1-4"><a></a>    <span class="st">"fmt"</span></span>
-<span id="cb1-5"><a></a>    <span class="st">"net/http"</span></span>
-<span id="cb1-6"><a></a><span class="op">)</span></span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="kw">func</span> handler<span class="op">(</span>w http<span class="op">.</span>ResponseWriter<span class="op">,</span> r <span class="op">*</span>http<span class="op">.</span>Request<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-9"><a></a>    fmt<span class="op">.</span>Fprintf<span class="op">(</span>w<span class="op">,</span> <span class="st">"Hello, %s!"</span><span class="op">,</span> r<span class="op">.</span>URL<span class="op">.</span>Path<span class="op">[</span><span class="dv">1</span><span class="op">:])</span></span>
-<span id="cb1-10"><a></a><span class="op">}</span></span>
-<span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb1-13"><a></a>    http<span class="op">.</span>HandleFunc<span class="op">(</span><span class="st">"/"</span><span class="op">,</span> handler<span class="op">)</span></span>
-<span id="cb1-14"><a></a>    http<span class="op">.</span>ListenAndServe<span class="op">(</span><span class="st">":8080"</span><span class="op">,</span> <span class="ot">nil</span><span class="op">)</span></span>
-<span id="cb1-15"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb1-1"><a aria-label="1"></a><span class="kw">package</span> main</span>
+<span id="cb1-2"><a aria-label="2"></a></span>
+<span id="cb1-3"><a aria-label="3"></a><span class="kw">import</span> <span class="op">(</span></span>
+<span id="cb1-4"><a aria-label="4"></a>    <span class="st">"fmt"</span></span>
+<span id="cb1-5"><a aria-label="5"></a>    <span class="st">"net/http"</span></span>
+<span id="cb1-6"><a aria-label="6"></a><span class="op">)</span></span>
+<span id="cb1-7"><a aria-label="7"></a></span>
+<span id="cb1-8"><a aria-label="8"></a><span class="kw">func</span> handler<span class="op">(</span>w http<span class="op">.</span>ResponseWriter<span class="op">,</span> r <span class="op">*</span>http<span class="op">.</span>Request<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-9"><a aria-label="9"></a>    fmt<span class="op">.</span>Fprintf<span class="op">(</span>w<span class="op">,</span> <span class="st">"Hello, %s!"</span><span class="op">,</span> r<span class="op">.</span>URL<span class="op">.</span>Path<span class="op">[</span><span class="dv">1</span><span class="op">:])</span></span>
+<span id="cb1-10"><a aria-label="10"></a><span class="op">}</span></span>
+<span id="cb1-11"><a aria-label="11"></a></span>
+<span id="cb1-12"><a aria-label="12"></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-13"><a aria-label="13"></a>    http<span class="op">.</span>HandleFunc<span class="op">(</span><span class="st">"/"</span><span class="op">,</span> handler<span class="op">)</span></span>
+<span id="cb1-14"><a aria-label="14"></a>    http<span class="op">.</span>ListenAndServe<span class="op">(</span><span class="st">":8080"</span><span class="op">,</span> <span class="ot">nil</span><span class="op">)</span></span>
+<span id="cb1-15"><a aria-label="15"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>Here’s a complete, production-capable web server in 15 lines. No framework, no dependencies, just the standard library.</p>
 <p>[Walk through the code]</p>
@@ -396,12 +399,12 @@ Milan Malfait
 <aside><ol class="aside-footnotes"><li id="fn1"><p>until it doesn’t, in which case Go still has an excellent package ecosystem.</p></li></ol></aside></section>
 <section class="slide level2">
 <h2>Error Handling: Explicit is Better</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb2-1"><a></a><span class="kw">func</span> thingThatMightMessUp<span class="op">()</span> <span class="op">(</span><span class="dt">string</span><span class="op">,</span> <span class="dt">error</span><span class="op">)</span></span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a>result<span class="op">,</span> err <span class="op">:=</span> thingThatMightMessUp<span class="op">()</span></span>
-<span id="cb2-4"><a></a><span class="cf">if</span> err <span class="op">!=</span> <span class="ot">nil</span> <span class="op">{</span></span>
-<span id="cb2-5"><a></a>    <span class="cf">return</span> fmt<span class="op">.</span>Errorf<span class="op">(</span><span class="st">"failed to do the thing: %w"</span><span class="op">,</span> err<span class="op">)</span></span>
-<span id="cb2-6"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb2-1"><a aria-label="1"></a><span class="kw">func</span> thingThatMightMessUp<span class="op">()</span> <span class="op">(</span><span class="dt">string</span><span class="op">,</span> <span class="dt">error</span><span class="op">)</span></span>
+<span id="cb2-2"><a aria-label="2"></a></span>
+<span id="cb2-3"><a aria-label="3"></a>result<span class="op">,</span> err <span class="op">:=</span> thingThatMightMessUp<span class="op">()</span></span>
+<span id="cb2-4"><a aria-label="4"></a><span class="cf">if</span> err <span class="op">!=</span> <span class="ot">nil</span> <span class="op">{</span></span>
+<span id="cb2-5"><a aria-label="5"></a>    <span class="cf">return</span> fmt<span class="op">.</span>Errorf<span class="op">(</span><span class="st">"failed to do the thing: %w"</span><span class="op">,</span> err<span class="op">)</span></span>
+<span id="cb2-6"><a aria-label="6"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li class="fragment">No hidden control flow (no exceptions)</li>
 <li class="fragment">Errors are values - <code>error</code> is just another type</li>
@@ -432,21 +435,21 @@ Milan Malfait
 </section>
 <section class="slide level2">
 <h2>The joy of having built-in tools</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="co"># Formatting</span></span>
-<span id="cb3-2"><a></a><span class="ex">go</span> fmt</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a><span class="co"># Testing</span></span>
-<span id="cb3-5"><a></a><span class="ex">go</span> test</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a><span class="co"># Compile &amp; execute</span></span>
-<span id="cb3-8"><a></a><span class="ex">go</span> run</span>
-<span id="cb3-9"><a></a></span>
-<span id="cb3-10"><a></a><span class="co"># Dependency management</span></span>
-<span id="cb3-11"><a></a><span class="ex">go</span> get</span>
-<span id="cb3-12"><a></a><span class="ex">go</span> mod</span>
-<span id="cb3-13"><a></a></span>
-<span id="cb3-14"><a></a><span class="co"># Docs generator</span></span>
-<span id="cb3-15"><a></a><span class="ex">go</span> doc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-label="1"></a><span class="co"># Formatting</span></span>
+<span id="cb3-2"><a aria-label="2"></a><span class="ex">go</span> fmt</span>
+<span id="cb3-3"><a aria-label="3"></a></span>
+<span id="cb3-4"><a aria-label="4"></a><span class="co"># Testing</span></span>
+<span id="cb3-5"><a aria-label="5"></a><span class="ex">go</span> test</span>
+<span id="cb3-6"><a aria-label="6"></a></span>
+<span id="cb3-7"><a aria-label="7"></a><span class="co"># Compile &amp; execute</span></span>
+<span id="cb3-8"><a aria-label="8"></a><span class="ex">go</span> run</span>
+<span id="cb3-9"><a aria-label="9"></a></span>
+<span id="cb3-10"><a aria-label="10"></a><span class="co"># Dependency management</span></span>
+<span id="cb3-11"><a aria-label="11"></a><span class="ex">go</span> get</span>
+<span id="cb3-12"><a aria-label="12"></a><span class="ex">go</span> mod</span>
+<span id="cb3-13"><a aria-label="13"></a></span>
+<span id="cb3-14"><a aria-label="14"></a><span class="co"># Docs generator</span></span>
+<span id="cb3-15"><a aria-label="15"></a><span class="ex">go</span> doc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>“Everything you need comes in the box. No decision fatigue about which tools to use.</p>
 <ul>
@@ -653,56 +656,56 @@ Milan Malfait
 <section class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Goroutines in Action</h2>
 <p>A non-concurrent example</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource go number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode go hljs"><span id="cb4-1" class="hljs-ln-code"><a></a><span class="kw">func</span> checkHealth<span class="op">(</span>url <span class="dt">string</span><span class="op">,</span> results <span class="op">*[]</span><span class="dt">string</span><span class="op">)</span></span>
-<span id="cb4-2" class="hljs-ln-code"><a></a></span>
-<span id="cb4-3" class="hljs-ln-code"><a></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb4-4" class="hljs-ln-code"><a></a>    services <span class="op">:=</span> <span class="op">[]</span><span class="dt">string</span><span class="op">{</span><span class="st">"http://api1.com"</span><span class="op">,</span> <span class="st">"http://api2.com"</span><span class="op">,</span> <span class="st">"http://api3.com"</span><span class="op">}</span></span>
-<span id="cb4-5" class="hljs-ln-code"><a></a>    results <span class="op">:=</span> <span class="bu">make</span><span class="op">([]</span><span class="dt">string</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="bu">len</span><span class="op">(</span>services<span class="op">))</span></span>
-<span id="cb4-6" class="hljs-ln-code"><a></a></span>
-<span id="cb4-7" class="hljs-ln-code"><a></a>    <span class="cf">for</span> _<span class="op">,</span> service <span class="op">:=</span> <span class="kw">range</span> services <span class="op">{</span></span>
-<span id="cb4-8" class="hljs-ln-code"><a></a>        checkHealth<span class="op">(</span>service<span class="op">,</span> <span class="op">&amp;</span>results<span class="op">)</span> <span class="co">// Run health checks sequentially</span></span>
-<span id="cb4-9" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
-<span id="cb4-10" class="hljs-ln-code"><a></a></span>
-<span id="cb4-11" class="hljs-ln-code"><a></a>    <span class="cf">for</span> _<span class="op">,</span> res <span class="op">:=</span> <span class="kw">range</span> results <span class="op">{</span></span>
-<span id="cb4-12" class="hljs-ln-code"><a></a>        fmt<span class="op">.</span>Println<span class="op">(</span>res<span class="op">)</span></span>
-<span id="cb4-13" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
-<span id="cb4-14" class="hljs-ln-code"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource go number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode go hljs"><span id="cb4-1" class="hljs-ln-code"><a aria-label="1"></a><span class="kw">func</span> checkHealth<span class="op">(</span>url <span class="dt">string</span><span class="op">,</span> results <span class="op">*[]</span><span class="dt">string</span><span class="op">)</span></span>
+<span id="cb4-2" class="hljs-ln-code"><a aria-label="2"></a></span>
+<span id="cb4-3" class="hljs-ln-code"><a aria-label="3"></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-4" class="hljs-ln-code"><a aria-label="4"></a>    services <span class="op">:=</span> <span class="op">[]</span><span class="dt">string</span><span class="op">{</span><span class="st">"http://api1.com"</span><span class="op">,</span> <span class="st">"http://api2.com"</span><span class="op">,</span> <span class="st">"http://api3.com"</span><span class="op">}</span></span>
+<span id="cb4-5" class="hljs-ln-code"><a aria-label="5"></a>    results <span class="op">:=</span> <span class="bu">make</span><span class="op">([]</span><span class="dt">string</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="bu">len</span><span class="op">(</span>services<span class="op">))</span></span>
+<span id="cb4-6" class="hljs-ln-code"><a aria-label="6"></a></span>
+<span id="cb4-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="cf">for</span> _<span class="op">,</span> service <span class="op">:=</span> <span class="kw">range</span> services <span class="op">{</span></span>
+<span id="cb4-8" class="hljs-ln-code"><a aria-label="8"></a>        checkHealth<span class="op">(</span>service<span class="op">,</span> <span class="op">&amp;</span>results<span class="op">)</span> <span class="co">// Run health checks sequentially</span></span>
+<span id="cb4-9" class="hljs-ln-code"><a aria-label="9"></a>    <span class="op">}</span></span>
+<span id="cb4-10" class="hljs-ln-code"><a aria-label="10"></a></span>
+<span id="cb4-11" class="hljs-ln-code"><a aria-label="11"></a>    <span class="cf">for</span> _<span class="op">,</span> res <span class="op">:=</span> <span class="kw">range</span> results <span class="op">{</span></span>
+<span id="cb4-12" class="hljs-ln-code"><a aria-label="12"></a>        fmt<span class="op">.</span>Println<span class="op">(</span>res<span class="op">)</span></span>
+<span id="cb4-13" class="hljs-ln-code"><a aria-label="13"></a>    <span class="op">}</span></span>
+<span id="cb4-14" class="hljs-ln-code"><a aria-label="14"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Goroutines in Action</h2>
 <p>Making it concurrent</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource go number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode go hljs"><span id="cb5-1" class="hljs-ln-code"><a></a><span class="kw">func</span> checkHealth<span class="op">(</span>url <span class="dt">string</span><span class="op">,</span> results <span class="kw">chan</span><span class="op">&lt;-</span> <span class="dt">string</span><span class="op">)</span></span>
-<span id="cb5-2" class="hljs-ln-code"><a></a></span>
-<span id="cb5-3" class="hljs-ln-code"><a></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb5-4" class="hljs-ln-code"><a></a>    services <span class="op">:=</span> <span class="op">[]</span><span class="dt">string</span><span class="op">{</span><span class="st">"http://api1.com"</span><span class="op">,</span> <span class="st">"http://api2.com"</span><span class="op">,</span> <span class="st">"http://api3.com"</span><span class="op">}</span></span>
-<span id="cb5-5" class="hljs-ln-code"><a></a>    results <span class="op">:=</span> <span class="bu">make</span><span class="op">(</span><span class="kw">chan</span> <span class="dt">string</span><span class="op">,</span> <span class="bu">len</span><span class="op">(</span>services<span class="op">))</span></span>
-<span id="cb5-6" class="hljs-ln-code"><a></a></span>
-<span id="cb5-7" class="hljs-ln-code"><a></a>    <span class="cf">for</span> _<span class="op">,</span> service <span class="op">:=</span> <span class="kw">range</span> services <span class="op">{</span></span>
-<span id="cb5-8" class="hljs-ln-code"><a></a>        <span class="cf">go</span> checkHealth<span class="op">(</span>service<span class="op">,</span> results<span class="op">)</span> <span class="co">// Run health checks concurrently</span></span>
-<span id="cb5-9" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
-<span id="cb5-10" class="hljs-ln-code"><a></a></span>
-<span id="cb5-11" class="hljs-ln-code"><a></a>    <span class="cf">for</span> <span class="kw">range</span> services <span class="op">{</span></span>
-<span id="cb5-12" class="hljs-ln-code"><a></a>        fmt<span class="op">.</span>Println<span class="op">(&lt;-</span>results<span class="op">)</span> <span class="co">// Collect results</span></span>
-<span id="cb5-13" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
-<span id="cb5-14" class="hljs-ln-code"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource go number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode go hljs"><span id="cb5-1" class="hljs-ln-code"><a aria-label="1"></a><span class="kw">func</span> checkHealth<span class="op">(</span>url <span class="dt">string</span><span class="op">,</span> results <span class="kw">chan</span><span class="op">&lt;-</span> <span class="dt">string</span><span class="op">)</span></span>
+<span id="cb5-2" class="hljs-ln-code"><a aria-label="2"></a></span>
+<span id="cb5-3" class="hljs-ln-code"><a aria-label="3"></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-4" class="hljs-ln-code"><a aria-label="4"></a>    services <span class="op">:=</span> <span class="op">[]</span><span class="dt">string</span><span class="op">{</span><span class="st">"http://api1.com"</span><span class="op">,</span> <span class="st">"http://api2.com"</span><span class="op">,</span> <span class="st">"http://api3.com"</span><span class="op">}</span></span>
+<span id="cb5-5" class="hljs-ln-code"><a aria-label="5"></a>    results <span class="op">:=</span> <span class="bu">make</span><span class="op">(</span><span class="kw">chan</span> <span class="dt">string</span><span class="op">,</span> <span class="bu">len</span><span class="op">(</span>services<span class="op">))</span></span>
+<span id="cb5-6" class="hljs-ln-code"><a aria-label="6"></a></span>
+<span id="cb5-7" class="hljs-ln-code"><a aria-label="7"></a>    <span class="cf">for</span> _<span class="op">,</span> service <span class="op">:=</span> <span class="kw">range</span> services <span class="op">{</span></span>
+<span id="cb5-8" class="hljs-ln-code"><a aria-label="8"></a>        <span class="cf">go</span> checkHealth<span class="op">(</span>service<span class="op">,</span> results<span class="op">)</span> <span class="co">// Run health checks concurrently</span></span>
+<span id="cb5-9" class="hljs-ln-code"><a aria-label="9"></a>    <span class="op">}</span></span>
+<span id="cb5-10" class="hljs-ln-code"><a aria-label="10"></a></span>
+<span id="cb5-11" class="hljs-ln-code"><a aria-label="11"></a>    <span class="cf">for</span> <span class="kw">range</span> services <span class="op">{</span></span>
+<span id="cb5-12" class="hljs-ln-code"><a aria-label="12"></a>        fmt<span class="op">.</span>Println<span class="op">(&lt;-</span>results<span class="op">)</span> <span class="co">// Collect results</span></span>
+<span id="cb5-13" class="hljs-ln-code"><a aria-label="13"></a>    <span class="op">}</span></span>
+<span id="cb5-14" class="hljs-ln-code"><a aria-label="14"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 <h2>Goroutines in Action</h2>
 <p>Making it concurrent</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-code-line-numbers="1,5,8,12"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb6-1"><a></a><span class="kw">func</span> checkHealth<span class="op">(</span>url <span class="dt">string</span><span class="op">,</span> results <span class="kw">chan</span><span class="op">&lt;-</span> <span class="dt">string</span><span class="op">)</span></span>
-<span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb6-4"><a></a>    services <span class="op">:=</span> <span class="op">[]</span><span class="dt">string</span><span class="op">{</span><span class="st">"http://api1.com"</span><span class="op">,</span> <span class="st">"http://api2.com"</span><span class="op">,</span> <span class="st">"http://api3.com"</span><span class="op">}</span></span>
-<span id="cb6-5"><a></a>    results <span class="op">:=</span> <span class="bu">make</span><span class="op">(</span><span class="kw">chan</span> <span class="dt">string</span><span class="op">,</span> <span class="bu">len</span><span class="op">(</span>services<span class="op">))</span></span>
-<span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a>    <span class="cf">for</span> _<span class="op">,</span> service <span class="op">:=</span> <span class="kw">range</span> services <span class="op">{</span></span>
-<span id="cb6-8"><a></a>        <span class="cf">go</span> checkHealth<span class="op">(</span>service<span class="op">,</span> results<span class="op">)</span></span>
-<span id="cb6-9"><a></a>    <span class="op">}</span></span>
-<span id="cb6-10"><a></a></span>
-<span id="cb6-11"><a></a>    <span class="cf">for</span> <span class="kw">range</span> services <span class="op">{</span></span>
-<span id="cb6-12"><a></a>        fmt<span class="op">.</span>Println<span class="op">(&lt;-</span>results<span class="op">)</span></span>
-<span id="cb6-13"><a></a>    <span class="op">}</span></span>
-<span id="cb6-14"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-code-line-numbers="1,5,8,12"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb6-1"><a aria-label="1"></a><span class="kw">func</span> checkHealth<span class="op">(</span>url <span class="dt">string</span><span class="op">,</span> results <span class="kw">chan</span><span class="op">&lt;-</span> <span class="dt">string</span><span class="op">)</span></span>
+<span id="cb6-2"><a aria-label="2"></a></span>
+<span id="cb6-3"><a aria-label="3"></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-4"><a aria-label="4"></a>    services <span class="op">:=</span> <span class="op">[]</span><span class="dt">string</span><span class="op">{</span><span class="st">"http://api1.com"</span><span class="op">,</span> <span class="st">"http://api2.com"</span><span class="op">,</span> <span class="st">"http://api3.com"</span><span class="op">}</span></span>
+<span id="cb6-5"><a aria-label="5"></a>    results <span class="op">:=</span> <span class="bu">make</span><span class="op">(</span><span class="kw">chan</span> <span class="dt">string</span><span class="op">,</span> <span class="bu">len</span><span class="op">(</span>services<span class="op">))</span></span>
+<span id="cb6-6"><a aria-label="6"></a></span>
+<span id="cb6-7"><a aria-label="7"></a>    <span class="cf">for</span> _<span class="op">,</span> service <span class="op">:=</span> <span class="kw">range</span> services <span class="op">{</span></span>
+<span id="cb6-8"><a aria-label="8"></a>        <span class="cf">go</span> checkHealth<span class="op">(</span>service<span class="op">,</span> results<span class="op">)</span></span>
+<span id="cb6-9"><a aria-label="9"></a>    <span class="op">}</span></span>
+<span id="cb6-10"><a aria-label="10"></a></span>
+<span id="cb6-11"><a aria-label="11"></a>    <span class="cf">for</span> <span class="kw">range</span> services <span class="op">{</span></span>
+<span id="cb6-12"><a aria-label="12"></a>        fmt<span class="op">.</span>Println<span class="op">(&lt;-</span>results<span class="op">)</span></span>
+<span id="cb6-13"><a aria-label="13"></a>    <span class="op">}</span></span>
+<span id="cb6-14"><a aria-label="14"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 <h2>Every Go Program is a Goroutine</h2>
@@ -711,9 +714,9 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>main.go</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="main.go"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb7-1"><a></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb7-2"><a></a>    <span class="bu">panic</span><span class="op">(</span><span class="st">"AAAAHHH!"</span><span class="op">)</span></span>
-<span id="cb7-3"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="main.go"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb7-1"><a aria-label="1"></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb7-2"><a aria-label="2"></a>    <span class="bu">panic</span><span class="op">(</span><span class="st">"AAAAHHH!"</span><span class="op">)</span></span>
+<span id="cb7-3"><a aria-label="3"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -723,18 +726,18 @@ Milan Malfait
 <div class="code-with-filename-file">
 <pre><strong>main.go</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="main.go"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb8-1"><a></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
-<span id="cb8-2"><a></a>    <span class="bu">panic</span><span class="op">(</span><span class="st">"AAAAHHH!"</span><span class="op">)</span></span>
-<span id="cb8-3"><a></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="main.go"><pre class="sourceCode numberSource go number-lines code-with-copy"><code class="sourceCode go"><span id="cb8-1"><a aria-label="1"></a><span class="kw">func</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-2"><a aria-label="2"></a>    <span class="bu">panic</span><span class="op">(</span><span class="st">"AAAAHHH!"</span><span class="op">)</span></span>
+<span id="cb8-3"><a aria-label="3"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-code-line-numbers="4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="ex">$</span> go run ./main.go</span>
-<span id="cb9-2"><a></a><span class="ex">panic:</span> AAAAHHH!</span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a><span class="ex">goroutine</span> 1 <span class="pp">[</span><span class="ss">running</span><span class="pp">]</span>:</span>
-<span id="cb9-5"><a></a><span class="fu">main.main()</span></span>
-<span id="cb9-6"><a></a>    <span class="ex">/Users/milan/talks/2025-12-11-DevOpsHour-Go/examples/panic/main.go:4</span> +0x2c</span>
-<span id="cb9-7"><a></a><span class="bu">exit</span> status 2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-code-line-numbers="4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-label="1"></a><span class="ex">$</span> go run ./main.go</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="ex">panic:</span> AAAAHHH!</span>
+<span id="cb9-3"><a aria-label="3"></a></span>
+<span id="cb9-4"><a aria-label="4"></a><span class="ex">goroutine</span> 1 <span class="pp">[</span><span class="ss">running</span><span class="pp">]</span>:</span>
+<span id="cb9-5"><a aria-label="5"></a><span class="fu">main.main()</span></span>
+<span id="cb9-6"><a aria-label="6"></a>    <span class="ex">/Users/milan/talks/2025-12-11-DevOpsHour-Go/examples/panic/main.go:4</span> +0x2c</span>
+<span id="cb9-7"><a aria-label="7"></a><span class="bu">exit</span> status 2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 <h2>Go in the Wild</h2>
